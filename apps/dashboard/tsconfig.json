@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/dashboard/feature/home"
+    },
+    {
       "path": "./tsconfig.app.json"
     },
     {
