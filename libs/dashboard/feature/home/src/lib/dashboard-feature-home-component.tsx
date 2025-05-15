@@ -18,9 +18,19 @@ import { PieChart } from '@mui/x-charts/PieChart';
 import { desktopOS, valueFormatter } from './webusagestatechart';
 import { BarChart } from '@mui/x-charts/BarChart';
 import Card from '@mui/material/Card';
-// import { desktopOS, valueFormatter } from './webUsageStats';
+import { Gauge, gaugeClasses } from '@mui/x-charts/Gauge';
+import { LineChart } from '@mui/x-charts/LineChart';
+import MailIcon from '@mui/icons-material/Mail';
+import PersonIcon from '@mui/icons-material/Person';
 
-// const drawerWidth = 100;
+const settings = {
+  width: 200,
+  height: 200,
+  value: 60,
+};
+
+const sample = [1, 10, 30, 50, 70, 90, 100];
+
 const navItems = ['Home', 'About', 'Contact'];
 
 export function DashboardFeatureHome() {
@@ -59,17 +69,28 @@ export function DashboardFeatureHome() {
         <div className=" flex-1 mx-24 justify-items-center ">
           <div className="grid grid-cols-4 w-full gap-4">
             <div className="col-span-3 grid grid-cols-3 gap-4 ">
-              <DashboardFeatureCardsComponent />
-              <DashboardFeatureCardsComponent />
-              <DashboardFeatureCardsComponent />
+              <DashboardFeatureCardsComponent
+                icon={<MailIcon sx={{ color: 'white' }} />}
+              />
+              <DashboardFeatureCardsComponent
+                icon={<PersonIcon sx={{ color: 'white' }} />}
+              />
+              <DashboardFeatureCardsComponent
+                icon={<MailIcon sx={{ color: 'white' }} />}
+              />
             </div>
             <div className="col-span-1 grid grid-cols-1 gap-4">
-              <DashboardFeatureCardsComponent />
+              <DashboardFeatureCardsComponent
+                icon={<MailIcon sx={{ color: 'white' }} />}
+              />
             </div>
           </div>
           <div className="grid grid-cols-4 w-full mt-12 gap-4">
             <div className="col-span-1 grid grid-cols-1 gap-4 ">
-              <Card style={{ borderRadius: '30px' }}>
+              <Card
+                style={{ borderRadius: '30px' }}
+                className="flex justify-center items-center"
+              >
                 <PieChart
                   series={[
                     {
@@ -89,7 +110,7 @@ export function DashboardFeatureHome() {
               </Card>
             </div>
             <div className="col-span-3 grid grid-cols-3 gap-4">
-              <Card className="col-span-3">
+              <Card className="col-span-3" style={{ borderRadius: '30px' }}>
                 <BarChart
                   xAxis={[{ data: ['group A', 'group B', 'group C'] }]}
                   series={[
@@ -102,48 +123,51 @@ export function DashboardFeatureHome() {
               </Card>
             </div>
           </div>
-        </div>
-
-        {/* <div className="bg-gray-500 flex-1 ">
-          <div className="grid grid-cols-4 justify-items-center ">
-            <DashboardFeatureCardsComponent />
-            <DashboardFeatureCardsComponent />
-            <DashboardFeatureCardsComponent />
-            <DashboardFeatureCardsComponent />
-          </div>
-          <div className=" grid grid-cols-4">
-            <Card className="col-span-1">
-              <PieChart
-                series={[
-                  {
-                    data: desktopOS,
-                    highlightScope: { fade: 'global', highlight: 'item' },
-                    faded: {
-                      innerRadius: 30,
-                      additionalRadius: -30,
-                      color: 'gray',
+          <div className="grid grid-cols-4 w-full mt-12 gap-4">
+            <div className="col-span-1 grid grid-cols-1 gap-4 ">
+              <Card
+                style={{ borderRadius: '30px' }}
+                className="flex justify-center items-center"
+              >
+                <Gauge
+                  {...settings}
+                  cornerRadius="50%"
+                  sx={(theme) => ({
+                    [`& .${gaugeClasses.valueText}`]: {
+                      fontSize: 40,
                     },
-                    valueFormatter,
-                  },
-                ]}
-                height={200}
-                width={200}
-              />
-            </Card>
-
-            <Card className="col-span-3">
-              <BarChart
-                xAxis={[{ data: ['group A', 'group B', 'group C'] }]}
-                series={[
-                  { data: [4, 3, 5] },
-                  { data: [1, 6, 3] },
-                  { data: [2, 5, 6] },
-                ]}
-                height={300}
-              />
-            </Card>
+                    [`& .${gaugeClasses.valueArc}`]: {
+                      fill: '#52b202',
+                    },
+                    [`& .${gaugeClasses.referenceArc}`]: {
+                      fill: theme.palette.text.disabled,
+                    },
+                  })}
+                />
+              </Card>
+            </div>
+            <div className="col-span-3 grid grid-cols-3 gap-4 ">
+              <Card
+                className="col-span-3 h-[310px]  "
+                style={{ borderRadius: '30px' }}
+              >
+                <LineChart
+                  xAxis={[{ data: sample }]}
+                  yAxis={[
+                    { id: 'linearAxis', scaleType: 'linear', position: 'left' },
+                    { id: 'logAxis', scaleType: 'log', position: 'right' },
+                  ]}
+                  series={[
+                    { yAxisId: 'linearAxis', data: sample, label: 'linear' },
+                    { yAxisId: 'logAxis', data: sample, label: 'log' },
+                  ]}
+                  height={300}
+                  // width={1000}
+                />
+              </Card>
+            </div>
           </div>
-        </div> */}
+        </div>
       </Box>
     </Box>
   );

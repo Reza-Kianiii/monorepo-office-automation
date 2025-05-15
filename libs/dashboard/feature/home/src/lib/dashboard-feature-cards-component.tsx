@@ -1,8 +1,8 @@
 import { Card, Box, Typography } from '@mui/material';
 import MailIcon from '@mui/icons-material/Mail';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-
-export function DashboardFeatureCardsComponent() {
+import PersonIcon from '@mui/icons-material/Person';
+export function DashboardFeatureCardsComponent({ icon }: { icon: any }) {
   return (
     <Card
       // className=" w-[350px] h-[140px] rounded-[5px] p-2  "
@@ -31,7 +31,7 @@ export function DashboardFeatureCardsComponent() {
           mb: 1,
         }}
       >
-        <MailIcon sx={{ color: 'white' }} />
+        {icon}
       </Box>
 
       {/* عنوان و مقدار */}
