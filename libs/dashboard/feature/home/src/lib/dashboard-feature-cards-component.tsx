@@ -9,41 +9,54 @@ export function DashboardFeatureCardsComponent({ icon }: { icon: any }) {
 
       sx={{
         // width: 250,
-        height: 140,
-        borderRadius: 4,
-        padding: 2,
-        background: 'linear-gradient(to right, #ffe3d3, #ffd6c2)',
-        boxShadow: 3,
+        // height: 140,
+        display: 'flex',
+        flexDirection: 'column',
+        minWidth: '0px',
+        borderRadius: '20px',
+        padding: '15px 20px',
+        // background: 'linear-gradient(to right, #ffe3d3, #ffd6c2)',
+        // boxShadow: 3,
         position: 'relative',
         overflow: 'hidden',
       }}
     >
       {/* آیکون گوشه بالا چپ */}
-      <Box
-        sx={{
-          backgroundColor: '#ff725e',
-          width: 40,
-          height: 40,
-          borderRadius: 2,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          mb: 1,
-        }}
-      >
-        {icon}
-      </Box>
+      <div className="flex  items-center  justify-between mt-auto mb-auto">
+        <Box
+          sx={{
+            display: 'flex',
+            borderRadius: '50%',
+            backgroundColor: '#E2E8F0',
+            width: '56px',
+            height: '56px',
+            justifyContent: 'center',
+            alignItems: 'center',
 
-      {/* عنوان و مقدار */}
-      <Typography variant="body2" fontWeight={600} color="text.secondary">
-        Messages
-      </Typography>
-      <Typography variant="h4" fontWeight={700}>
-        234
-      </Typography>
-
+            // backgroundColor: '#ff725e',
+            // width: 40,
+            // height: 40,
+            // borderRadius: 2,
+            // display: 'flex',
+            // alignItems: 'center',
+            // justifyContent: 'center',
+            // mb: 1,
+          }}
+        >
+          {icon}
+        </Box>
+        <div>
+          {/* عنوان و مقدار */}
+          <Typography variant="body2" fontWeight={600} color="text.secondary">
+            Messages
+          </Typography>
+          <Typography variant="h4" fontWeight={700}>
+            234
+          </Typography>
+        </div>
+      </div>
       {/* درصد رشد */}
-      <Box
+      {/* <Box
         sx={{
           position: 'absolute',
           top: 12,
@@ -57,7 +70,7 @@ export function DashboardFeatureCardsComponent({ icon }: { icon: any }) {
       >
         <TrendingUpIcon sx={{ fontSize: 16 }} />
         +3.6%
-      </Box>
+      </Box> */}
 
       {/* گراف ساده به صورت SVG یا image یا خط سفارشی */}
     </Card>

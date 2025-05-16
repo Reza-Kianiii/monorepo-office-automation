@@ -7,11 +7,12 @@
   html,
   body,
   #root {
-    @apply h-full w-full p-0 m-0;
+    @apply h-full w-full p-0 m-0 bg-[#E2E8F0] ;
   }
 
   * {
     font-family: IRANSansFaNum, serif;
+    
   }
 
   a {
