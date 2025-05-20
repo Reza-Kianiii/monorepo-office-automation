@@ -19,8 +19,17 @@
     "customConditions": ["development"],
     "baseUrl": ".",
     "paths": {
-      "@office-automation/dashboard/feature/home": [
-        "libs/dashboard/feature/home/src/index.ts"
+      "@office-automation/dashboard-shell/feature/home": [
+        "libs/dashboard-shell/feature/home/src/index.ts"
+      ],
+      "@office-automation/dashboard/data/menu": [
+        "libs/dashboard/data/menu/src/index.ts"
+      ],
+      "@office-automation/dashboard/feature/shell": [
+        "libs/dashboard/feature/shell/src/index.ts"
+      ],
+      "@office-automation/shared/ui/drawer": [
+        "libs/shared/ui/drawer/src/index.ts"
       ]
     }
   }

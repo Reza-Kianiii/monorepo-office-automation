@@ -10,7 +10,22 @@
       "path": "./apps/dashboard"
     },
     {
-      "path": "./libs/dashboard/feature/home"
+      "path": "./apps/dashboard-shell-e2e"
+    },
+    {
+      "path": "./apps/dashboard-shell"
+    },
+    {
+      "path": "./libs/dashboard-shell/feature/home"
+    },
+    {
+      "path": "./libs/dashboard/feature/shell"
+    },
+    {
+      "path": "./libs/shared/ui/drawer"
+    },
+    {
+      "path": "./libs/dashboard/data/menu"
     }
   ]
 }
