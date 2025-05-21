@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/dashboard/utils/redux-store"
+    },
+    {
       "path": "../../libs/dashboard/feature/shell"
     },
     {

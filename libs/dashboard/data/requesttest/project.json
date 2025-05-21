@@ -1,0 +1,9 @@
+{
+  "name": "requesttest",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/dashboard/data/requesttest/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project requesttest --web",
+  "targets": {}
+}

@@ -4,3 +4,4 @@ packages:
   - 'libs/dashboard-shell/feature/*'
   - 'libs/shared/ui/*'
   - 'libs/dashboard/data/*'
+  - 'libs/dashboard/utils/*'
