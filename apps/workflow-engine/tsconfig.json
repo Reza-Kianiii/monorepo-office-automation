@@ -3,10 +3,7 @@
   "include": [],
   "references": [
     {
-      "path": "../../libs/shared/util/mui-theme"
-    },
-    {
-      "path": "../../libs/dashboard/feature/shell"
+      "path": "../../libs/workflow-engine/feature/workflow-engine-shell"
     },
     {
       "path": "./tsconfig.app.json"

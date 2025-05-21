@@ -103,7 +103,7 @@ const Drawer = styled(MuiDrawer, {
   ],
 }));
 
-export function SharedUiDrawer({ menu }: { menu: any }) {
+export function SharedUiDrawer({ menu }: { menu?: any }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -151,7 +151,7 @@ export function SharedUiDrawer({ menu }: { menu: any }) {
         </DrawerHeader>
         <Divider />
         <List>
-          {menu.map((text, index) => (
+          {menu?.map((text, index) => (
             <ListItem
               key={text?.title}
               disablePadding

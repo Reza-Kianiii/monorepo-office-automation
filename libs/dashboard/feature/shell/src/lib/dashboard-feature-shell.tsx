@@ -2332,6 +2332,7 @@ export function DashboardFeatureShell() {
 
   return (
     <div>
+      {/* <p> این متن صرفا برای تست فونت ها این پروژه است</p> */}
       <SharedUiDrawer menu={allowedMenuIds} />
     </div>
   );

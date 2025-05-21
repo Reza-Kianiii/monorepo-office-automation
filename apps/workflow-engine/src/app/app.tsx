@@ -3,10 +3,8 @@ import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
-import { DashboardFeatureShell } from '@office-automation/dashboard/feature/shell';
-import { ThemeProvider } from '@mui/material/styles';
-import { CssBaseline } from '@mui/material';
-import { theme } from '@office-automation/shared/util/mui-theme';
+// import { WorkFlowFeatureShell } from '@office-automation/workflow-engine/feature/shell';
+import { WorkflowEngineFeatureWorkflowEngineShell } from '@office-automation/workflow-engine/feature/workflow-engine-shell';
 
 const rtlCache = createCache({
   key: 'muirtl',
@@ -17,21 +15,23 @@ const router = createBrowserRouter(
   [
     {
       path: '',
-      element: <DashboardFeatureShell />,
+      // element: <DashboardFeatureShell />,
+      // element: <WorkFlowFeatureShell />,
+      // element: <WorkFlowFeatureShell />,
+      element: <WorkflowEngineFeatureWorkflowEngineShell />,
       children: [{}],
     },
   ],
-  { basename: `/dashboard` }
+  { basename: `/workflow-engine` }
 );
 
 export function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <div>
       <CacheProvider value={rtlCache}>
-        <CssBaseline />
         <RouterProvider router={router} />
       </CacheProvider>
-    </ThemeProvider>
+    </div>
   );
 }
 

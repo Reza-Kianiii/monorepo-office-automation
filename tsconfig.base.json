@@ -30,6 +30,15 @@
       ],
       "@office-automation/shared/ui/drawer": [
         "libs/shared/ui/drawer/src/index.ts"
+      ],
+      "@office-automation/shared/util/mui-theme": [
+        "libs/shared/util/mui-theme/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/feature/new-case": [
+        "libs/workflow-engine/feature/new-case/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/feature/workflow-engine-shell": [
+        "libs/workflow-engine/feature/workflow-engine-shell/src/index.ts"
       ]
     }
   }

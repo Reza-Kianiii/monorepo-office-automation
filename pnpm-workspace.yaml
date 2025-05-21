@@ -4,3 +4,5 @@ packages:
   - 'libs/dashboard-shell/feature/*'
   - 'libs/shared/ui/*'
   - 'libs/dashboard/data/*'
+  - 'libs/workflow-engine/feature/*'
+  - 'libs/shared/util/*'
