@@ -6,12 +6,6 @@
       "path": "../../data/requesttest"
     },
     {
-      "path": "../../data/menu"
-    },
-    {
-      "path": "../../../shared/ui/drawer"
-    },
-    {
       "path": "./tsconfig.lib.json"
     }
   ],

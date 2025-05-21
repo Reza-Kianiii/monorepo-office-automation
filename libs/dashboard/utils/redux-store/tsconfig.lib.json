@@ -32,12 +32,6 @@
   "references": [
     {
       "path": "../../data/requesttest/tsconfig.lib.json"
-    },
-    {
-      "path": "../../data/menu/tsconfig.lib.json"
-    },
-    {
-      "path": "../../../shared/ui/drawer/tsconfig.lib.json"
     }
   ]
 }

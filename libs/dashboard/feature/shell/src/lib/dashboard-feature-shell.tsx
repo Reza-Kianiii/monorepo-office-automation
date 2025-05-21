@@ -1,5 +1,6 @@
 import { SharedUiDrawer } from '@office-automation/shared/ui/drawer';
 import { dashboardDataMenuItems } from '@office-automation/dashboard/data/menu';
+import { useGetAccountSetsQuery } from '@office-automation/dashboard/data/requesttest';
 
 const userpermission = [
   {
@@ -2310,6 +2311,10 @@ type PermissionItem = {
 };
 
 export function DashboardFeatureShell() {
+  const { data, isLoading } = useGetAccountSetsQuery();
+
+  console.log(data, 'datafortest');
+
   let dictionaryuserPermission: Record<number, PermissionItem> = {};
 
   dictionaryuserPermission = userpermission.reduce((acc, item) => {

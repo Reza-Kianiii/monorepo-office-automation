@@ -26,6 +26,12 @@
     },
     {
       "path": "./libs/dashboard/data/menu"
+    },
+    {
+      "path": "./libs/dashboard/utils/redux-store"
+    },
+    {
+      "path": "./libs/dashboard/data/requesttest"
     }
   ]
 }

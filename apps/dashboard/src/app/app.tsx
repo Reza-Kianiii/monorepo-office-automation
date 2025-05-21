@@ -4,6 +4,8 @@ import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
 import { DashboardFeatureShell } from '@office-automation/dashboard/feature/shell';
+import { Provider } from 'react-redux';
+import { store } from '@office-automation/dashboard/utils/redux-store';
 
 const rtlCache = createCache({
   key: 'muirtl',
@@ -28,7 +30,9 @@ const router = createBrowserRouter(
 export function App() {
   return (
     <CacheProvider value={rtlCache}>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </CacheProvider>
   );
 }
