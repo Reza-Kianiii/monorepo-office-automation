@@ -3,8 +3,7 @@ import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
-import { DashboardFeatureShell } from '@office-automation/dashboard/feature/shell';
-
+import { DashboardFeatureHome } from '@office-automation/dashboard-shell/feature/home';
 const rtlCache = createCache({
   key: 'muirtl',
   stylisPlugins: [prefixer, rtlPlugin],
@@ -16,13 +15,13 @@ const router = createBrowserRouter(
       path: '',
       children: [
         {
-          path: '',
-          Component: DashboardFeatureShell,
+          path: 'home',
+          Component: DashboardFeatureHome,
         },
       ],
     },
   ],
-  { basename: `/dashboard` }
+  { basename: `/dashboard-shell` }
 );
 
 export function App() {
