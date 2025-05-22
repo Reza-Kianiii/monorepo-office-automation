@@ -198,6 +198,10 @@ importers:
 
   apps/dashboard-shell-e2e: {}
 
+  apps/workflow-engine: {}
+
+  apps/workflow-engine-e2e: {}
+
   libs/dashboard-shell/feature/home: {}
 
   libs/dashboard/data/menu: {}
@@ -205,6 +209,14 @@ importers:
   libs/dashboard/feature/shell: {}
 
   libs/shared/ui/drawer: {}
+
+  libs/shared/util/mui-theme: {}
+
+  libs/workflow-engine/feature/inbox: {}
+
+  libs/workflow-engine/feature/new-case: {}
+
+  libs/workflow-engine/feature/workflow-engine-shell: {}
 
 packages:
 

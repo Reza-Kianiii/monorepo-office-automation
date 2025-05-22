@@ -1,0 +1,9 @@
+{
+  "name": "workflow-engine-shell",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/workflow-engine/feature/workflow-engine-shell/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project workflow-engine-shell --web",
+  "targets": {}
+}

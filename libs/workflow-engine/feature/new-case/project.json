@@ -1,0 +1,9 @@
+{
+  "name": "new-case",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/workflow-engine/feature/new-case/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project new-case --web",
+  "targets": {}
+}

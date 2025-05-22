@@ -24,8 +24,7 @@
   font-family: IRANSansFaNum;
   font-style: normal;
   font-weight: 900;
-
-  src: url('./assets/fonts/iransans-fa/eot/IRANSansWeb\(FaNum\)_Black.eot');
+  src: url('./assets/fonts/iransans-fa/eot/IRANSansWeb(FaNum)_Black.eot');
   src: url('./assets/fonts/iransans-fa/eot/IRANSansWeb(FaNum)_Black.eot?#iefix')
       format('embedded-opentype'),
     /* IE6-8 */

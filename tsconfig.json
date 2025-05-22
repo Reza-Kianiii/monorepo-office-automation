@@ -26,6 +26,24 @@
     },
     {
       "path": "./libs/dashboard/data/menu"
+    },
+    {
+      "path": "./apps/workflow-engine-e2e"
+    },
+    {
+      "path": "./apps/workflow-engine"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/new-case"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/inbox"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/workflow-engine-shell"
+    },
+    {
+      "path": "./libs/shared/util/mui-theme"
     }
   ]
 }
