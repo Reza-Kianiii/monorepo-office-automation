@@ -36,6 +36,9 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
+      "path": "../../libs/shared/util/mui-theme/tsconfig.lib.json"
+    },
+    {
       "path": "../../libs/workflow-engine/feature/workflow-engine-shell/tsconfig.lib.json"
     }
   ]
