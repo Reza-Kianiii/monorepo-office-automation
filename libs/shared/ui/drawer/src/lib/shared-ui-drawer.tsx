@@ -260,7 +260,7 @@ export function SharedUiDrawer({ menu }: { menu?: any }) {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-
+        {/* <o0/> */}
         <p>just for test</p>
       </Box>
     </Box>

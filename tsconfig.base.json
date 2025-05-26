@@ -28,17 +28,26 @@
       "@office-automation/dashboard/feature/shell": [
         "libs/dashboard/feature/shell/src/index.ts"
       ],
+      "@office-automation/shared/data/permission": [
+        "libs/shared/data/permission/src/index.ts"
+      ],
       "@office-automation/shared/ui/drawer": [
         "libs/shared/ui/drawer/src/index.ts"
       ],
       "@office-automation/shared/util/mui-theme": [
         "libs/shared/util/mui-theme/src/index.ts"
       ],
+      "@office-automation/workflow-engine/data/workflow-engine-menu": [
+        "libs/workflow-engine/data/workflow-engine-menu/src/index.ts"
+      ],
       "@office-automation/workflow-engine/feature/new-case": [
         "libs/workflow-engine/feature/new-case/src/index.ts"
       ],
       "@office-automation/workflow-engine/feature/workflow-engine-shell": [
         "libs/workflow-engine/feature/workflow-engine-shell/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/utils/redux-store": [
+        "libs/workflow-engine/utils/redux-store/src/index.ts"
       ]
     }
   }

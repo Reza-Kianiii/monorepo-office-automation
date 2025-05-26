@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/workflow-engine/utils/redux-store"
+    },
+    {
       "path": "../../libs/shared/util/mui-theme"
     },
     {

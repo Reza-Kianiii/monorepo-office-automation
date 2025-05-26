@@ -8,6 +8,8 @@ import { WorkflowEngineFeatureWorkflowEngineShell } from '@office-automation/wor
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { theme } from '@office-automation/shared/util/mui-theme';
+import { Provider } from 'react-redux';
+import { store } from '@office-automation/workflow-engine/utils/redux-store';
 
 const rtlCache = createCache({
   key: 'muirtl',
@@ -32,10 +34,12 @@ export function App() {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <CacheProvider value={rtlCache}>
-          <CssBaseline />
-          <RouterProvider router={router} />
-        </CacheProvider>
+        <Provider store={store}>
+          <CacheProvider value={rtlCache}>
+            <CssBaseline />
+            <RouterProvider router={router} />
+          </CacheProvider>
+        </Provider>
       </ThemeProvider>
     </div>
   );

@@ -3,12 +3,6 @@
   "include": [],
   "references": [
     {
-      "path": "../../data/workflow-engine-menu"
-    },
-    {
-      "path": "../../../shared/ui/drawer"
-    },
-    {
       "path": "../../../shared/data/permission"
     },
     {

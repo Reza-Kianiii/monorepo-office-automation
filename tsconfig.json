@@ -44,6 +44,15 @@
     },
     {
       "path": "./libs/shared/util/mui-theme"
+    },
+    {
+      "path": "./libs/workflow-engine/utils/redux-store"
+    },
+    {
+      "path": "./libs/shared/data/permission"
+    },
+    {
+      "path": "./libs/workflow-engine/data/workflow-engine-menu"
     }
   ]
 }

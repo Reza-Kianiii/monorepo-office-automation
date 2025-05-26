@@ -6,3 +6,6 @@ packages:
   - 'libs/dashboard/data/*'
   - 'libs/workflow-engine/feature/*'
   - 'libs/shared/util/*'
+  - 'libs/workflow-engine/utils/*'
+  - 'libs/shared/data/*'
+  - 'libs/workflow-engine/data/*'
