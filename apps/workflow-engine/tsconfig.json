@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/workflow-engine/feature/inbox"
+    },
+    {
       "path": "../../libs/workflow-engine/utils/redux-store"
     },
     {

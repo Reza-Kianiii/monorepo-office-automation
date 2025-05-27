@@ -5,7 +5,7 @@
     "emitDeclarationOnly": true,
     "importHelpers": true,
     "isolatedModules": true,
-    "lib": ["es2022"],
+    "lib": ["dom", "esnext", "es2022"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmitOnError": true,
@@ -39,6 +39,9 @@
       ],
       "@office-automation/workflow-engine/data/workflow-engine-menu": [
         "libs/workflow-engine/data/workflow-engine-menu/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/feature/inbox": [
+        "libs/workflow-engine/feature/inbox/src/index.ts"
       ],
       "@office-automation/workflow-engine/feature/new-case": [
         "libs/workflow-engine/feature/new-case/src/index.ts"
