@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import React, { useCallback } from 'react';
+
+import React, { useCallback, useEffect } from 'react';
 
 import {
   Breadcrumbs,
@@ -8,12 +8,42 @@ import {
   Link,
   Paper,
   Skeleton,
+  styled,
   Typography,
 } from '@mui/material';
-
 import { Link as RouterLink, useMatches, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
+import {
+  DataGrid,
+  Toolbar,
+  ToolbarButton,
+  ColumnsPanelTrigger,
+  FilterPanelTrigger,
+  ExportCsv,
+  ExportPrint,
+  QuickFilter,
+  QuickFilterControl,
+  QuickFilterClear,
+  QuickFilterTrigger,
+} from '@mui/x-data-grid';
+import { useDemoData } from '@mui/x-data-grid-generator';
+import Tooltip from '@mui/material/Tooltip';
+import Menu from '@mui/material/Menu';
+import Badge from '@mui/material/Badge';
+import ViewColumnIcon from '@mui/icons-material/ViewColumn';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import MenuItem from '@mui/material/MenuItem';
+import Divider from '@mui/material/Divider';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import CancelIcon from '@mui/icons-material/Cancel';
+import SearchIcon from '@mui/icons-material/Search';
+import {
+  FilterColumnsArgs,
+  GetColumnForNewFilterArgs,
+} from '@mui/x-data-grid-pro';
+import { DataGridPro, GridColDef } from '@mui/x-data-grid-pro';
 const columns: GridColDef<(typeof rows)[number]>[] = [
   { field: 'کد', headerName: 'کد', width: 90 },
   {
@@ -58,27 +88,6 @@ const rows = [
   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
-// export default function DataGridDemo() {
-//   return (
-//     <Box sx={{ height: 400, width: '100%' }}>
-//       <DataGrid
-//         rows={rows}
-//         columns={columns}
-//         initialState={{
-//           pagination: {
-//             paginationModel: {
-//               pageSize: 5,
-//             },
-//           },
-//         }}
-//         pageSizeOptions={[5]}
-//         checkboxSelection
-//         disableRowSelectionOnClick
-//       />
-//     </Box>
-//   );
-// }
-
 export function WorkFlowEngineFeatureInbox() {
   return (
     <div className="  flex flex-1 flex-col ">
@@ -92,34 +101,36 @@ export function WorkFlowEngineFeatureInbox() {
         <div>مدیریت فرایندها / کارتابل</div>
       </Paper>
 
-      <Box sx={{ height: '100%' }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          // initialState={{
-          //   pagination: {
-          //     paginationModel: {
-          //       pageSize: 5,
-          //     },
-          //   },
-          // }}
-          // pageSizeOptions={[5]}
-          slotProps={{
-            columnMenu: {
-              anchorOrigin: {
-                vertical: 'bottom',
-                horizontal: 'right',
+      {/* <Box sx={{ height: '100%' }}> */}
+      <DataGridPro
+        rows={rows}
+        columns={columns}
+        slotProps={{
+          filterPanel: {
+            sx: {
+              '& .MuiFormControl-root': {
+                marginTop: 0,
+                marginBottom: 0,
               },
-              transformOrigin: {
-                vertical: 'top',
-                horizontal: 'right',
+              '& .MuiInputBase-root, & .MuiSelect-root, & .MuiTextField-root': {
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+              },
+              '& .MuiGrid-root': {
+                alignItems: 'center !important',
               },
             },
-          }}
-          checkboxSelection
-          disableRowSelectionOnClick
-        />
-      </Box>
+          },
+        }}
+        // slots={{
+        //   toolbar: CustomToolbar,
+        // }}
+        showToolbar
+        checkboxSelection
+        disableRowSelectionOnClick
+      />
+      {/* </Box> */}
     </div>
   );
 }
