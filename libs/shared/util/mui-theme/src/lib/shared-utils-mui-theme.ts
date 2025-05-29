@@ -9,6 +9,7 @@ import { faIR } from '@mui/x-data-grid/locales';
 import { extendTheme } from '@mui/material/styles';
 import { faIR as gridFaIR } from '@mui/x-data-grid-premium/locales';
 import { faIR as coreFaIR } from '@mui/material/locale';
+import { Component } from 'react';
 
 const modifiedGridFaIR = gridFaIR;
 modifiedGridFaIR.components.MuiDataGrid.defaultProps.localeText.filterValueAny =
@@ -40,105 +41,33 @@ export function createSharedTheme(): any {
         typography: {
           fontFamily: ['IRANSansFaNum'].join(','),
         },
-
-        components: {
-          MuiListSubheader: {
-            styleOverrides: {
-              root: {
-                backgroundColor: 'inherit',
-              },
-            },
-          },
-          MuiFormHelperText: {
-            styleOverrides: {
-              root: {
-                marginTop: '2px',
-                marginBottom: '1px',
-                minHeight: '1em',
-                lineHeight: 1,
-              },
-            },
-          },
-          MuiTextField: {
-            defaultProps: {
-              margin: 'normal',
-              variant: 'outlined',
-              size: 'small',
-              InputLabelProps: {
-                shrink: true,
-              },
-            },
-            styleOverrides: {
-              root: {
-                '& input:-webkit-autofill': {
-                  boxShadow: '0 0 0 100px white inset',
-                  WebkitTextFillColor: '#000',
-                },
-                marginTop: 0,
-                width: 'full',
-              },
-            },
-          },
-          MuiInputLabel: {
-            defaultProps: {
-              shrink: true,
-            },
-          },
-          MuiAutocomplete: {
-            styleOverrides: {
-              root: {
-                '& .MuiInputLabel-root': {
-                  background: 'white',
-                },
-              },
-            },
-          },
-          MuiPopover: {
-            defaultProps: {
-              container: rootElement,
-            },
-          },
-          MuiPopper: {
-            defaultProps: {
-              container: rootElement,
-            },
-          },
-          MuiDialog: {
-            styleOverrides: {
-              root: {
-                '& .MuiDialogContent-root': {
-                  paddingBottom: 0,
-                },
-                '& .MuiDialogContentText-root': {
-                  marginBottom: '1rem',
-                },
-              },
-            },
-            defaultProps: {
-              container: rootElement,
-            },
-          },
-          MuiModal: {
-            defaultProps: {
-              container: rootElement,
-            },
-          },
-          MuiCircularProgress: {
-            defaultProps: {
-              size: 25,
-            },
-          },
-          MuiFormControl: {
-            styleOverrides: {
-              root: {
-                marginTop: '-1rem',
-              },
-            },
-          },
-        },
+        // components: {
+        //   MuiDataGridPro: {
+        //     defaultProps: {
+        //       slotProps: {
+        //         filterPanel: {
+        //           sx: {
+        //             '& .MuiFormControl-root': {
+        //               marginTop: 0,
+        //               marginBottom: 0,
+        //             },
+        //             '& .MuiInputBase-root, & .MuiSelect-root, & .MuiTextField-root':
+        //               {
+        //                 height: '40px',
+        //                 display: 'flex',
+        //                 alignItems: 'center',
+        //               },
+        //             '& .MuiGrid-root': {
+        //               alignItems: 'center !important',
+        //             },
+        //           },
+        //         },
+        //       },
+        //     },
+        //   },
+        // },
       },
       modifiedGridFaIR,
-
       coreFaIR
     )
   );

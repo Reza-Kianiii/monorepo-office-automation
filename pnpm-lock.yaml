@@ -224,6 +224,10 @@ importers:
 
   libs/shared/ui/drawer: {}
 
+  libs/shared/ui/widget: {}
+
+  libs/shared/util/app-core: {}
+
   libs/shared/util/mui-theme: {}
 
   libs/workflow-engine/data/workflow-engine-menu: {}

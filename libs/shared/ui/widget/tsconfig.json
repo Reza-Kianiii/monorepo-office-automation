@@ -3,9 +3,6 @@
   "include": [],
   "references": [
     {
-      "path": "../../../shared/ui/widget"
-    },
-    {
       "path": "./tsconfig.lib.json"
     }
   ],

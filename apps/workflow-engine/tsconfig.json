@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/shared/util/app-core"
+    },
+    {
       "path": "../../libs/workflow-engine/feature/inbox"
     },
     {

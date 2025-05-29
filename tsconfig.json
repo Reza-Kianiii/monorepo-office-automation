@@ -53,6 +53,12 @@
     },
     {
       "path": "./libs/workflow-engine/data/workflow-engine-menu"
+    },
+    {
+      "path": "./libs/shared/util/app-core"
+    },
+    {
+      "path": "./libs/shared/ui/widget"
     }
   ]
 }

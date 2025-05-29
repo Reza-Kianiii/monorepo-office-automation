@@ -43,6 +43,8 @@ import {
   FilterColumnsArgs,
   GetColumnForNewFilterArgs,
 } from '@mui/x-data-grid-pro';
+import { SharedUiHeaderWidget } from '@office-automation/shared/ui/widget';
+
 import { DataGridPro, GridColDef } from '@mui/x-data-grid-pro';
 const columns: GridColDef<(typeof rows)[number]>[] = [
   { field: 'کد', headerName: 'کد', width: 90 },
@@ -91,38 +93,29 @@ const rows = [
 export function WorkFlowEngineFeatureInbox() {
   return (
     <div className="  flex flex-1 flex-col ">
-      <Paper className="mt-2 mb-2 h-[100px] flex flex-col justify-between p-2 shadow">
-        <div
-          className="flex items-center justify-between"
-          style={{ fontSize: '30px', fontWeight: 'bold' }}
-        >
-          کارتابل
-        </div>
-        <div>مدیریت فرایندها / کارتابل</div>
-      </Paper>
+      <SharedUiHeaderWidget />
 
-      {/* <Box sx={{ height: '100%' }}> */}
       <DataGridPro
         rows={rows}
         columns={columns}
-        slotProps={{
-          filterPanel: {
-            sx: {
-              '& .MuiFormControl-root': {
-                marginTop: 0,
-                marginBottom: 0,
-              },
-              '& .MuiInputBase-root, & .MuiSelect-root, & .MuiTextField-root': {
-                height: '40px',
-                display: 'flex',
-                alignItems: 'center',
-              },
-              '& .MuiGrid-root': {
-                alignItems: 'center !important',
-              },
-            },
-          },
-        }}
+        // slotProps={{
+        //   filterPanel: {
+        //     sx: {
+        //       '& .MuiFormControl-root': {
+        //         marginTop: 0,
+        //         marginBottom: 0,
+        //       },
+        //       '& .MuiInputBase-root, & .MuiSelect-root, & .MuiTextField-root': {
+        //         height: '40px',
+        //         display: 'flex',
+        //         alignItems: 'center',
+        //       },
+        //       '& .MuiGrid-root': {
+        //         alignItems: 'center !important',
+        //       },
+        //     },
+        //   },
+        // }}
         // slots={{
         //   toolbar: CustomToolbar,
         // }}
