@@ -14,7 +14,7 @@ import {
 import { Provider } from 'react-redux';
 import { store } from '@office-automation/workflow-engine/utils/redux-store';
 import { WorkFlowEngineFeatureInbox } from '@office-automation/workflow-engine/feature/inbox';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { SharedProviders } from '@office-automation/shared/util/app-core';
 
 // const rtlCache = createCache({
@@ -40,6 +40,39 @@ const router = createBrowserRouter(
 
 export function App() {
   const theme = useMemo(() => createSharedTheme(), []);
+  const [fake, setFake] = useState();
+  useEffect(() => {
+    const login = async () => {
+      try {
+        const response = await fetch(
+          'http://172.16.192.214:8010/api/Accounts/Login/',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              AccountID: 3,
+              UserName: 'Admin',
+              Password: 12345,
+              Browser: '',
+              IP: '',
+            }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error('Login failed');
+        }
+
+        const data = await response.json();
+      } catch (error) {
+        console.error('Error during login:', error);
+      }
+    };
+
+    login();
+  }, [fake]);
 
   return (
     <SharedProviders theme={theme} store={store}>

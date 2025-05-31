@@ -31,6 +31,12 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
+      "path": "../../data/login/tsconfig.lib.json"
+    },
+    {
+      "path": "../../data/data-inbox/tsconfig.lib.json"
+    },
+    {
       "path": "../../../shared/data/permission/tsconfig.lib.json"
     }
   ]

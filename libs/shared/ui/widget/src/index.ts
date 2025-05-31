@@ -1,1 +1,1 @@
-export * from './lib/shared-ui-header-widget';
+export * from './lib/shared-ui-widget-header';

@@ -1,5 +1,5 @@
 {
-  "name": "@office-automation/widget",
+  "name": "@office-automation/login",
   "version": "0.0.1",
   "main": "./src/index.ts",
   "types": "./src/index.ts",

@@ -3,6 +3,12 @@
   "include": [],
   "references": [
     {
+      "path": "../../data/login"
+    },
+    {
+      "path": "../../data/data-inbox"
+    },
+    {
       "path": "../../../shared/data/permission"
     },
     {

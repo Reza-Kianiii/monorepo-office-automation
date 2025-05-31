@@ -43,38 +43,96 @@ import {
   FilterColumnsArgs,
   GetColumnForNewFilterArgs,
 } from '@mui/x-data-grid-pro';
-import { SharedUiHeaderWidget } from '@office-automation/shared/ui/widget';
+
+import { SharedUiWidgetHeader } from '@office-automation/shared/ui/widget';
 
 import { DataGridPro, GridColDef } from '@mui/x-data-grid-pro';
+import { useGetDataInboxQuery } from '@office-automation/workflow-engine/data/data-inbox';
+
 const columns: GridColDef<(typeof rows)[number]>[] = [
   { field: 'کد', headerName: 'کد', width: 90 },
   {
     field: 'firstName',
-    headerName: 'نام',
+    headerName: 'شماره کار',
     width: 150,
     editable: true,
   },
   {
     field: 'lastName',
-    headerName: 'فامیلی',
+    headerName: 'شماره سند ',
     width: 150,
     editable: true,
   },
   {
     field: 'age',
-    headerName: 'سن',
+    headerName: 'فرایند',
     type: 'number',
     width: 110,
     editable: true,
   },
   {
     field: 'fullName',
-    headerName: 'نام و نام خانوادگی',
+    headerName: 'وظیفه',
     description: 'This column has a value getter and is not sortable.',
     sortable: false,
     width: 160,
+  },
+  {
+    field: 'test1',
+    headerName: 'ارسال کننده',
+    type: 'number',
+    width: 110,
+    editable: true,
+  },
+  {
+    field: 'test2',
+    headerName: 'تاریخ',
+    type: 'number',
+    width: 110,
+    editable: true,
+  },
+  {
+    field: 'test3',
+    headerName: 'یادداشت',
+    type: 'number',
+    width: 110,
+    editable: true,
+  },
+  {
+    field: 'test4',
+    headerName: 'انبار',
+    type: 'number',
+    width: 110,
+    editable: true,
+  },
+  {
+    field: 'test5',
+    headerName: 'نام پیمانکار',
+    type: 'number',
+    width: 110,
+    editable: true,
+  },
+  {
+    field: 'test6',
+    headerName: 'نام پروژه',
+    type: 'number',
+    width: 110,
+    editable: true,
+  },
+  {
+    field: 'test7',
+    headerName: 'دوره مالی',
+    type: 'number',
+    width: 110,
+    editable: true,
+  },
+  {
+    field: 'test8',
+    headerName: 'مهلت انجام',
+    type: 'number',
+    width: 110,
+    editable: true,
     flex: 1, // به‌جای width: 300
-    valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
   },
 ];
 
@@ -91,9 +149,14 @@ const rows = [
 ];
 
 export function WorkFlowEngineFeatureInbox() {
+  const { data } = useGetDataInboxQuery();
+  if (data) {
+    console.log(JSON.parse(data), 'datadatadatadatadatadatdata');
+  }
+
   return (
     <div className="  flex flex-1 flex-col ">
-      <SharedUiHeaderWidget />
+      <SharedUiWidgetHeader />
 
       <DataGridPro
         rows={rows}

@@ -1,6 +1,14 @@
-import { Paper } from '@mui/material';
+import {
+  Breadcrumbs,
+  Grid,
+  Link,
+  Paper,
+  Skeleton,
+  styled,
+  Typography,
+} from '@mui/material';
 
-export function SharedUiHeaderWidget() {
+export function SharedUiWidgetHeader() {
   return (
     <Paper className="mt-2 mb-2 h-[100px] flex flex-col justify-between p-2 shadow">
       <div
@@ -14,4 +22,4 @@ export function SharedUiHeaderWidget() {
   );
 }
 
-export default SharedUiHeaderWidget;
+export default SharedUiWidgetHeader;

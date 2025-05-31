@@ -43,6 +43,12 @@
       "@office-automation/shared/util/mui-theme": [
         "libs/shared/util/mui-theme/src/index.ts"
       ],
+      "@office-automation/workflow-engine/data/data-inbox": [
+        "libs/workflow-engine/data/data-inbox/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/data/login": [
+        "libs/workflow-engine/data/login/src/index.ts"
+      ],
       "@office-automation/workflow-engine/data/workflow-engine-menu": [
         "libs/workflow-engine/data/workflow-engine-menu/src/index.ts"
       ],

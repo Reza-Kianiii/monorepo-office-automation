@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../data/login"
+    },
+    {
       "path": "../../data/workflow-engine-menu"
     },
     {

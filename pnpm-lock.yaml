@@ -230,6 +230,10 @@ importers:
 
   libs/shared/util/mui-theme: {}
 
+  libs/workflow-engine/data/data-inbox: {}
+
+  libs/workflow-engine/data/login: {}
+
   libs/workflow-engine/data/workflow-engine-menu: {}
 
   libs/workflow-engine/feature/inbox: {}

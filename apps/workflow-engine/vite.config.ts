@@ -9,6 +9,14 @@ export default defineConfig(() => ({
   server: {
     port: 4200,
     host: 'localhost',
+    proxy: {
+      '/api': {
+        target: 'http://172.16.192.214:8010/',
+        // target: 'http://172.16.192.214:8010/',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
     // port: '5173',
     // host: '0.0.0.0',
   },

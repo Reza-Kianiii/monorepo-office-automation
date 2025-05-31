@@ -28,19 +28,5 @@
     "eslint.config.cjs",
     "eslint.config.mjs"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
-  "references": [
-    {
-      "path": "../../data/login/tsconfig.lib.json"
-    },
-    {
-      "path": "../../data/workflow-engine-menu/tsconfig.lib.json"
-    },
-    {
-      "path": "../../../shared/ui/drawer/tsconfig.lib.json"
-    },
-    {
-      "path": "../../../shared/data/permission/tsconfig.lib.json"
-    }
-  ]
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
 }
