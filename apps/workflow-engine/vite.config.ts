@@ -8,7 +8,7 @@ export default defineConfig(() => ({
   cacheDir: '../../node_modules/.vite/apps/workflow-engine',
   server: {
     port: 4200,
-    host: 'localhost',
+    // host: 'localhost',
     proxy: {
       '/api': {
         target: 'http://172.16.192.214:8010/',
@@ -18,7 +18,7 @@ export default defineConfig(() => ({
       },
     },
     // port: '5173',
-    // host: '0.0.0.0',
+    host: '0.0.0.0',
   },
   preview: {
     port: 4300,
