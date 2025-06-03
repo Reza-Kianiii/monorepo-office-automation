@@ -239,7 +239,13 @@ importers:
 
   libs/shared/util/mui-theme: {}
 
+  libs/workflow-engine/data/data-get-pm-web-address: {}
+
+  libs/workflow-engine/data/data-get-user-token: {}
+
   libs/workflow-engine/data/data-inbox: {}
+
+  libs/workflow-engine/data/data-settings: {}
 
   libs/workflow-engine/data/login: {}
 
@@ -248,6 +254,8 @@ importers:
   libs/workflow-engine/feature/inbox: {}
 
   libs/workflow-engine/feature/new-case: {}
+
+  libs/workflow-engine/feature/settings: {}
 
   libs/workflow-engine/feature/workflow-engine-shell: {}
 

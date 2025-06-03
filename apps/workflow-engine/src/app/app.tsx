@@ -16,7 +16,7 @@ import { store } from '@office-automation/workflow-engine/utils/redux-store';
 import { WorkFlowEngineFeatureInbox } from '@office-automation/workflow-engine/feature/inbox';
 import { useEffect, useMemo, useState } from 'react';
 import { SharedProviders } from '@office-automation/shared/util/app-core';
-
+import { WorkFLowEngineFeatureSettingsComponent } from '@office-automation/workflow-engine/feature/settings';
 // const rtlCache = createCache({
 //   key: 'muirtl',
 //   stylisPlugins: [prefixer, rtlPlugin],
@@ -31,6 +31,10 @@ const router = createBrowserRouter(
         {
           path: 'inbox',
           Component: WorkFlowEngineFeatureInbox,
+        },
+        {
+          path: 'settings',
+          Component: WorkFLowEngineFeatureSettingsComponent,
         },
       ],
     },

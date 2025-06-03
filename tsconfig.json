@@ -65,6 +65,18 @@
     },
     {
       "path": "./libs/workflow-engine/data/login"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-get-user-token"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-get-pm-web-address"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/settings"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-settings"
     }
   ]
 }

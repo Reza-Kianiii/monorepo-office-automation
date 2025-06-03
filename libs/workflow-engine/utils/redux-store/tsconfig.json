@@ -3,6 +3,15 @@
   "include": [],
   "references": [
     {
+      "path": "../../data/data-settings"
+    },
+    {
+      "path": "../../data/data-get-pm-web-address"
+    },
+    {
+      "path": "../../data/data-get-user-token"
+    },
+    {
       "path": "../../data/login"
     },
     {

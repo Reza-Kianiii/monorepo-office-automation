@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 
 import {
   Breadcrumbs,
@@ -66,6 +66,10 @@ export function WorkFlowEngineFeatureInbox() {
     'null'
   );
 
+  const selectedWorkflowEngineInbox = useRef<any>(null);
+
+  const gridApiRef = useGridApiRef();
+
   const { data, isLoading, isFetching } = useGetDataInboxQuery();
 
   const rows = useMemo(() => {
@@ -113,12 +117,12 @@ export function WorkFlowEngineFeatureInbox() {
       field: 'app_update_date',
       headerName: 'تاریخ',
 
-      valueGetter: (value) => {
-        if (!value) return '';
+      // valueGetter: (value) => {
+      //   if (!value) return '';
 
-        const date = moment.from(value, 'fa', 'jYYYY/jMM/jDD').toDate();
-        return format(date, 'yyyy/MM/dd');
-      },
+      //   const date = moment.from(value, 'fa', 'jYYYY/jMM/jDD').toDate();
+      //   return format(date, 'yyyy/MM/dd');
+      // },
       sortable: false,
       width: 160,
     },
@@ -226,8 +230,17 @@ export function WorkFlowEngineFeatureInbox() {
           paginationModel={paginationModel}
           onPaginationModelChange={setPaginationModel}
           paginationMode="client"
-          // apiRef={apiRef}
+          apiRef={gridApiRef}
           // loading={loading}
+          slotProps={{
+            row: {
+              onFocus: (event: any) => {
+                const rowId = event.currentTarget.getAttribute('data-id');
+                const row = gridApiRef.current?.getRow(rowId ?? 0);
+                selectedWorkflowEngineInbox.current = row;
+              },
+            },
+          }}
           checkboxSelection
           disableRowSelectionOnClick
           initialState={{
@@ -240,6 +253,7 @@ export function WorkFlowEngineFeatureInbox() {
       {operation === 'proseccMaker' && (
         <WorkflowEngineFeatureInboxModels
           onclose={() => setOperation('null')}
+          dataInbox={selectedWorkflowEngineInbox.current}
         />
       )}
     </div>

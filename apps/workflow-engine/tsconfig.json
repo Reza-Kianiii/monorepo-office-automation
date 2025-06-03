@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/workflow-engine/feature/settings"
+    },
+    {
       "path": "../../libs/shared/util/app-core"
     },
     {

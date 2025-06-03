@@ -13,6 +13,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import WorkFlowEngineFeatureInboxProcessMaker from './workflow-engine-feature-inbox-processMaker';
+import { useGetUserTokenQuery } from '@office-automation/workflow-engine/data/data-get-user-token';
+import { useGetPmWebAddressQuery } from '@office-automation/workflow-engine/data/data-get-pm-web-address';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -25,8 +27,10 @@ const Transition = React.forwardRef(function Transition(
 
 export function WorkflowEngineFeatureInboxModels({
   onclose,
+  dataInbox,
 }: {
   onclose: () => void;
+  dataInbox: any;
 }) {
   const [open, setOpen] = React.useState(true);
 
@@ -34,6 +38,38 @@ export function WorkflowEngineFeatureInboxModels({
     setOpen(false);
     onclose();
   };
+
+  const { data } = useGetUserTokenQuery();
+
+  const { data: dataGetPmWebAddress } = useGetPmWebAddressQuery();
+
+  var protocol = window.location.protocol;
+  var Automationurl = window.location.hostname;
+  var Automationport = window.location.port;
+
+  console.log(dataInbox, 'datainboxmodels');
+
+  const urltest = React.useMemo(() => {
+    return (
+      dataGetPmWebAddress +
+      'sysworkflow/fa/noavaran/login/login?userToken=' +
+      data +
+      '&engineCode=&WebOfficeURL=' +
+      protocol +
+      '//' +
+      Automationurl +
+      ':' +
+      Automationport +
+      '&Workspace=sysworkflow&deputy=0&lang=fa&show=1&appUid=' +
+      dataInbox.app_uid +
+      '&delIndex=' +
+      dataInbox.del_index +
+      '&action=' +
+      dataInbox.app_status
+    );
+  }, [data, dataGetPmWebAddress]);
+
+  console.log(urltest, 'urlurlurlurl');
 
   return (
     <React.Fragment>
@@ -62,17 +98,10 @@ export function WorkflowEngineFeatureInboxModels({
           </Toolbar>
         </AppBar>
         <List>
-          <WorkFlowEngineFeatureInboxProcessMaker />
-          {/* <ListItemButton>
-            <ListItemText primary="Phone ringtone" secondary="Titania" />
-          </ListItemButton>
-          <Divider />
-          <ListItemButton>
-            <ListItemText
-              primary="Default notification ringtone"
-              secondary="Tethys"
-            />
-          </ListItemButton> */}
+          <WorkFlowEngineFeatureInboxProcessMaker
+            dataInbox={dataInbox}
+            urltest={urltest}
+          />
         </List>
       </Dialog>
     </React.Fragment>

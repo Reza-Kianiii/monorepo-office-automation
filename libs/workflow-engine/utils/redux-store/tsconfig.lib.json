@@ -31,6 +31,15 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
+      "path": "../../data/data-settings/tsconfig.lib.json"
+    },
+    {
+      "path": "../../data/data-get-pm-web-address/tsconfig.lib.json"
+    },
+    {
+      "path": "../../data/data-get-user-token/tsconfig.lib.json"
+    },
+    {
       "path": "../../data/login/tsconfig.lib.json"
     },
     {

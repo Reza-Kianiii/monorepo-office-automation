@@ -1,7 +1,20 @@
-export function WorkFlowEngineFeatureInboxProcessMaker() {
+export function WorkFlowEngineFeatureInboxProcessMaker({
+  dataInbox,
+  urltest,
+}: {
+  dataInbox: any;
+  urltest: any;
+}) {
   return (
-    <div>
-      <h1>Welcome to WorkFlowEngineFeatureInboxProcessMaker!</h1>
+    <div className="h-[500px]">
+      <iframe
+        className="h-full w-full"
+        // width="f"
+        // height="315"
+        src={urltest}
+        // frameborder="0"
+        // allowfullscreen
+      ></iframe>
     </div>
   );
 }
