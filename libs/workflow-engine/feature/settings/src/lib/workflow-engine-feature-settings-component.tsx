@@ -20,20 +20,17 @@ import { SharedUiWidgetHeader } from '@office-automation/shared/ui/widget';
 
 export function WorkFLowEngineFeatureSettingsComponent() {
   const [idWorkFlow, setIDWorkFlow] = React.useState<null | string>();
-  const [listWorkFlow, setListWorkFlow] = React.useState<any[]>();
+  const [listWorkFlow, setListWorkFlow] = React.useState<any[]>([]);
+  const [ListDictionaryWorkFlow, setListDictionaryWorkFlow] = React.useState();
+  const [selectedWorkFlow, setSelectedWorkFlow] = React.useState([]);
+
+  console.log(selectedWorkFlow, 'selectedWorkFlow');
 
   const { data: settingsProject, isLoading: isLoadingSettingsProject } =
     useGetSettingsProjectQuery();
 
   const [PostDetailedProcessVaribles] =
     usePostDetailedProcessVariblesMutation();
-
-  // const { data, isLoading: isLoadingDetailedProcess } =
-  //   usePostDetailedProcessVariblesMutation({
-  //     payload:
-  //   });
-
-  // console.log(data, 'DetailedProcess');
 
   let parsedData: any[] = [];
 
@@ -55,9 +52,26 @@ export function WorkFLowEngineFeatureSettingsComponent() {
     PostDetailedProcessVaribles({ payload: { prj_uid: data?.prj_uid } })
       .unwrap()
       .then((value) => {
-        console.log(value, 'valuevaluevaluevalue');
         setListWorkFlow(JSON.parse(value));
+        const result = JSON.parse(value).reduce((acc, item) => {
+          acc[item.var_uid] = false;
+          return acc;
+        }, {} as Record<string, boolean>);
+
+        setListDictionaryWorkFlow(result);
       });
+  };
+
+  const handleChangeCheckbox = (item: any) => {
+    if (!ListDictionaryWorkFlow[item.var_uid]) {
+      setSelectedWorkFlow((prev) => [...prev, item.var_uid]);
+    } else {
+    }
+
+    setListDictionaryWorkFlow((prev) => ({
+      ...prev,
+      [item.var_uid]: !prev[item.var_uid],
+    }));
   };
 
   return (
@@ -67,6 +81,10 @@ export function WorkFLowEngineFeatureSettingsComponent() {
         options={parsedData}
         loading={isLoadingSettingsProject}
         onChange={(_, data: CountryEntity | null) => {
+          console.log(data, 'datadata');
+
+          setListWorkFlow([]);
+          setSelectedWorkFlow([]);
           Onchange(data);
           // setIDWorkFlow(data?.prj_uid);
         }}
@@ -99,23 +117,24 @@ export function WorkFLowEngineFeatureSettingsComponent() {
         className="mt-4 w-56"
       />
       <div className=" h-[300px] w-[300px] overflow-auto">
-        <FormGroup>
-          {listWorkFlow?.map((item, index) => {
-            return (
-              <FormControlLabel
-                className="block"
-                control={
-                  <Checkbox
-                    checked={false}
-                    // onChange={handleChange}
-                    name="gilad"
-                  />
-                }
-                label="Gilad Gray"
-              />
-            );
-          })}
-        </FormGroup>
+        {listWorkFlow.length > 0 ? (
+          <FormGroup>
+            {listWorkFlow?.map((item, index) => {
+              return (
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={ListDictionaryWorkFlow[item.var_uid] ?? false}
+                      onChange={() => handleChangeCheckbox(item)}
+                      name="gilad"
+                    />
+                  }
+                  label={item.var_name}
+                />
+              );
+            })}
+          </FormGroup>
+        ) : null}
       </div>
     </div>
   );

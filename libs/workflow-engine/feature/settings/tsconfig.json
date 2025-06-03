@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../../shared/ui/widget"
+    },
+    {
       "path": "../../data/data-settings"
     },
     {
