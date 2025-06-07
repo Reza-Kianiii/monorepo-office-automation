@@ -4,12 +4,12 @@ import { GetProjects } from './data-settings-getproject.models';
 export const dataSettingsProject = createApi({
   reducerPath: 'dataSettingsProject',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'api/ProcessMaker/',
+    baseUrl: 'api/',
   }),
   endpoints: (builder) => ({
     getSettingsProject: builder.query<GetProjects[], void>({
       query: () => ({
-        url: `GetProjects/`,
+        url: `PMProcess/GetProjects/`,
         method: 'GET',
       }),
     }),
@@ -22,7 +22,7 @@ export const dataSettingsProject = createApi({
       }
     >({
       query: ({ payload }) => ({
-        url: `GetDetailedProcessVariablesAsync/`,
+        url: `PMProcessVariable/GetDetailedProcessVariablesAsync/`,
         method: 'POST',
         body: payload,
         headers: {

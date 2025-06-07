@@ -17,14 +17,14 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
 import { SharedUiWidgetHeader } from '@office-automation/shared/ui/widget';
+import { continuousColorLegendClasses } from '@mui/x-charts';
 
 export function WorkFLowEngineFeatureSettingsComponent() {
   const [idWorkFlow, setIDWorkFlow] = React.useState<null | string>();
   const [listWorkFlow, setListWorkFlow] = React.useState<any[]>([]);
   const [ListDictionaryWorkFlow, setListDictionaryWorkFlow] = React.useState();
-  const [selectedWorkFlow, setSelectedWorkFlow] = React.useState([]);
-
-  console.log(selectedWorkFlow, 'selectedWorkFlow');
+  const [selectedWorkFlow, setSelectedWorkFlow] = React.useState({});
+  let listOfItemSelectedUserOfCheckbox = [];
 
   const { data: settingsProject, isLoading: isLoadingSettingsProject } =
     useGetSettingsProjectQuery();
@@ -40,7 +40,6 @@ export function WorkFLowEngineFeatureSettingsComponent() {
         ? JSON.parse(settingsProject)
         : settingsProject;
 
-    // فرض: json یا یک آرایه‌ست، یا شی‌ای که توش یه فیلد آرایه هست مثل json.result
     parsedData = Array.isArray(json) ? json : json?.result ?? [];
   } catch (error) {
     console.error('خطا در parse کردن JSON:', error);
@@ -48,13 +47,17 @@ export function WorkFLowEngineFeatureSettingsComponent() {
   }
 
   const Onchange = (data: any) => {
-    setIDWorkFlow(data?.prj_uid);
+    setIDWorkFlow(data);
     PostDetailedProcessVaribles({ payload: { prj_uid: data?.prj_uid } })
       .unwrap()
       .then((value) => {
         setListWorkFlow(JSON.parse(value));
         const result = JSON.parse(value).reduce((acc, item) => {
-          acc[item.var_uid] = false;
+          acc[item.var_uid] = {
+            status: false,
+            selectedObjectWorkFlow: data,
+            ...item,
+          };
           return acc;
         }, {} as Record<string, boolean>);
 
@@ -63,16 +66,48 @@ export function WorkFLowEngineFeatureSettingsComponent() {
   };
 
   const handleChangeCheckbox = (item: any) => {
-    if (!ListDictionaryWorkFlow[item.var_uid]) {
-      setSelectedWorkFlow((prev) => [...prev, item.var_uid]);
+    if (!ListDictionaryWorkFlow[item.var_uid].status) {
+      setSelectedWorkFlow((prev) => ({
+        ...prev,
+        [item.var_uid]: {
+          ...ListDictionaryWorkFlow[item.var_uid],
+          status: true,
+        },
+      }));
     } else {
+      const { [item.var_uid]: remove, ...restValue } = selectedWorkFlow;
+      setSelectedWorkFlow(() => restValue);
     }
 
     setListDictionaryWorkFlow((prev) => ({
       ...prev,
-      [item.var_uid]: !prev[item.var_uid],
+      [item.var_uid]: {
+        ...ListDictionaryWorkFlow[item.var_uid],
+        status: !ListDictionaryWorkFlow[item.var_uid].status,
+      },
     }));
   };
+
+  React.useEffect(() => {
+    listOfItemSelectedUserOfCheckbox = [];
+    Object.keys(selectedWorkFlow)?.forEach((item, index) => {
+      listOfItemSelectedUserOfCheckbox.push({
+        ProcessUid:
+          ListDictionaryWorkFlow[item]?.selectedObjectWorkFlow?.prj_uid,
+        ProcessName:
+          ListDictionaryWorkFlow[item]?.selectedObjectWorkFlow?.prj_name,
+        VariableUid: ListDictionaryWorkFlow[item]?.var_uid,
+        VariableName: ListDictionaryWorkFlow[item]?.var_name,
+      });
+    });
+
+    console.log(selectedWorkFlow, 'selectedWorkFlow');
+    console.log(ListDictionaryWorkFlow, 'selectedWorkFlow');
+    console.log(
+      listOfItemSelectedUserOfCheckbox,
+      'listOfItemSelectedUserOfCheckbox'
+    );
+  }, [selectedWorkFlow]);
 
   return (
     <div className=" flex flex-1 flex-col  h-full">
@@ -124,7 +159,9 @@ export function WorkFLowEngineFeatureSettingsComponent() {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={ListDictionaryWorkFlow[item.var_uid] ?? false}
+                      checked={
+                        ListDictionaryWorkFlow[item.var_uid].status ?? false
+                      }
                       onChange={() => handleChangeCheckbox(item)}
                       name="gilad"
                     />
