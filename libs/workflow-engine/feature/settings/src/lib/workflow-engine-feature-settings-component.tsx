@@ -1,4 +1,3 @@
-import WorkflowEngineFeatureSettingsAutocomplete from './workflow-engine-feature-settings-autocomplete';
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -7,30 +6,57 @@ import {
   // useGetDetailedProcessVariblesQuery,
   useGetSettingsProjectQuery,
   usePostDetailedProcessVariblesMutation,
+  usePostGetSaveProcessVaribleSelectionMutation,
+  usePostSaveProcessVaribleSelectionMutation,
 } from '@office-automation/workflow-engine/data/data-settings';
 
-import Box from '@mui/material/Box';
-import FormLabel from '@mui/material/FormLabel';
-import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
 import { SharedUiWidgetHeader } from '@office-automation/shared/ui/widget';
-import { continuousColorLegendClasses } from '@mui/x-charts';
+import Button from '@mui/material/Button';
+import {
+  DetailedProcessVaribles,
+  GetProjects,
+  GetSaveProcessVaribleSelection,
+  ListDictionaryWorkFlowType,
+  SaveProcessVaribleSelectionAPIPARAMS,
+  VaribleSelection,
+  WorkflowVariableMap,
+} from 'libs/workflow-engine/data/data-settings/src/lib/data-settings-getproject.models';
+import Box from '@mui/material/Box';
 
 export function WorkFLowEngineFeatureSettingsComponent() {
-  const [idWorkFlow, setIDWorkFlow] = React.useState<null | string>();
-  const [listWorkFlow, setListWorkFlow] = React.useState<any[]>([]);
-  const [ListDictionaryWorkFlow, setListDictionaryWorkFlow] = React.useState();
+  const [listWorkFlow, setListWorkFlow] = React.useState<
+    DetailedProcessVaribles[] | []
+  >([]);
+
+  const [ListDictionaryWorkFlow, setListDictionaryWorkFlow] =
+    React.useState<WorkflowVariableMap>({});
   const [selectedWorkFlow, setSelectedWorkFlow] = React.useState({});
-  let listOfItemSelectedUserOfCheckbox = [];
+
+  let ProcessIdWorkFlow = React.useRef<GetProjects | null>(null);
+
+  let listOfItemSelectedUserOfCheckbox: {
+    ProcessUid: string;
+    selections: {
+      ProcessUid: string;
+      ProcessName: string;
+      VariableUid: string;
+      VariableName: string;
+    }[];
+  } = {
+    ProcessUid: '',
+    selections: [],
+  };
 
   const { data: settingsProject, isLoading: isLoadingSettingsProject } =
     useGetSettingsProjectQuery();
 
-  const [PostDetailedProcessVaribles] =
-    usePostDetailedProcessVariblesMutation();
+  const [
+    PostDetailedProcessVaribles,
+    { isLoading: isLoadingDetailedProcessVaribles },
+  ] = usePostDetailedProcessVariblesMutation();
 
   let parsedData: any[] = [];
 
@@ -42,17 +68,21 @@ export function WorkFLowEngineFeatureSettingsComponent() {
 
     parsedData = Array.isArray(json) ? json : json?.result ?? [];
   } catch (error) {
-    console.error('خطا در parse کردن JSON:', error);
+    console.error('خطا در parse کردن JSON: ', error);
     parsedData = [];
   }
 
+  const [postGetSaveProcessVaribleSelection] =
+    usePostGetSaveProcessVaribleSelectionMutation();
+
   const Onchange = (data: any) => {
-    setIDWorkFlow(data);
+    ProcessIdWorkFlow.current = data;
+    // setIDWorkFlow(data);
     PostDetailedProcessVaribles({ payload: { prj_uid: data?.prj_uid } })
       .unwrap()
       .then((value) => {
         setListWorkFlow(JSON.parse(value));
-        const result = JSON.parse(value).reduce((acc, item) => {
+        const result = JSON.parse(value).reduce((acc: any, item: any) => {
           acc[item.var_uid] = {
             status: false,
             selectedObjectWorkFlow: data,
@@ -61,11 +91,40 @@ export function WorkFLowEngineFeatureSettingsComponent() {
           return acc;
         }, {} as Record<string, boolean>);
 
+        postGetSaveProcessVaribleSelection({
+          payload: { processUid: data.prj_uid },
+        }).then((value) => {
+          JSON.parse(value?.data).forEach(
+            (item: GetSaveProcessVaribleSelection) => {
+              result[item.VariableUid] = {
+                ...result[item.VariableUid],
+                status: true,
+              };
+            }
+          );
+
+          const resulteDefaulter = JSON.parse(value?.data).reduce(
+            (acc, item: GetSaveProcessVaribleSelection) => {
+              acc[item.VariableUid] = {
+                ...item,
+                status: true,
+                selectedObjectWorkFlow: data,
+              };
+              return acc;
+            },
+            {} as Record<string, boolean>
+          );
+          setSelectedWorkFlow((prev) => ({
+            ...prev,
+            ...resulteDefaulter,
+          }));
+        });
+
         setListDictionaryWorkFlow(result);
       });
   };
 
-  const handleChangeCheckbox = (item: any) => {
+  const handleChangeCheckbox = (item: DetailedProcessVaribles) => {
     if (!ListDictionaryWorkFlow[item.var_uid].status) {
       setSelectedWorkFlow((prev) => ({
         ...prev,
@@ -89,90 +148,131 @@ export function WorkFLowEngineFeatureSettingsComponent() {
   };
 
   React.useEffect(() => {
-    listOfItemSelectedUserOfCheckbox = [];
-    Object.keys(selectedWorkFlow)?.forEach((item, index) => {
-      listOfItemSelectedUserOfCheckbox.push({
-        ProcessUid:
-          ListDictionaryWorkFlow[item]?.selectedObjectWorkFlow?.prj_uid,
-        ProcessName:
-          ListDictionaryWorkFlow[item]?.selectedObjectWorkFlow?.prj_name,
-        VariableUid: ListDictionaryWorkFlow[item]?.var_uid,
-        VariableName: ListDictionaryWorkFlow[item]?.var_name,
+    listOfItemSelectedUserOfCheckbox = {
+      ProcessUid: '',
+      selections: [],
+    };
+    if (listWorkFlow.length && ListDictionaryWorkFlow) {
+      const listOfItemCreated: VaribleSelection[] = [];
+      Object.keys(selectedWorkFlow)?.forEach((item, index) => {
+        listOfItemCreated.push({
+          ProcessUid:
+            ListDictionaryWorkFlow[item]?.selectedObjectWorkFlow?.prj_uid,
+          ProcessName:
+            ListDictionaryWorkFlow[item]?.selectedObjectWorkFlow?.prj_name,
+          VariableUid: ListDictionaryWorkFlow[item]?.var_uid,
+          VariableName: ListDictionaryWorkFlow[item]?.var_name,
+        });
       });
-    });
 
-    console.log(selectedWorkFlow, 'selectedWorkFlow');
-    console.log(ListDictionaryWorkFlow, 'selectedWorkFlow');
-    console.log(
-      listOfItemSelectedUserOfCheckbox,
-      'listOfItemSelectedUserOfCheckbox'
-    );
+      listOfItemSelectedUserOfCheckbox.ProcessUid =
+        ProcessIdWorkFlow.current?.prj_uid ?? '';
+
+      listOfItemSelectedUserOfCheckbox.selections = listOfItemCreated;
+    }
   }, [selectedWorkFlow]);
 
-  return (
-    <div className=" flex flex-1 flex-col  h-full">
-      <SharedUiWidgetHeader />
-      <Autocomplete
-        options={parsedData}
-        loading={isLoadingSettingsProject}
-        onChange={(_, data: CountryEntity | null) => {
-          console.log(data, 'datadata');
+  const [postSaveProcessVaribleSelection, { isLoading }] =
+    usePostSaveProcessVaribleSelectionMutation();
 
-          setListWorkFlow([]);
-          setSelectedWorkFlow([]);
-          Onchange(data);
-          // setIDWorkFlow(data?.prj_uid);
-        }}
-        getOptionLabel={(option) => option?.prj_name}
-        // defaultValue={countries?.find((item: CountryEntity) => item.id === 2)}
-        isOptionEqualToValue={(option, value) =>
-          option.prj_uid === value.prj_uid
-        }
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            size="small"
-            label={'فرایند ها'}
-            className="bg-white"
-            slotProps={{
-              input: {
-                ...params.InputProps,
-                endAdornment: (
-                  <>
-                    {isLoadingSettingsProject ? (
-                      <CircularProgress color="inherit" size={20} />
-                    ) : null}
-                    {params.InputProps.endAdornment}
-                  </>
-                ),
-              },
-            }}
-          />
-        )}
-        className="mt-4 w-56"
-      />
-      <div className=" h-[300px] w-[300px] overflow-auto">
-        {listWorkFlow.length > 0 ? (
-          <FormGroup>
-            {listWorkFlow?.map((item, index) => {
-              return (
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={
-                        ListDictionaryWorkFlow[item.var_uid].status ?? false
-                      }
-                      onChange={() => handleChangeCheckbox(item)}
-                      name="gilad"
-                    />
-                  }
-                  label={item.var_name}
-                />
-              );
-            })}
-          </FormGroup>
-        ) : null}
+  const handleRegistery = () => {
+    postSaveProcessVaribleSelection({
+      payload: listOfItemSelectedUserOfCheckbox,
+    }).then((value) => {});
+  };
+
+  return (
+    <div className=" flex flex-1 flex-col  ">
+      <SharedUiWidgetHeader />
+      <div className="flex flex-col gap-4">
+        <Autocomplete
+          options={parsedData}
+          loading={isLoadingSettingsProject}
+          onChange={(_, data: GetProjects | null) => {
+            setListWorkFlow([]);
+            if (!data) {
+              setSelectedWorkFlow([]);
+            } else {
+              Onchange(data);
+            }
+          }}
+          getOptionLabel={(option) => option?.prj_name}
+          // defaultValue={countries?.find((item: CountryEntity) => item.id === 2)}
+          isOptionEqualToValue={(option, value) =>
+            option.prj_uid === value.prj_uid
+          }
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              size="small"
+              label={'فرایند ها'}
+              className="bg-white"
+              slotProps={{
+                input: {
+                  ...params.InputProps,
+                  endAdornment: (
+                    <>
+                      {isLoadingSettingsProject ? (
+                        <CircularProgress color="inherit" size={20} />
+                      ) : null}
+                      {params.InputProps.endAdornment}
+                    </>
+                  ),
+                },
+              }}
+            />
+          )}
+          // className="mt-4 w-60"
+          className="mt-6 "
+        />
+
+        <Box
+          // className=" h-[300px]  overflow-auto"
+          component="section"
+          className="border-solid border-2 border-black  h-[300px] w-full  shadow-md rounded-lg  overflow-auto "
+        >
+          {listWorkFlow.length ? (
+            <FormGroup>
+              {listWorkFlow?.map((item, index) => {
+                return (
+                  <FormControlLabel
+                    className="bg-white flex m-1 p-2"
+                    control={
+                      <Checkbox
+                        checked={ListDictionaryWorkFlow[item.var_uid].status}
+                        onChange={() => handleChangeCheckbox(item)}
+                        // name="gilad"
+                      />
+                    }
+                    label={item.var_name}
+                  />
+                );
+              })}
+            </FormGroup>
+          ) : (
+            isLoadingDetailedProcessVaribles && (
+              <Box
+                sx={{
+                  display: 'flex',
+                  height: '300px',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <CircularProgress />
+              </Box>
+            )
+          )}
+        </Box>
       </div>
+      <Button
+        onClick={handleRegistery}
+        variant="contained"
+        // className=" w-[100px] mt-6"
+        sx={{ width: '100px', mt: 2 }}
+      >
+        ثبت
+      </Button>
     </div>
   );
 }

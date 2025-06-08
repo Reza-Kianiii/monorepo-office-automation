@@ -1,5 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { GetProjects } from './data-settings-getproject.models';
+import {
+  DetailedProcessVaribles,
+  GetProjects,
+  GetSaveProcessVaribleSelection,
+  GetSaveProcessVaribleSelectionAPIPARAMS,
+  SaveProcessVaribleSelectionAPIPARAMS,
+} from './data-settings-getproject.models';
 
 export const dataSettingsProject = createApi({
   reducerPath: 'dataSettingsProject',
@@ -14,7 +20,7 @@ export const dataSettingsProject = createApi({
       }),
     }),
     PostDetailedProcessVaribles: builder.mutation<
-      any,
+      DetailedProcessVaribles[],
       {
         payload: {
           prj_uid: string;
@@ -30,10 +36,36 @@ export const dataSettingsProject = createApi({
         },
       }),
     }),
+    postSaveProcessVaribleSelection: builder.mutation<
+      void,
+      {
+        payload: SaveProcessVaribleSelectionAPIPARAMS;
+      }
+    >({
+      query: ({ payload }) => ({
+        url: `PMProcessVariable/SaveProcessVariableSelections/`,
+        method: 'POST',
+        body: payload,
+      }),
+    }),
+    postGetSaveProcessVaribleSelection: builder.mutation<
+      GetSaveProcessVaribleSelection,
+      {
+        payload: GetSaveProcessVaribleSelectionAPIPARAMS;
+      }
+    >({
+      query: ({ payload }) => ({
+        url: `PMProcessVariable/GetSaveProcessVariableSelections/`,
+        method: 'POST',
+        body: payload,
+      }),
+    }),
   }),
 });
 
 export const {
   useGetSettingsProjectQuery,
   usePostDetailedProcessVariblesMutation,
+  usePostSaveProcessVaribleSelectionMutation,
+  usePostGetSaveProcessVaribleSelectionMutation,
 } = dataSettingsProject;
