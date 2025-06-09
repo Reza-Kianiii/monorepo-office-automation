@@ -44,7 +44,8 @@ import {
   GetColumnForNewFilterArgs,
   GridActionsCellItem,
 } from '@mui/x-data-grid-pro';
-
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import { SharedUiWidgetHeader } from '@office-automation/shared/ui/widget';
 import {
   DataGridPremium,
@@ -53,7 +54,10 @@ import {
   useKeepGroupedColumnsHidden,
 } from '@mui/x-data-grid-premium';
 import { DataGridPro, GridColDef } from '@mui/x-data-grid-pro';
-import { useGetDataInboxQuery } from '@office-automation/workflow-engine/data/data-inbox';
+import {
+  useGetBindVaribleSelectionsQuery,
+  useGetDataInboxQuery,
+} from '@office-automation/workflow-engine/data/data-inbox';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SecurityIcon from '@mui/icons-material/Security';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
@@ -61,6 +65,7 @@ import ScreenShareSharpIcon from '@mui/icons-material/ScreenShareSharp';
 import WorkflowEngineFeatureInboxModels from './workflow-engine-feature-inbox-models';
 import { format } from 'date-fns-jalali';
 import moment from 'moment-jalaali';
+import WorkFlowEngineFeatureInboxHorizontalFilter from './workflow-engine-feature-inbox-horizontal-filters';
 export function WorkFlowEngineFeatureInbox() {
   const [operation, setOperation] = React.useState<'proseccMaker' | 'null'>(
     'null'
@@ -71,6 +76,12 @@ export function WorkFlowEngineFeatureInbox() {
   const gridApiRef = useGridApiRef();
 
   const { data, isLoading, isFetching } = useGetDataInboxQuery();
+
+  const { data: bindVaribleSelections } = useGetBindVaribleSelectionsQuery();
+
+  if (bindVaribleSelections) {
+    console.log(JSON.parse(bindVaribleSelections), 'kkkkkkk');
+  }
 
   const rows = useMemo(() => {
     if (data) {
@@ -182,74 +193,40 @@ export function WorkFlowEngineFeatureInbox() {
     <div className=" flex flex-1 flex-col  h-full ">
       <SharedUiWidgetHeader />
 
-      {/* <DataGridPro
-        rows={rowstest}
-        columns={columns}
-        autoPageSize
-        // getRowId={() => {
-        //   return 1;
-        // }}
-        // loading={isLoading}
-        // slotProps={{
-        //   filterPanel: {
-        //     sx: {
-        //       '& .MuiFormControl-root': {
-        //         marginTop: 0,
-        //         marginBottom: 0,
-        //       },
-        //       '& .MuiInputBase-root, & .MuiSelect-root, & .MuiTextField-root': {
-        //         height: '40px',
-        //         display: 'flex',
-        //         alignItems: 'center',
-        //       },
-        //       '& .MuiGrid-root': {
-        //         alignItems: 'center !important',
-        //       },
-        //     },
-        //   },
-        // }}
-        // slots={{
-        //   toolbar: CustomToolbar,
-        // }}
-        // pageSizeOptions={[5]}
-        // paginationModel={paginationModel}
-        // onPaginationModelChange={setPaginationModel}
-        // paginationMode="client"
-        // showToolbar
-        // checkboxSelection
-        // disableRowSelectionOnClick
-      /> */}
-      <Box className="mt-2 flex-[1_1_0] overflow-auto">
-        <DataGridPremium
-          rows={rows ?? []}
-          columns={columns}
-          getRowId={(rows) => rows.app_title}
-          showToolbar
-          pagination
-          autoPageSize
-          paginationModel={paginationModel}
-          onPaginationModelChange={setPaginationModel}
-          paginationMode="client"
-          apiRef={gridApiRef}
-          // loading={loading}
-          slotProps={{
-            row: {
-              onFocus: (event: any) => {
-                const rowId = event.currentTarget.getAttribute('data-id');
-                const row = gridApiRef.current?.getRow(rowId ?? 0);
-                selectedWorkflowEngineInbox.current = row;
+      {/* <div className="flex flex-1 flex-col overflow-auto bg-transparent"> */}
+      <div className="flex flex-1 flex-col h-full">
+        <WorkFlowEngineFeatureInboxHorizontalFilter />
+        <Box className="mt-2 flex-[1_1_0] overflow-auto">
+          <DataGridPremium
+            rows={rows ?? []}
+            columns={columns}
+            getRowId={(rows) => rows.app_title}
+            showToolbar
+            pagination
+            autoPageSize
+            paginationModel={paginationModel}
+            onPaginationModelChange={setPaginationModel}
+            paginationMode="client"
+            apiRef={gridApiRef}
+            // loading={loading}
+            slotProps={{
+              row: {
+                onFocus: (event: any) => {
+                  const rowId = event.currentTarget.getAttribute('data-id');
+                  const row = gridApiRef.current?.getRow(rowId ?? 0);
+                  selectedWorkflowEngineInbox.current = row;
+                },
               },
-            },
-          }}
-          checkboxSelection
-          disableRowSelectionOnClick
-          initialState={{
-            pinnedColumns: { left: ['actions'] },
-          }}
-          // initialState={initialState}
-        />
-      </Box>
-
+            }}
+            checkboxSelection
+            disableRowSelectionOnClick
+            initialState={{
+              pinnedColumns: { left: ['actions'] },
+            }}
+            // initialState={initialState}
+          />
+        </Box>
+      </div>
       {operation === 'proseccMaker' && (
         <WorkflowEngineFeatureInboxModels
           onclose={() => setOperation('null')}

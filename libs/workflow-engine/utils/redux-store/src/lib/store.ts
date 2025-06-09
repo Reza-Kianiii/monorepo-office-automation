@@ -1,11 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { permissonMenuApi } from '@office-automation/shared/data/permission';
-import { dataInbox } from '@office-automation/workflow-engine/data/data-inbox';
+import {
+  dataInbox,
+  inboxFiltersHorizontalSliceReducer,
+  inboxFiltersHorizontalSliceReducerPath,
+} from '@office-automation/workflow-engine/data/data-inbox';
 import { login } from '@office-automation/workflow-engine/data/login';
 import { getUserToken } from '@office-automation/workflow-engine/data/data-get-user-token';
 import { getPmWebAddress } from '@office-automation/workflow-engine/data/data-get-pm-web-address';
 import { dataSettingsProject } from '@office-automation/workflow-engine/data/data-settings';
+
 export const store = configureStore({
   reducer: {
     [permissonMenuApi.reducerPath]: permissonMenuApi.reducer,
@@ -14,6 +19,8 @@ export const store = configureStore({
     [getUserToken.reducerPath]: getUserToken.reducer,
     [getPmWebAddress.reducerPath]: getPmWebAddress.reducer,
     [dataSettingsProject.reducerPath]: dataSettingsProject.reducer,
+    [inboxFiltersHorizontalSliceReducerPath]:
+      inboxFiltersHorizontalSliceReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

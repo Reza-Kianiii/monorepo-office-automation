@@ -112,7 +112,7 @@ export function WorkFLowEngineFeatureSettingsComponent() {
               };
               return acc;
             },
-            {} as Record<string, boolean>
+            {}
           );
           setSelectedWorkFlow((prev) => ({
             ...prev,
