@@ -3,9 +3,6 @@
   "include": [],
   "references": [
     {
-      "path": "../../data/data-inbox"
-    },
-    {
       "path": "../../../shared/ui/widget"
     },
     {
@@ -13,6 +10,15 @@
     },
     {
       "path": "../../data/data-get-user-token"
+    },
+    {
+      "path": "../../utils/redux-store"
+    },
+    {
+      "path": "../../data/data-settings"
+    },
+    {
+      "path": "../../data/data-inbox"
     },
     {
       "path": "./tsconfig.lib.json"

@@ -19,8 +19,6 @@ import {
   DetailedProcessVaribles,
   GetProjects,
   GetSaveProcessVaribleSelection,
-  ListDictionaryWorkFlowType,
-  SaveProcessVaribleSelectionAPIPARAMS,
   VaribleSelection,
   WorkflowVariableMap,
 } from 'libs/workflow-engine/data/data-settings/src/lib/data-settings-getproject.models';

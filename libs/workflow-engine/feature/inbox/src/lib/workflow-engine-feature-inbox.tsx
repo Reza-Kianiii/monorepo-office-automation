@@ -55,8 +55,10 @@ import {
 } from '@mui/x-data-grid-premium';
 import { DataGridPro, GridColDef } from '@mui/x-data-grid-pro';
 import {
+  toggleButton,
   useGetBindVaribleSelectionsQuery,
   useGetDataInboxQuery,
+  usePostGetDataInboxMutation,
 } from '@office-automation/workflow-engine/data/data-inbox';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SecurityIcon from '@mui/icons-material/Security';
@@ -66,6 +68,8 @@ import WorkflowEngineFeatureInboxModels from './workflow-engine-feature-inbox-mo
 import { format } from 'date-fns-jalali';
 import moment from 'moment-jalaali';
 import WorkFlowEngineFeatureInboxHorizontalFilter from './workflow-engine-feature-inbox-horizontal-filters';
+import { store } from '@office-automation/workflow-engine/utils/redux-store';
+import { useSelector } from 'react-redux';
 export function WorkFlowEngineFeatureInbox() {
   const [operation, setOperation] = React.useState<'proseccMaker' | 'null'>(
     'null'
@@ -74,8 +78,24 @@ export function WorkFlowEngineFeatureInbox() {
   const selectedWorkflowEngineInbox = useRef<any>(null);
 
   const gridApiRef = useGridApiRef();
+  const processRequiredVars = useRef({});
+  // const { data, isLoading, isFetching } = useGetDataInboxQuery();
+  const [postGetDataInbox, { isLoading }] = usePostGetDataInboxMutation();
 
-  const { data, isLoading, isFetching } = useGetDataInboxQuery();
+  const selectedFilters = useSelector((state) => state?.inboxFiltersHorizontal);
+
+  console.log(selectedFilters, 'selectedFiltersytttttttttttttt');
+
+  const rows = useRef<any[]>([]);
+
+  useEffect(() => {
+    postGetDataInbox({
+      payload: selectedFilters,
+    }).then((value) => {
+      console.log(JSON.parse(value?.data), 'kkhgfdfddddddd');
+      rows.current = JSON.parse(value?.data);
+    });
+  }, [selectedFilters]);
 
   const { data: bindVaribleSelections } = useGetBindVaribleSelectionsQuery();
 
@@ -83,13 +103,15 @@ export function WorkFlowEngineFeatureInbox() {
     console.log(JSON.parse(bindVaribleSelections), 'kkkkkkk');
   }
 
-  const rows = useMemo(() => {
-    if (data) {
-      return JSON.parse(data);
-    }
-  }, [isLoading]);
+  console.log(rows, 'rowsrrrrrrrrrrrrrr');
 
-  console.log(rows, 'rows');
+  // const rows = useMemo(() => {
+  //   if (data) {
+  //     return JSON.parse(data);
+  //   }
+  // }, [isLoading]);
+
+  // console.log(rows, 'rows');
 
   const [paginationModel, setPaginationModel] = React.useState({
     page: 0,
@@ -104,6 +126,55 @@ export function WorkFlowEngineFeatureInbox() {
   //     editable: true,
   //   },
   // ];
+
+  const handleClick = (item: any) => {
+    const { ProcessUid, VariableUid } = item;
+
+    // // اگر processUid هنوز وجود نداره، ایجادش کن با آرایه جدید
+    // if (!processRequiredVars.current[ProcessUid]) {
+    //   processRequiredVars.current[ProcessUid] = [VariableUid];
+    // } else {
+    //   // اگر وجود داره، بررسی کن که مقدار تکراری نباشه، بعد اضافه کن
+    //   if (!processRequiredVars.current[ProcessUid].includes(VariableUid)) {
+    //     processRequiredVars.current[ProcessUid].push(VariableUid);
+    //   } else {
+    //     const filterd = processRequiredVars.current[ProcessUid].filter(
+    //       (item, index) => item !== VariableUid
+    //     );
+
+    //     if (filterd.length === 0) {
+    //       // اگر بعد از حذف آرایه خالی شد، کل key را پاک کن
+    //       delete processRequiredVars.current[ProcessUid];
+    //     } else {
+    //       // در غیر این صورت مقدار جدید را اختصاص بده
+    //       processRequiredVars.current[ProcessUid] = filterd;
+    //     }
+    //   }
+    // }
+
+    const currentVars = processRequiredVars.current[ProcessUid] || [];
+
+    // اگر قبلاً وجود نداشته:
+    if (!processRequiredVars.current[ProcessUid]) {
+      processRequiredVars.current[ProcessUid] = [VariableUid];
+    } else {
+      if (!currentVars.includes(VariableUid)) {
+        // به‌جای push از کپی استفاده کن
+        processRequiredVars.current[ProcessUid] = [...currentVars, VariableUid];
+      } else {
+        const filtered = currentVars.filter((v) => v !== VariableUid);
+        if (filtered.length === 0) {
+          delete processRequiredVars.current[ProcessUid];
+        } else {
+          processRequiredVars.current[ProcessUid] = filtered;
+        }
+      }
+    }
+
+    console.log(processRequiredVars.current, 'processRequiredVars');
+    store.dispatch(toggleButton(processRequiredVars.current));
+  };
+
   const columns: GridColDef<(typeof rows)[number]>[] = [
     { field: 'app_title', headerName: 'شماره کار', width: 90 },
     {
@@ -195,10 +266,11 @@ export function WorkFlowEngineFeatureInbox() {
 
       {/* <div className="flex flex-1 flex-col overflow-auto bg-transparent"> */}
       <div className="flex flex-1 flex-col h-full">
-        <WorkFlowEngineFeatureInboxHorizontalFilter />
+        <WorkFlowEngineFeatureInboxHorizontalFilter handleClick={handleClick} />
         <Box className="mt-2 flex-[1_1_0] overflow-auto">
           <DataGridPremium
-            rows={rows ?? []}
+            // rows={rows ?? []}
+            rows={rows.current}
             columns={columns}
             getRowId={(rows) => rows.app_title}
             showToolbar

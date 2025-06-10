@@ -31,9 +31,6 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
-      "path": "../../data/data-inbox/tsconfig.lib.json"
-    },
-    {
       "path": "../../../shared/ui/widget/tsconfig.lib.json"
     },
     {
@@ -41,6 +38,15 @@
     },
     {
       "path": "../../data/data-get-user-token/tsconfig.lib.json"
+    },
+    {
+      "path": "../../utils/redux-store/tsconfig.lib.json"
+    },
+    {
+      "path": "../../data/data-settings/tsconfig.lib.json"
+    },
+    {
+      "path": "../../data/data-inbox/tsconfig.lib.json"
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type InitialState = {
   requiredVarsByProcess: {
@@ -17,8 +17,9 @@ const inboxFiltersHorizontalSlice = createSlice({
   initialState,
   reducers: {
     toggleButton(state, action: PayloadAction<any>) {
-      console.log(state, 'state');
-      console.log(action, 'uitututrrtrtrt');
+      state.requiredVarsByProcess = {
+        ...action.payload,
+      };
     },
   },
 });
@@ -28,3 +29,11 @@ export const {
   reducerPath: inboxFiltersHorizontalSliceReducerPath,
   reducer: inboxFiltersHorizontalSliceReducer,
 } = inboxFiltersHorizontalSlice;
+
+export const customDispatch = createAsyncThunk(
+  'inboxFiltersHorizontal/toggleButton',
+  async (InboxFilters: InitialState, { getState, dispatch }) => {
+    dispatch(toggleButton(InboxFilters));
+    return InboxFilters;
+  }
+);
