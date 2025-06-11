@@ -10,7 +10,7 @@ export function WorkFlowEngineFeatureInboxFilterDynamicComponent({
   const selectedFilters = useSelector((state) => state?.inboxFiltersHorizontal);
 
   const arr = selectedFilters?.requiredVarsByProcess?.[item.ProcessUid] || [];
-  const selected = arr.includes(item?.VariableUid);
+  const selected = arr.includes(item?.VariableName);
 
   return (
     <Button

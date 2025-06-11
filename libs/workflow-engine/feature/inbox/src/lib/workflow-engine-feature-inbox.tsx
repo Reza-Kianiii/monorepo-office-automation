@@ -105,14 +105,6 @@ export function WorkFlowEngineFeatureInbox() {
 
   console.log(rows, 'rowsrrrrrrrrrrrrrr');
 
-  // const rows = useMemo(() => {
-  //   if (data) {
-  //     return JSON.parse(data);
-  //   }
-  // }, [isLoading]);
-
-  // console.log(rows, 'rows');
-
   const [paginationModel, setPaginationModel] = React.useState({
     page: 0,
     pageSize: 5,
@@ -128,41 +120,22 @@ export function WorkFlowEngineFeatureInbox() {
   // ];
 
   const handleClick = (item: any) => {
-    const { ProcessUid, VariableUid } = item;
-
-    // // اگر processUid هنوز وجود نداره، ایجادش کن با آرایه جدید
-    // if (!processRequiredVars.current[ProcessUid]) {
-    //   processRequiredVars.current[ProcessUid] = [VariableUid];
-    // } else {
-    //   // اگر وجود داره، بررسی کن که مقدار تکراری نباشه، بعد اضافه کن
-    //   if (!processRequiredVars.current[ProcessUid].includes(VariableUid)) {
-    //     processRequiredVars.current[ProcessUid].push(VariableUid);
-    //   } else {
-    //     const filterd = processRequiredVars.current[ProcessUid].filter(
-    //       (item, index) => item !== VariableUid
-    //     );
-
-    //     if (filterd.length === 0) {
-    //       // اگر بعد از حذف آرایه خالی شد، کل key را پاک کن
-    //       delete processRequiredVars.current[ProcessUid];
-    //     } else {
-    //       // در غیر این صورت مقدار جدید را اختصاص بده
-    //       processRequiredVars.current[ProcessUid] = filterd;
-    //     }
-    //   }
-    // }
+    const { ProcessUid, VariableName } = item;
 
     const currentVars = processRequiredVars.current[ProcessUid] || [];
 
     // اگر قبلاً وجود نداشته:
     if (!processRequiredVars.current[ProcessUid]) {
-      processRequiredVars.current[ProcessUid] = [VariableUid];
+      processRequiredVars.current[ProcessUid] = [VariableName];
     } else {
-      if (!currentVars.includes(VariableUid)) {
+      if (!currentVars.includes(VariableName)) {
         // به‌جای push از کپی استفاده کن
-        processRequiredVars.current[ProcessUid] = [...currentVars, VariableUid];
+        processRequiredVars.current[ProcessUid] = [
+          ...currentVars,
+          VariableName,
+        ];
       } else {
-        const filtered = currentVars.filter((v) => v !== VariableUid);
+        const filtered = currentVars.filter((v) => v !== VariableName);
         if (filtered.length === 0) {
           delete processRequiredVars.current[ProcessUid];
         } else {
@@ -199,12 +172,6 @@ export function WorkFlowEngineFeatureInbox() {
       field: 'app_update_date',
       headerName: 'تاریخ',
 
-      // valueGetter: (value) => {
-      //   if (!value) return '';
-
-      //   const date = moment.from(value, 'fa', 'jYYYY/jMM/jDD').toDate();
-      //   return format(date, 'yyyy/MM/dd');
-      // },
       sortable: false,
       width: 160,
     },
@@ -257,8 +224,6 @@ export function WorkFlowEngineFeatureInbox() {
       ],
     },
   ];
-
-  console.log('rerender');
 
   return (
     <div className=" flex flex-1 flex-col  h-full ">

@@ -14,7 +14,6 @@ export function WorkflowEngineFeatureSettingsAutocomplete() {
   try {
     const json = typeof rawData === 'string' ? JSON.parse(rawData) : rawData;
 
-    // فرض: json یا یک آرایه‌ست، یا شی‌ای که توش یه فیلد آرایه هست مثل json.result
     parsedData = Array.isArray(json) ? json : json?.result ?? [];
   } catch (error) {
     console.error('خطا در parse کردن JSON:', error);
