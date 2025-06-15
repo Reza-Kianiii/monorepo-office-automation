@@ -57,7 +57,7 @@ import { DataGridPro, GridColDef } from '@mui/x-data-grid-pro';
 import {
   toggleButton,
   useGetBindVaribleSelectionsQuery,
-  useGetDataInboxQuery,
+  // useGetDataInboxQuery,
   usePostGetDataInboxMutation,
 } from '@office-automation/workflow-engine/data/data-inbox';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -70,6 +70,7 @@ import moment from 'moment-jalaali';
 import WorkFlowEngineFeatureInboxHorizontalFilter from './workflow-engine-feature-inbox-horizontal-filters';
 import { store } from '@office-automation/workflow-engine/utils/redux-store';
 import { useSelector } from 'react-redux';
+import { useColumnState } from './workflow-engine-feature-create-dynamic-columns';
 export function WorkFlowEngineFeatureInbox() {
   const [operation, setOperation] = React.useState<'proseccMaker' | 'null'>(
     'null'
@@ -84,26 +85,17 @@ export function WorkFlowEngineFeatureInbox() {
 
   const selectedFilters = useSelector((state) => state?.inboxFiltersHorizontal);
 
-  console.log(selectedFilters, 'selectedFiltersytttttttttttttt');
-
   const rows = useRef<any[]>([]);
 
   useEffect(() => {
     postGetDataInbox({
       payload: selectedFilters,
     }).then((value) => {
-      console.log(JSON.parse(value?.data), 'kkhgfdfddddddd');
       rows.current = JSON.parse(value?.data);
     });
   }, [selectedFilters]);
 
-  const { data: bindVaribleSelections } = useGetBindVaribleSelectionsQuery();
-
-  if (bindVaribleSelections) {
-    console.log(JSON.parse(bindVaribleSelections), 'kkkkkkk');
-  }
-
-  console.log(rows, 'rowsrrrrrrrrrrrrrr');
+  // const { data: bindVaribleSelections } = useGetBindVaribleSelectionsQuery();
 
   const [paginationModel, setPaginationModel] = React.useState({
     page: 0,
@@ -143,12 +135,12 @@ export function WorkFlowEngineFeatureInbox() {
         }
       }
     }
-
-    console.log(processRequiredVars.current, 'processRequiredVars');
     store.dispatch(toggleButton(processRequiredVars.current));
   };
 
-  const columns: GridColDef<(typeof rows)[number]>[] = [
+  const { newColumns } = useColumnState({ row: rows.current });
+
+  const columns: any = [
     { field: 'app_title', headerName: 'شماره کار', width: 90 },
     {
       field: 'app_pro_title',
@@ -175,6 +167,7 @@ export function WorkFlowEngineFeatureInbox() {
       sortable: false,
       width: 160,
     },
+    ...newColumns,
     {
       field: 'del_task_due_date',
       headerName: 'مهلت انجام کار',
