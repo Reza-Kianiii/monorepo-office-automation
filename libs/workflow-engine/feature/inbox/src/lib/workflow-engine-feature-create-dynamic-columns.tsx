@@ -1,20 +1,27 @@
-import { GridColDef } from '@mui/x-data-grid';
-import { useCallback, useEffect, useState } from 'react';
+import { GridColDef } from '@mui/x-data-grid-pro';
+import { useEffect, useState } from 'react';
 
-export function useColumnState({ row }: { row: any }) {
-  const [newColumns, setNewColumns] = useState<GridColDef<any>[]>([]);
+export function useColumnState({
+  row,
+  listDictionaryWorkFlow,
+}: {
+  row: any;
+  listDictionaryWorkFlow: any;
+}) {
+  const [newColumns, setNewColumns] = useState<GridColDef[]>([]);
 
   useEffect(() => {
     if (row[0]?.Variables && Object.keys(row[0]?.Variables).length) {
-      console.log('teererererererere');
-      const newColumns = Object.keys(row[0]?.Variables).map((item) => {
-        return {
-          field: `${item}`,
-          headerName: item,
-          valueGetter: (value, row) => row?.Variables[item],
-        };
-      });
-      setNewColumns(newColumns);
+      const newCols: GridColDef[] = Object.keys(row[0]?.Variables).map(
+        (item) => {
+          return {
+            field: `${item}`,
+            headerName: listDictionaryWorkFlow[item]?.VariableLable,
+            valueGetter: (value, row) => row?.Variables[item],
+          };
+        }
+      );
+      setNewColumns(newCols);
     } else {
       setNewColumns([]);
     }

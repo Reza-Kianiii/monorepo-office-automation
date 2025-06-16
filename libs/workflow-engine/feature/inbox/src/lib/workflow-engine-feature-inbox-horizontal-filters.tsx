@@ -7,22 +7,35 @@ import {
 } from '@office-automation/workflow-engine/data/data-inbox';
 import { VaribleSelection } from '@office-automation/workflow-engine/data/data-settings';
 import { store } from '@office-automation/workflow-engine/utils/redux-store';
-import { useReducer, useRef } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 
 import WorkFlowEngineFeatureInboxFilterDynamicComponent from './workflow-engine-feature-inbox-filter-dynamic-component';
+import { access } from 'fs';
 
 export function WorkFlowEngineFeatureInboxHorizontalFilter({
   handleClick,
+  listDictionaryItemsWorkFlowEngine,
 }: {
   handleClick: (item: any) => void;
+  listDictionaryItemsWorkFlowEngine: any;
 }) {
   const { data: bindVaribleSelections } = useGetBindVaribleSelectionsQuery();
   let converInJsonBindVaribleSelections: VaribleSelection[] = [];
 
   if (bindVaribleSelections) {
     converInJsonBindVaribleSelections = JSON.parse(bindVaribleSelections);
-    console.log(JSON.parse(bindVaribleSelections), 'kkkkkkk');
   }
+  console.log(converInJsonBindVaribleSelections, 'kkkkkkk');
+
+  useEffect(() => {
+    if (converInJsonBindVaribleSelections.length) {
+      const result = {};
+      for (const item of converInJsonBindVaribleSelections) {
+        result[item.VariableName] = item;
+      }
+      listDictionaryItemsWorkFlowEngine.current = result;
+    }
+  }, [converInJsonBindVaribleSelections.length]);
 
   // console.log();
 

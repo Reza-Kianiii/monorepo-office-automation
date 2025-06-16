@@ -31,7 +31,7 @@ modifiedGridFaIR.components.MuiDataGrid.defaultProps.localeText.paginationDispla
 
 export function createSharedTheme(): any {
   // Inherit the theme from the docs site (dark/light mode)
-  const existingTheme = useTheme();
+  // const existingTheme = useTheme();
   const rootElement = document.getElementById('root');
   return responsiveFontSizes(
     extendTheme(
@@ -40,32 +40,8 @@ export function createSharedTheme(): any {
         direction: 'rtl',
         typography: {
           fontFamily: ['IRANSansFaNum'].join(','),
+          htmlFontSize: 14,
         },
-        // components: {
-        //   MuiDataGridPro: {
-        //     defaultProps: {
-        //       slotProps: {
-        //         filterPanel: {
-        //           sx: {
-        //             '& .MuiFormControl-root': {
-        //               marginTop: 0,
-        //               marginBottom: 0,
-        //             },
-        //             '& .MuiInputBase-root, & .MuiSelect-root, & .MuiTextField-root':
-        //               {
-        //                 height: '40px',
-        //                 display: 'flex',
-        //                 alignItems: 'center',
-        //               },
-        //             '& .MuiGrid-root': {
-        //               alignItems: 'center !important',
-        //             },
-        //           },
-        //         },
-        //       },
-        //     },
-        //   },
-        // },
       },
       modifiedGridFaIR,
       coreFaIR

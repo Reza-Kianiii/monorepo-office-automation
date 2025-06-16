@@ -1,76 +1,23 @@
 import Box from '@mui/material/Box';
 
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
-
-import {
-  Breadcrumbs,
-  Grid,
-  Link,
-  Paper,
-  Skeleton,
-  styled,
-  Typography,
-} from '@mui/material';
-import { Link as RouterLink, useMatches, useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import {
-  DataGrid,
-  Toolbar,
-  ToolbarButton,
-  ColumnsPanelTrigger,
-  FilterPanelTrigger,
-  ExportCsv,
-  ExportPrint,
-  QuickFilter,
-  QuickFilterControl,
-  QuickFilterClear,
-  QuickFilterTrigger,
-} from '@mui/x-data-grid';
-import { useDemoData } from '@mui/x-data-grid-generator';
-import Tooltip from '@mui/material/Tooltip';
-import Menu from '@mui/material/Menu';
-import Badge from '@mui/material/Badge';
-import ViewColumnIcon from '@mui/icons-material/ViewColumn';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import MenuItem from '@mui/material/MenuItem';
-import Divider from '@mui/material/Divider';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import CancelIcon from '@mui/icons-material/Cancel';
-import SearchIcon from '@mui/icons-material/Search';
-import {
-  FilterColumnsArgs,
-  GetColumnForNewFilterArgs,
-  GridActionsCellItem,
-} from '@mui/x-data-grid-pro';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
+import React, { useEffect, useRef } from 'react';
+// import { GridRowParams } from '@mui/x-data-grid';
+import { GridActionsCellItem, GridRowParams } from '@mui/x-data-grid-pro';
 import { SharedUiWidgetHeader } from '@office-automation/shared/ui/widget';
-import {
-  DataGridPremium,
-  GRID_ROW_GROUPING_SINGLE_GROUPING_FIELD,
-  useGridApiRef,
-  useKeepGroupedColumnsHidden,
-} from '@mui/x-data-grid-premium';
-import { DataGridPro, GridColDef } from '@mui/x-data-grid-pro';
+import { DataGridPremium, useGridApiRef } from '@mui/x-data-grid-premium';
+import { GridColDef } from '@mui/x-data-grid-pro';
 import {
   toggleButton,
-  useGetBindVaribleSelectionsQuery,
-  // useGetDataInboxQuery,
   usePostGetDataInboxMutation,
 } from '@office-automation/workflow-engine/data/data-inbox';
-import DeleteIcon from '@mui/icons-material/Delete';
-import SecurityIcon from '@mui/icons-material/Security';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
 import ScreenShareSharpIcon from '@mui/icons-material/ScreenShareSharp';
 import WorkflowEngineFeatureInboxModels from './workflow-engine-feature-inbox-models';
-import { format } from 'date-fns-jalali';
-import moment from 'moment-jalaali';
 import WorkFlowEngineFeatureInboxHorizontalFilter from './workflow-engine-feature-inbox-horizontal-filters';
 import { store } from '@office-automation/workflow-engine/utils/redux-store';
 import { useSelector } from 'react-redux';
 import { useColumnState } from './workflow-engine-feature-create-dynamic-columns';
+import { VaribleSelection } from '@office-automation/workflow-engine/data/data-settings';
+
 export function WorkFlowEngineFeatureInbox() {
   const [operation, setOperation] = React.useState<'proseccMaker' | 'null'>(
     'null'
@@ -79,8 +26,14 @@ export function WorkFlowEngineFeatureInbox() {
   const selectedWorkflowEngineInbox = useRef<any>(null);
 
   const gridApiRef = useGridApiRef();
-  const processRequiredVars = useRef({});
-  // const { data, isLoading, isFetching } = useGetDataInboxQuery();
+
+  type ProcessVarsMap = {
+    [keyId: string]: string[];
+  };
+
+  const selectedVaribleItemWorkFlow = useRef<ProcessVarsMap>({});
+  const dicitionaryOfListItemsWorkFlowEngine = useRef({});
+
   const [postGetDataInbox, { isLoading }] = usePostGetDataInboxMutation();
 
   const selectedFilters = useSelector((state) => state?.inboxFiltersHorizontal);
@@ -95,52 +48,43 @@ export function WorkFlowEngineFeatureInbox() {
     });
   }, [selectedFilters]);
 
-  // const { data: bindVaribleSelections } = useGetBindVaribleSelectionsQuery();
-
   const [paginationModel, setPaginationModel] = React.useState({
     page: 0,
     pageSize: 5,
   });
-  // const columns: GridColDef<(typeof rows)[number]>[] = [
-  //   { field: 'id', headerName: 'شناسه', width: 600 },
-  //   {
-  //     field: 'name',
-  //     headerName: 'نام',
-  //     width: 150,
-  //     editable: true,
-  //   },
-  // ];
 
-  const handleClick = (item: any) => {
+  const handleClick = (item: VaribleSelection) => {
     const { ProcessUid, VariableName } = item;
 
-    const currentVars = processRequiredVars.current[ProcessUid] || [];
+    const currentVars = selectedVaribleItemWorkFlow.current[ProcessUid] || [];
 
-    // اگر قبلاً وجود نداشته:
-    if (!processRequiredVars.current[ProcessUid]) {
-      processRequiredVars.current[ProcessUid] = [VariableName];
+    if (!selectedVaribleItemWorkFlow.current[ProcessUid]) {
+      selectedVaribleItemWorkFlow.current[ProcessUid] = [VariableName];
     } else {
       if (!currentVars.includes(VariableName)) {
-        // به‌جای push از کپی استفاده کن
-        processRequiredVars.current[ProcessUid] = [
+        selectedVaribleItemWorkFlow.current[ProcessUid] = [
           ...currentVars,
           VariableName,
         ];
       } else {
         const filtered = currentVars.filter((v) => v !== VariableName);
         if (filtered.length === 0) {
-          delete processRequiredVars.current[ProcessUid];
+          delete selectedVaribleItemWorkFlow.current[ProcessUid];
         } else {
-          processRequiredVars.current[ProcessUid] = filtered;
+          selectedVaribleItemWorkFlow.current[ProcessUid] = filtered;
         }
       }
     }
-    store.dispatch(toggleButton(processRequiredVars.current));
+
+    store.dispatch(toggleButton(selectedVaribleItemWorkFlow.current));
   };
 
-  const { newColumns } = useColumnState({ row: rows.current });
+  const { newColumns } = useColumnState({
+    row: rows.current,
+    listDictionaryWorkFlow: dicitionaryOfListItemsWorkFlowEngine.current,
+  });
 
-  const columns: any = [
+  const columns: GridColDef[] = [
     { field: 'app_title', headerName: 'شماره کار', width: 90 },
     {
       field: 'app_pro_title',
@@ -178,17 +122,12 @@ export function WorkFlowEngineFeatureInbox() {
     {
       field: 'actions',
       type: 'actions',
-      width: 180,
-      getActions: (params) => [
+      width: 100,
+      getActions: (params: GridRowParams) => [
         <GridActionsCellItem
           icon={<ScreenShareSharpIcon />}
           label="نمایش"
           onClick={() => setOperation('proseccMaker')}
-        />,
-        <GridActionsCellItem
-          icon={<DeleteIcon />}
-          label="Delete"
-          // onClick={deleteUser(params.id)}
         />,
         <GridActionsCellItem
           // icon={<SecurityIcon />}
@@ -222,12 +161,15 @@ export function WorkFlowEngineFeatureInbox() {
     <div className=" flex flex-1 flex-col  h-full ">
       <SharedUiWidgetHeader />
 
-      {/* <div className="flex flex-1 flex-col overflow-auto bg-transparent"> */}
       <div className="flex flex-1 flex-col h-full">
-        <WorkFlowEngineFeatureInboxHorizontalFilter handleClick={handleClick} />
+        <WorkFlowEngineFeatureInboxHorizontalFilter
+          listDictionaryItemsWorkFlowEngine={
+            dicitionaryOfListItemsWorkFlowEngine
+          }
+          handleClick={handleClick}
+        />
         <Box className="mt-2 flex-[1_1_0] overflow-auto">
           <DataGridPremium
-            // rows={rows ?? []}
             rows={rows.current}
             columns={columns}
             getRowId={(rows) => rows.app_title}
@@ -238,7 +180,7 @@ export function WorkFlowEngineFeatureInbox() {
             onPaginationModelChange={setPaginationModel}
             paginationMode="client"
             apiRef={gridApiRef}
-            // loading={loading}
+            // loading={true}
             slotProps={{
               row: {
                 onFocus: (event: any) => {

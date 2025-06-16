@@ -48,6 +48,7 @@ export interface VaribleSelection {
   ProcessUid: string;
   ProcessName: string;
   VariableUid: string;
+  VariableLable: string;
   VariableName: string;
 }
 export interface SaveProcessVaribleSelectionAPIPARAMS {
