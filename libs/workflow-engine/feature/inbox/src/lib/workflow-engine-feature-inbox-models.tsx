@@ -15,6 +15,11 @@ import { TransitionProps } from '@mui/material/transitions';
 import WorkFlowEngineFeatureInboxProcessMaker from './workflow-engine-feature-inbox-processMaker';
 import { useGetUserTokenQuery } from '@office-automation/workflow-engine/data/data-get-user-token';
 import { useGetPmWebAddressQuery } from '@office-automation/workflow-engine/data/data-get-pm-web-address';
+import { styled } from '@mui/material/styles';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import WorkFlowEngineFeatureInboxForm from './workflow-engine-feature-inbox-form';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -25,7 +30,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export function WorkflowEngineFeatureInboxModels({
+export function WorkflowEngineFeatureInboxModelsProcessMaker({
   onclose,
   dataInbox,
 }: {
@@ -108,4 +113,65 @@ export function WorkflowEngineFeatureInboxModels({
   );
 }
 
-export default WorkflowEngineFeatureInboxModels;
+// export default WorkflowEngineFeatureInboxModels;
+
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiDialogContent-root': {
+    padding: theme.spacing(2),
+  },
+  '& .MuiDialogActions-root': {
+    padding: theme.spacing(1),
+  },
+}));
+
+export default function WorkflowEngineFeatureInboxModelsf({
+  onclose,
+}: {
+  onclose: () => void;
+}) {
+  const [open, setOpen] = React.useState(true);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+    onclose();
+  };
+
+  return (
+    <BootstrapDialog
+      dir="ltr"
+      onClose={handleClose}
+      aria-labelledby="customized-dialog-title"
+      maxWidth={'lg'}
+      open={open}
+    >
+      <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+        Modal title
+      </DialogTitle>
+      <IconButton
+        aria-label="close"
+        onClick={handleClose}
+        sx={(theme) => ({
+          position: 'absolute',
+          // right: 8,
+          // top: 8,
+          left: 8,
+          top: 8,
+          color: theme.palette.grey[500],
+        })}
+      >
+        <CloseIcon />
+      </IconButton>
+      <DialogContent dividers>
+        <WorkFlowEngineFeatureInboxForm />
+      </DialogContent>
+      <DialogActions>
+        <Button autoFocus onClick={handleClose}>
+          Save changes
+        </Button>
+      </DialogActions>
+    </BootstrapDialog>
+  );
+}

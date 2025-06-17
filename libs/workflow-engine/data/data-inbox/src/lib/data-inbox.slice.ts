@@ -21,14 +21,31 @@ export const dataInbox = createApi({
         body: payload,
       }),
     }),
+    getCaseNotes: builder.query<any, void>({
+      query: () => ({
+        url: `PMNote/GetCaseNote`,
+        method: `GET`,
+      }),
+    }),
     getBindVaribleSelections: builder.query<any, void>({
       query: () => ({
         url: 'PMProcessVariable/BindVariableSelections/',
         method: 'GET',
       }),
     }),
+    createNote: builder.mutation<any, any>({
+      query: ({ payload }) => ({
+        url: `PMNote/CreateNewNote`,
+        method: 'POST',
+        body: payload,
+      }),
+    }),
   }),
 });
 
-export const { usePostGetDataInboxMutation, useGetBindVaribleSelectionsQuery } =
-  dataInbox;
+export const {
+  usePostGetDataInboxMutation,
+  useGetBindVaribleSelectionsQuery,
+  useGetCaseNotesQuery,
+  useCreateNoteMutation,
+} = dataInbox;

@@ -11,17 +11,21 @@ import {
   usePostGetDataInboxMutation,
 } from '@office-automation/workflow-engine/data/data-inbox';
 import ScreenShareSharpIcon from '@mui/icons-material/ScreenShareSharp';
-import WorkflowEngineFeatureInboxModels from './workflow-engine-feature-inbox-models';
+import WorkflowEngineFeatureInboxModels, {
+  WorkflowEngineFeatureInboxModelsProcessMaker,
+} from './workflow-engine-feature-inbox-models';
 import WorkFlowEngineFeatureInboxHorizontalFilter from './workflow-engine-feature-inbox-horizontal-filters';
 import { store } from '@office-automation/workflow-engine/utils/redux-store';
 import { useSelector } from 'react-redux';
 import { useColumnState } from './workflow-engine-feature-create-dynamic-columns';
 import { VaribleSelection } from '@office-automation/workflow-engine/data/data-settings';
+import WorkflowEngineFeatureInboxModelsf from './workflow-engine-feature-inbox-models';
+import EventNoteIcon from '@mui/icons-material/EventNote';
 
 export function WorkFlowEngineFeatureInbox() {
-  const [operation, setOperation] = React.useState<'proseccMaker' | 'null'>(
-    'null'
-  );
+  const [operation, setOperation] = React.useState<
+    'proseccMaker' | 'null' | 'note'
+  >('null');
 
   const selectedWorkflowEngineInbox = useRef<any>(null);
 
@@ -122,12 +126,17 @@ export function WorkFlowEngineFeatureInbox() {
     {
       field: 'actions',
       type: 'actions',
-      width: 100,
+      width: 140,
       getActions: (params: GridRowParams) => [
         <GridActionsCellItem
           icon={<ScreenShareSharpIcon />}
           label="نمایش"
           onClick={() => setOperation('proseccMaker')}
+        />,
+        <GridActionsCellItem
+          icon={<EventNoteIcon />}
+          label="یادداشت ها"
+          onClick={() => setOperation('note')}
         />,
         <GridActionsCellItem
           // icon={<SecurityIcon />}
@@ -144,12 +153,6 @@ export function WorkFlowEngineFeatureInbox() {
         <GridActionsCellItem
           // icon={<FileCopyIcon />}
           label="اطلاعات فرایند"
-          // onClick={duplicateUser(params.id)}
-          showInMenu
-        />,
-        <GridActionsCellItem
-          // icon={<FileCopyIcon />}
-          label="تاریخچه پیام ها"
           // onClick={duplicateUser(params.id)}
           showInMenu
         />,
@@ -200,9 +203,14 @@ export function WorkFlowEngineFeatureInbox() {
         </Box>
       </div>
       {operation === 'proseccMaker' && (
-        <WorkflowEngineFeatureInboxModels
+        <WorkflowEngineFeatureInboxModelsProcessMaker
           onclose={() => setOperation('null')}
           dataInbox={selectedWorkflowEngineInbox.current}
+        />
+      )}
+      {operation === 'note' && (
+        <WorkflowEngineFeatureInboxModelsf
+          onclose={() => setOperation('null')}
         />
       )}
     </div>
