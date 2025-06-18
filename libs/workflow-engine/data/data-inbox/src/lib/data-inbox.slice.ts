@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const dataInbox = createApi({
   reducerPath: 'dataInbox',
+  tagTypes: ['notes'],
   baseQuery: fetchBaseQuery({
     baseUrl: 'api/',
 
@@ -21,11 +22,18 @@ export const dataInbox = createApi({
         body: payload,
       }),
     }),
-    getCaseNotes: builder.query<any, void>({
-      query: () => ({
+    getCaseNotes: builder.query<
+      any,
+      {
+        CaseId: number;
+      }
+    >({
+      query: ({ CaseId }) => ({
         url: `PMNote/GetCaseNote`,
+        params: { CaseId },
         method: `GET`,
       }),
+      providesTags: ['notes'],
     }),
     getBindVaribleSelections: builder.query<any, void>({
       query: () => ({
@@ -33,12 +41,21 @@ export const dataInbox = createApi({
         method: 'GET',
       }),
     }),
-    createNote: builder.mutation<any, any>({
+    createNote: builder.mutation<
+      any,
+      {
+        payload: {
+          noteText: string;
+          app_uid: string;
+        };
+      }
+    >({
       query: ({ payload }) => ({
-        url: `PMNote/CreateNewNote`,
+        url: `PMNote/CreateNewNote/`,
         method: 'POST',
         body: payload,
       }),
+      invalidatesTags: ['notes'],
     }),
   }),
 });

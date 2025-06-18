@@ -204,12 +204,13 @@ export function WorkFlowEngineFeatureInbox() {
       </div>
       {operation === 'proseccMaker' && (
         <WorkflowEngineFeatureInboxModelsProcessMaker
-          onclose={() => setOperation('null')}
           dataInbox={selectedWorkflowEngineInbox.current}
+          onclose={() => setOperation('null')}
         />
       )}
       {operation === 'note' && (
         <WorkflowEngineFeatureInboxModelsf
+          dataInbox={selectedWorkflowEngineInbox.current}
           onclose={() => setOperation('null')}
         />
       )}

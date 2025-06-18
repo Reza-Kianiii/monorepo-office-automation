@@ -20,6 +20,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import WorkFlowEngineFeatureInboxForm from './workflow-engine-feature-inbox-form';
+import { Box } from '@mui/material';
+import { useForm, FormProvider, useFormContext } from 'react-hook-form';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -31,11 +33,11 @@ const Transition = React.forwardRef(function Transition(
 });
 
 export function WorkflowEngineFeatureInboxModelsProcessMaker({
-  onclose,
   dataInbox,
+  onclose,
 }: {
-  onclose: () => void;
   dataInbox: any;
+  onclose: () => void;
 }) {
   const [open, setOpen] = React.useState(true);
 
@@ -125,10 +127,14 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function WorkflowEngineFeatureInboxModelsf({
+  dataInbox,
   onclose,
 }: {
+  dataInbox: any;
   onclose: () => void;
 }) {
+  console.log(dataInbox, 'qqqqqqqqqqqqqq');
+
   const [open, setOpen] = React.useState(true);
 
   const handleClickOpen = () => {
@@ -139,39 +145,56 @@ export default function WorkflowEngineFeatureInboxModelsf({
     onclose();
   };
 
+  const methods = useForm({
+    defaultValues: {
+      noteText: '',
+      app_uid: dataInbox?.app_uid,
+    },
+  });
+
+  // const handleSubmit(){
+
+  // }
+
   return (
-    <BootstrapDialog
-      dir="ltr"
-      onClose={handleClose}
-      aria-labelledby="customized-dialog-title"
-      maxWidth={'lg'}
-      open={open}
-    >
-      <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-        Modal title
-      </DialogTitle>
-      <IconButton
-        aria-label="close"
-        onClick={handleClose}
-        sx={(theme) => ({
-          position: 'absolute',
-          // right: 8,
-          // top: 8,
-          left: 8,
-          top: 8,
-          color: theme.palette.grey[500],
-        })}
+    <FormProvider {...methods}>
+      <BootstrapDialog
+        dir="ltr"
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        maxWidth={'lg'}
+        open={open}
+        fullWidth
+
+        // style={{ width: '900px' }}
       >
-        <CloseIcon />
-      </IconButton>
-      <DialogContent dividers>
-        <WorkFlowEngineFeatureInboxForm />
-      </DialogContent>
-      <DialogActions>
-        <Button autoFocus onClick={handleClose}>
-          Save changes
-        </Button>
-      </DialogActions>
-    </BootstrapDialog>
+        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+          Modal title
+        </DialogTitle>
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={(theme) => ({
+            position: 'absolute',
+            // right: 8,
+            // top: 8,
+            left: 8,
+            top: 8,
+            color: theme.palette.grey[500],
+          })}
+        >
+          <CloseIcon />
+        </IconButton>
+        <DialogContent dividers>
+          <WorkFlowEngineFeatureInboxForm />
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={handleClose}>
+            Save changes
+          </Button>
+          <Button>Save changes</Button>
+        </DialogActions>
+      </BootstrapDialog>
+    </FormProvider>
   );
 }
