@@ -46,6 +46,8 @@ export function WorkFlowEngineFeatureInboxForm() {
     CaseId: methods.getValues('app_uid'),
   });
 
+  console.log(data && JSON.parse(data), 'datadatadatadatadatakjkjkjkjk');
+
   const handleCreateNote = (value: any) => {
     value.target.value;
     methods.setValue('noteText', value.target.value);
@@ -80,7 +82,7 @@ export function WorkFlowEngineFeatureInboxForm() {
           onKeyUp={handleCreateNote}
         ></textarea>
       </div>
-      <Box className="mt-2 flex-[1_1_0] h-[500px]  overflow-auto">
+      <Box>
         <DataGridPremium
           rows={data ? JSON.parse(data) : []}
           style={{ direction: 'rtl', height: '500px' }}

@@ -22,6 +22,7 @@ import DialogActions from '@mui/material/DialogActions';
 import WorkFlowEngineFeatureInboxForm from './workflow-engine-feature-inbox-form';
 import { Box } from '@mui/material';
 import { useForm, FormProvider, useFormContext } from 'react-hook-form';
+import DialogContentText from '@mui/material/DialogContentText';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -157,44 +158,73 @@ export default function WorkflowEngineFeatureInboxModelsf({
   // }
 
   return (
-    <FormProvider {...methods}>
-      <BootstrapDialog
-        dir="ltr"
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        maxWidth={'lg'}
-        open={open}
-        fullWidth
-
-        // style={{ width: '900px' }}
-      >
-        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-          Modal title
-        </DialogTitle>
-        <IconButton
-          aria-label="close"
-          onClick={handleClose}
-          sx={(theme) => ({
-            position: 'absolute',
-            // right: 8,
-            // top: 8,
-            left: 8,
-            top: 8,
-            color: theme.palette.grey[500],
-          })}
+    <React.Fragment>
+      <FormProvider {...methods}>
+        <Button variant="outlined" onClick={handleClickOpen}>
+          Open alert dialog
+        </Button>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
         >
-          <CloseIcon />
-        </IconButton>
-        <DialogContent dividers>
-          <WorkFlowEngineFeatureInboxForm />
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Save changes
-          </Button>
-          <Button>Save changes</Button>
-        </DialogActions>
-      </BootstrapDialog>
-    </FormProvider>
+          <DialogTitle id="alert-dialog-title">
+            {"Use Google's location service?"}
+          </DialogTitle>
+          <DialogContent>
+            <WorkFlowEngineFeatureInboxForm />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Disagree</Button>
+            <Button onClick={handleClose} autoFocus>
+              Agree
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </FormProvider>
+    </React.Fragment>
   );
+
+  // return (
+  //   <FormProvider {...methods}>
+  //     <BootstrapDialog
+  //       dir="ltr"
+  //       onClose={handleClose}
+  //       aria-labelledby="customized-dialog-title"
+  //       maxWidth={'lg'}
+  //       open={open}
+  //       fullWidth
+
+  //       // style={{ width: '900px' }}
+  //     >
+  //       <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+  //         Modal title
+  //       </DialogTitle>
+  //       <IconButton
+  //         aria-label="close"
+  //         onClick={handleClose}
+  //         sx={(theme) => ({
+  //           position: 'absolute',
+  //           // right: 8,
+  //           // top: 8,
+  //           left: 8,
+  //           top: 8,
+  //           color: theme.palette.grey[500],
+  //         })}
+  //       >
+  //         <CloseIcon />
+  //       </IconButton>
+  //       <DialogContent dividers style={{ height: '600px' }}>
+  //         <WorkFlowEngineFeatureInboxForm />
+  //       </DialogContent>
+  //       <DialogActions>
+  //         <Button autoFocus onClick={handleClose}>
+  //           Save changes
+  //         </Button>
+  //         <Button>Save changes</Button>
+  //       </DialogActions>
+  //     </BootstrapDialog>
+  //   </FormProvider>
+  // );
 }
