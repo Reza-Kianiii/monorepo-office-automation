@@ -1,4 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { v4 as uuidv4 } from 'uuid';
+import {
+  CaseNoteTypes,
+  IncomingDocumentsTypes,
+  OutPutDocumentTypes,
+} from './data-inbox.models';
 
 export const dataInbox = createApi({
   reducerPath: 'dataInbox',
@@ -23,7 +29,7 @@ export const dataInbox = createApi({
       }),
     }),
     getCaseNotes: builder.query<
-      any,
+      CaseNoteTypes[],
       {
         CaseId: number;
       }
@@ -33,16 +39,59 @@ export const dataInbox = createApi({
         params: { CaseId },
         method: `GET`,
       }),
+
       providesTags: ['notes'],
+      transformResponse: (response: CaseNoteTypes[]) => {
+        const parsed = JSON.parse(response);
+
+        const data: CaseNoteTypes[] = [];
+
+        Array.isArray(parsed) &&
+          parsed?.forEach((item) => data.push({ ...item, id: uuidv4() }));
+
+        return data;
+      },
     }),
+    GetUploadDocument: builder.query<
+      IncomingDocumentsTypes[],
+      {
+        app_uid: number;
+      }
+    >({
+      query: ({ app_uid }) => ({
+        url: `PMDocument/GetInputDocument/`,
+        params: { app_uid },
+        method: `GET`,
+      }),
+    }),
+    GetOutPutDocument: builder.query<
+      OutPutDocumentTypes[],
+      {
+        app_uid: number;
+      }
+    >({
+      query: ({ app_uid }) => ({
+        url: `PMDocument/GetOutPutDocument/`,
+        params: { app_uid },
+        method: `GET`,
+      }),
+    }),
+
     getBindVaribleSelections: builder.query<any, void>({
       query: () => ({
         url: 'PMProcessVariable/BindVariableSelections/',
         method: 'GET',
       }),
     }),
+    getCasesVarible: builder.query<any, any>({
+      query: ({ app_uid }) => ({
+        url: `PMProcessVariable/GetCaseVariable`,
+        params: { app_uid },
+        method: 'GET',
+      }),
+    }),
     createNote: builder.mutation<
-      any,
+      { data: string },
       {
         payload: {
           noteText: string;
@@ -64,5 +113,8 @@ export const {
   usePostGetDataInboxMutation,
   useGetBindVaribleSelectionsQuery,
   useGetCaseNotesQuery,
+  useGetUploadDocumentQuery,
+  useGetOutPutDocumentQuery,
   useCreateNoteMutation,
+  useGetCasesVaribleQuery,
 } = dataInbox;

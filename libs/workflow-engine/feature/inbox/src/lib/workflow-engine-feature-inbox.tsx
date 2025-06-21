@@ -12,19 +12,30 @@ import {
 } from '@office-automation/workflow-engine/data/data-inbox';
 import ScreenShareSharpIcon from '@mui/icons-material/ScreenShareSharp';
 import WorkflowEngineFeatureInboxModels, {
+  WorkflowEngineFeatureInboxIncomingDocumentsModels,
+  WorkflowEngineFeatureInboxModelsf,
   WorkflowEngineFeatureInboxModelsProcessMaker,
+  WorkflowEngineFeatureInboxOutPutDocumentModels,
+  WorkflowEngineFeatureInboxProcessInformationModels,
+  WorkflowEngineFeatureInboxSummaryModels,
 } from './workflow-engine-feature-inbox-models';
 import WorkFlowEngineFeatureInboxHorizontalFilter from './workflow-engine-feature-inbox-horizontal-filters';
 import { store } from '@office-automation/workflow-engine/utils/redux-store';
 import { useSelector } from 'react-redux';
 import { useColumnState } from './workflow-engine-feature-create-dynamic-columns';
 import { VaribleSelection } from '@office-automation/workflow-engine/data/data-settings';
-import WorkflowEngineFeatureInboxModelsf from './workflow-engine-feature-inbox-models';
+// import WorkflowEngineFeatureInboxModelsf from './workflow-engine-feature-inbox-models';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 
 export function WorkFlowEngineFeatureInbox() {
   const [operation, setOperation] = React.useState<
-    'proseccMaker' | 'null' | 'note'
+    | 'PROSECCMAKER'
+    | 'null'
+    | 'NOTE'
+    | 'INCOMINGDOCUMENTS'
+    | 'OUTPUTDOCUMENT'
+    | 'SUMMARY'
+    | 'PROCESSINFORMATION'
   >('null');
 
   const selectedWorkflowEngineInbox = useRef<any>(null);
@@ -131,29 +142,36 @@ export function WorkFlowEngineFeatureInbox() {
         <GridActionsCellItem
           icon={<ScreenShareSharpIcon />}
           label="نمایش"
-          onClick={() => setOperation('proseccMaker')}
+          onClick={() => setOperation('PROSECCMAKER')}
         />,
         <GridActionsCellItem
           icon={<EventNoteIcon />}
           label="یادداشت ها"
-          onClick={() => setOperation('note')}
+          onClick={() => setOperation('NOTE')}
         />,
+
         <GridActionsCellItem
-          // icon={<SecurityIcon />}
-          label={'نمایش'}
-          // onClick={toggleAdmin(params.id)}
+          // icon={<FileCopyIcon />}
+          label="اسناد ورودی"
+          onClick={() => setOperation('INCOMINGDOCUMENTS')}
           showInMenu
         />,
         <GridActionsCellItem
           // icon={<FileCopyIcon />}
-          label="اسناد پیوست شده"
-          // onClick={duplicateUser(params.id)}
+          label="اسناد خروجی"
+          onClick={() => setOperation('OUTPUTDOCUMENT')}
+          showInMenu
+        />,
+        <GridActionsCellItem
+          // icon={<FileCopyIcon />}
+          label="خلاصه"
+          onClick={() => setOperation('SUMMARY')}
           showInMenu
         />,
         <GridActionsCellItem
           // icon={<FileCopyIcon />}
           label="اطلاعات فرایند"
-          // onClick={duplicateUser(params.id)}
+          onClick={() => setOperation('PROCESSINFORMATION')}
           showInMenu
         />,
       ],
@@ -202,15 +220,39 @@ export function WorkFlowEngineFeatureInbox() {
           />
         </Box>
       </div>
-      {operation === 'proseccMaker' && (
+      {operation === 'PROSECCMAKER' && (
         <WorkflowEngineFeatureInboxModelsProcessMaker
           dataInbox={selectedWorkflowEngineInbox.current}
           onclose={() => setOperation('null')}
         />
       )}
-      {operation === 'note' && (
+      {operation === 'NOTE' && (
         <WorkflowEngineFeatureInboxModelsf
           dataInbox={selectedWorkflowEngineInbox.current}
+          onclose={() => setOperation('null')}
+        />
+      )}
+      {operation === 'INCOMINGDOCUMENTS' && (
+        <WorkflowEngineFeatureInboxIncomingDocumentsModels
+          idInbox={selectedWorkflowEngineInbox.current?.app_uid}
+          onclose={() => setOperation('null')}
+        />
+      )}
+      {operation === 'OUTPUTDOCUMENT' && (
+        <WorkflowEngineFeatureInboxOutPutDocumentModels
+          idInbox={selectedWorkflowEngineInbox.current?.app_uid}
+          onclose={() => setOperation('null')}
+        />
+      )}
+      {operation === 'SUMMARY' && (
+        <WorkflowEngineFeatureInboxSummaryModels
+          inbox={selectedWorkflowEngineInbox.current}
+          onclose={() => setOperation('null')}
+        />
+      )}
+      {operation === 'PROCESSINFORMATION' && (
+        <WorkflowEngineFeatureInboxProcessInformationModels
+          inbox={selectedWorkflowEngineInbox.current}
           onclose={() => setOperation('null')}
         />
       )}
