@@ -10,6 +10,11 @@ import { login } from '@office-automation/workflow-engine/data/login';
 import { getUserToken } from '@office-automation/workflow-engine/data/data-get-user-token';
 import { getPmWebAddress } from '@office-automation/workflow-engine/data/data-get-pm-web-address';
 import { dataSettingsProject } from '@office-automation/workflow-engine/data/data-settings';
+import {
+  dataTracking,
+  trackingFiltersHorizontalSliceReducer,
+  trackingFiltersHorizontalSliceReducerPath,
+} from '@office-automation/workflow-engine/data/data-tracking';
 
 export const store = configureStore({
   reducer: {
@@ -21,6 +26,9 @@ export const store = configureStore({
     [dataSettingsProject.reducerPath]: dataSettingsProject.reducer,
     [inboxFiltersHorizontalSliceReducerPath]:
       inboxFiltersHorizontalSliceReducer,
+    [trackingFiltersHorizontalSliceReducerPath]:
+      trackingFiltersHorizontalSliceReducer,
+    [dataTracking.reducerPath]: dataTracking.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -31,7 +39,8 @@ export const store = configureStore({
         login.middleware,
         getUserToken.middleware,
         getPmWebAddress.middleware,
-        dataSettingsProject.middleware
+        dataSettingsProject.middleware,
+        dataTracking.middleware
       ),
 });
 setupListeners(store.dispatch);

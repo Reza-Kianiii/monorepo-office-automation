@@ -40,6 +40,9 @@
       "@office-automation/shared/util/app-core": [
         "libs/shared/util/app-core/src/index.ts"
       ],
+      "@office-automation/shared/util/core-hooks": [
+        "libs/shared/util/core-hooks/src/index.ts"
+      ],
       "@office-automation/shared/util/mui-theme": [
         "libs/shared/util/mui-theme/src/index.ts"
       ],
@@ -55,6 +58,9 @@
       "@office-automation/workflow-engine/data/data-settings": [
         "libs/workflow-engine/data/data-settings/src/index.ts"
       ],
+      "@office-automation/workflow-engine/data/data-tracking": [
+        "libs/workflow-engine/data/data-tracking/src/index.ts"
+      ],
       "@office-automation/workflow-engine/data/login": [
         "libs/workflow-engine/data/login/src/index.ts"
       ],
@@ -69,6 +75,9 @@
       ],
       "@office-automation/workflow-engine/feature/settings": [
         "libs/workflow-engine/feature/settings/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/feature/tracking": [
+        "libs/workflow-engine/feature/tracking/src/index.ts"
       ],
       "@office-automation/workflow-engine/feature/workflow-engine-shell": [
         "libs/workflow-engine/feature/workflow-engine-shell/src/index.ts"

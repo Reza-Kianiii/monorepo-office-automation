@@ -77,6 +77,18 @@
     },
     {
       "path": "./libs/workflow-engine/data/data-settings"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/traking"
+    },
+    {
+      "path": "./libs/shared/util/core-hooks"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/tracking"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-tracking"
     }
   ]
 }

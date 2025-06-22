@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../../shared/util/core-hooks"
+    },
+    {
       "path": "../../../shared/ui/widget"
     },
     {
@@ -15,10 +18,10 @@
       "path": "../../utils/redux-store"
     },
     {
-      "path": "../../data/data-settings"
+      "path": "../../data/data-inbox"
     },
     {
-      "path": "../../data/data-inbox"
+      "path": "../../data/data-settings"
     },
     {
       "path": "./tsconfig.lib.json"

@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/workflow-engine/feature/tracking"
+    },
+    {
       "path": "../../libs/workflow-engine/feature/settings"
     },
     {

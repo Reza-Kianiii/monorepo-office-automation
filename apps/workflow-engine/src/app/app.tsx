@@ -17,6 +17,7 @@ import { WorkFlowEngineFeatureInbox } from '@office-automation/workflow-engine/f
 import { useEffect, useMemo, useState } from 'react';
 import { SharedProviders } from '@office-automation/shared/util/app-core';
 import { WorkFLowEngineFeatureSettingsComponent } from '@office-automation/workflow-engine/feature/settings';
+import { WorkFlowEngineFeatureTranking } from '@office-automation/workflow-engine/feature/tracking';
 // const rtlCache = createCache({
 //   key: 'muirtl',
 //   stylisPlugins: [prefixer, rtlPlugin],
@@ -31,6 +32,10 @@ const router = createBrowserRouter(
         {
           path: 'inbox',
           Component: WorkFlowEngineFeatureInbox,
+        },
+        {
+          path: 'tracking',
+          Component: WorkFlowEngineFeatureTranking,
         },
         {
           path: 'settings',

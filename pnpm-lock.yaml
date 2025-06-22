@@ -243,6 +243,8 @@ importers:
 
   libs/shared/util/app-core: {}
 
+  libs/shared/util/core-hooks: {}
+
   libs/shared/util/mui-theme: {}
 
   libs/workflow-engine/data/data-get-pm-web-address: {}
@@ -253,6 +255,8 @@ importers:
 
   libs/workflow-engine/data/data-settings: {}
 
+  libs/workflow-engine/data/data-tracking: {}
+
   libs/workflow-engine/data/login: {}
 
   libs/workflow-engine/data/workflow-engine-menu: {}
@@ -262,6 +266,10 @@ importers:
   libs/workflow-engine/feature/new-case: {}
 
   libs/workflow-engine/feature/settings: {}
+
+  libs/workflow-engine/feature/tracking: {}
+
+  libs/workflow-engine/feature/traking: {}
 
   libs/workflow-engine/feature/workflow-engine-shell: {}
 

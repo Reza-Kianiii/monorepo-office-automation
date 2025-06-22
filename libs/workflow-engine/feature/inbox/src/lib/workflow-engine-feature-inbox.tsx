@@ -2,10 +2,16 @@ import Box from '@mui/material/Box';
 
 import React, { useEffect, useRef } from 'react';
 // import { GridRowParams } from '@mui/x-data-grid';
-import { GridActionsCellItem, GridRowParams } from '@mui/x-data-grid-pro';
+// import { GridActionsCellItem, GridRowParams } from '@mui/x-data-grid-pro';
 import { SharedUiWidgetHeader } from '@office-automation/shared/ui/widget';
-import { DataGridPremium, useGridApiRef } from '@mui/x-data-grid-premium';
-import { GridColDef } from '@mui/x-data-grid-pro';
+import {
+  DataGridPremium,
+  useGridApiRef,
+  GridColDef,
+  GridRowParams,
+  GridActionsCellItem,
+} from '@mui/x-data-grid-premium';
+
 import {
   toggleButton,
   usePostGetDataInboxMutation,
@@ -22,10 +28,10 @@ import WorkflowEngineFeatureInboxModels, {
 import WorkFlowEngineFeatureInboxHorizontalFilter from './workflow-engine-feature-inbox-horizontal-filters';
 import { store } from '@office-automation/workflow-engine/utils/redux-store';
 import { useSelector } from 'react-redux';
-import { useColumnState } from './workflow-engine-feature-create-dynamic-columns';
 import { VaribleSelection } from '@office-automation/workflow-engine/data/data-settings';
 // import WorkflowEngineFeatureInboxModelsf from './workflow-engine-feature-inbox-models';
 import EventNoteIcon from '@mui/icons-material/EventNote';
+import { useColumnState } from '@office-automation/shared/util/core-hooks';
 
 export function WorkFlowEngineFeatureInbox() {
   const [operation, setOperation] = React.useState<
@@ -52,6 +58,7 @@ export function WorkFlowEngineFeatureInbox() {
   const [postGetDataInbox, { isLoading }] = usePostGetDataInboxMutation();
 
   const selectedFilters = useSelector((state) => state?.inboxFiltersHorizontal);
+  console.log(selectedFilters, 'selectedfilteruuuuiui');
 
   const rows = useRef<any[]>([]);
 
@@ -180,7 +187,7 @@ export function WorkFlowEngineFeatureInbox() {
 
   return (
     <div className=" flex flex-1 flex-col  h-full ">
-      <SharedUiWidgetHeader />
+      <SharedUiWidgetHeader title={'کارتابل'} />
 
       <div className="flex flex-1 flex-col h-full">
         <WorkFlowEngineFeatureInboxHorizontalFilter

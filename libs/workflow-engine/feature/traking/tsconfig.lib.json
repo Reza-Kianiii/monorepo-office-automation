@@ -33,29 +33,14 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "../../../shared/util/core-hooks/src/lib/dynamic-columns/workflow-engine-feature-create-dynamic-columns.tsx"
+    "../tracking/src/lib/workflow-engine-feature-tranking.tsx",
+    "../tracking/src/lib/workflow-engine-feature-tranking.spec.tsx",
+    "../tracking/src/lib/workflow-engine-feature-tranking-horizontal-filters.tsx",
+    "../tracking/src/lib/workflow-engine-feature-tranking-horizontal-filters.spec.tsx"
   ],
   "references": [
     {
-      "path": "../../../shared/util/core-hooks/tsconfig.lib.json"
-    },
-    {
-      "path": "../../../shared/ui/widget/tsconfig.lib.json"
-    },
-    {
-      "path": "../../data/data-get-pm-web-address/tsconfig.lib.json"
-    },
-    {
-      "path": "../../data/data-get-user-token/tsconfig.lib.json"
-    },
-    {
-      "path": "../../utils/redux-store/tsconfig.lib.json"
-    },
-    {
-      "path": "../../data/data-inbox/tsconfig.lib.json"
-    },
-    {
-      "path": "../../data/data-settings/tsconfig.lib.json"
+      "path": "../tracking/tsconfig.lib.json"
     }
   ]
 }
