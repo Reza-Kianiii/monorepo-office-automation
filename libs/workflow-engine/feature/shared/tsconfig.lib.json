@@ -34,25 +34,13 @@
       "path": "../../data/data-notes/tsconfig.lib.json"
     },
     {
-      "path": "../../data/data-tracking/tsconfig.lib.json"
-    },
-    {
-      "path": "../../data/data-settings/tsconfig.lib.json"
+      "path": "../../data/data-inbox/tsconfig.lib.json"
     },
     {
       "path": "../../data/data-get-pm-web-address/tsconfig.lib.json"
     },
     {
       "path": "../../data/data-get-user-token/tsconfig.lib.json"
-    },
-    {
-      "path": "../../data/login/tsconfig.lib.json"
-    },
-    {
-      "path": "../../data/data-inbox/tsconfig.lib.json"
-    },
-    {
-      "path": "../../../shared/data/permission/tsconfig.lib.json"
     }
   ]
 }

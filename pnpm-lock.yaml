@@ -253,6 +253,8 @@ importers:
 
   libs/workflow-engine/data/data-inbox: {}
 
+  libs/workflow-engine/data/data-notes: {}
+
   libs/workflow-engine/data/data-settings: {}
 
   libs/workflow-engine/data/data-tracking: {}
@@ -266,6 +268,8 @@ importers:
   libs/workflow-engine/feature/new-case: {}
 
   libs/workflow-engine/feature/settings: {}
+
+  libs/workflow-engine/feature/shared: {}
 
   libs/workflow-engine/feature/tracking: {}
 

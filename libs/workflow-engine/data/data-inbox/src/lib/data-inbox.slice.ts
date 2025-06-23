@@ -28,30 +28,6 @@ export const dataInbox = createApi({
         body: payload,
       }),
     }),
-    getCaseNotes: builder.query<
-      CaseNoteTypes[],
-      {
-        CaseId: number;
-      }
-    >({
-      query: ({ CaseId }) => ({
-        url: `PMNote/GetCaseNote`,
-        params: { CaseId },
-        method: `GET`,
-      }),
-
-      providesTags: ['notes'],
-      transformResponse: (response: CaseNoteTypes[]) => {
-        const parsed = JSON.parse(response);
-
-        const data: CaseNoteTypes[] = [];
-
-        Array.isArray(parsed) &&
-          parsed?.forEach((item) => data.push({ ...item, id: uuidv4() }));
-
-        return data;
-      },
-    }),
     GetUploadDocument: builder.query<
       IncomingDocumentsTypes[],
       {
@@ -90,31 +66,13 @@ export const dataInbox = createApi({
         method: 'GET',
       }),
     }),
-    createNote: builder.mutation<
-      { data: string },
-      {
-        payload: {
-          noteText: string;
-          app_uid: string;
-        };
-      }
-    >({
-      query: ({ payload }) => ({
-        url: `PMNote/CreateNewNote/`,
-        method: 'POST',
-        body: payload,
-      }),
-      invalidatesTags: ['notes'],
-    }),
   }),
 });
 
 export const {
   usePostGetDataInboxMutation,
   useGetBindVaribleSelectionsQuery,
-  useGetCaseNotesQuery,
   useGetUploadDocumentQuery,
   useGetOutPutDocumentQuery,
-  useCreateNoteMutation,
   useGetCasesVaribleQuery,
 } = dataInbox;

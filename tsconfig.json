@@ -89,6 +89,12 @@
     },
     {
       "path": "./libs/workflow-engine/data/data-tracking"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-notes"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/shared"
     }
   ]
 }

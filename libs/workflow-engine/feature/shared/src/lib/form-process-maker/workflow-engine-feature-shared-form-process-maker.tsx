@@ -1,9 +1,7 @@
-export function WorkFlowEngineFeatureInboxProcessMaker({
-  dataInbox,
-  urltest,
+export function WorkFlowEngineFeatureSharedFormProcessMaker({
+  url,
 }: {
-  dataInbox: any;
-  urltest: any;
+  url: any;
 }) {
   return (
     <div className="h-full">
@@ -11,11 +9,11 @@ export function WorkFlowEngineFeatureInboxProcessMaker({
         className="h-full w-full"
         // width="f"
         // height="315"
-        src={urltest}
+        src={url}
         // frameborder="0"
       ></iframe>
     </div>
   );
 }
 
-export default WorkFlowEngineFeatureInboxProcessMaker;
+export default WorkFlowEngineFeatureSharedFormProcessMaker;

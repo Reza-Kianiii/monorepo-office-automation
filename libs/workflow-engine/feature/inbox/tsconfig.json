@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../shared"
+    },
+    {
       "path": "../../../shared/util/core-hooks"
     },
     {
@@ -16,6 +19,9 @@
     },
     {
       "path": "../../utils/redux-store"
+    },
+    {
+      "path": "../../data/data-notes"
     },
     {
       "path": "../../data/data-inbox"

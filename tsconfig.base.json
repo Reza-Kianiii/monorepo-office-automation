@@ -55,6 +55,9 @@
       "@office-automation/workflow-engine/data/data-inbox": [
         "libs/workflow-engine/data/data-inbox/src/index.ts"
       ],
+      "@office-automation/workflow-engine/data/data-notes": [
+        "libs/workflow-engine/data/data-notes/src/index.ts"
+      ],
       "@office-automation/workflow-engine/data/data-settings": [
         "libs/workflow-engine/data/data-settings/src/index.ts"
       ],
@@ -75,6 +78,9 @@
       ],
       "@office-automation/workflow-engine/feature/settings": [
         "libs/workflow-engine/feature/settings/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/feature/shared": [
+        "libs/workflow-engine/feature/shared/src/index.ts"
       ],
       "@office-automation/workflow-engine/feature/tracking": [
         "libs/workflow-engine/feature/tracking/src/index.ts"

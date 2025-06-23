@@ -37,6 +37,9 @@
   ],
   "references": [
     {
+      "path": "../shared/tsconfig.lib.json"
+    },
+    {
       "path": "../../../shared/util/core-hooks/tsconfig.lib.json"
     },
     {
@@ -50,6 +53,9 @@
     },
     {
       "path": "../../utils/redux-store/tsconfig.lib.json"
+    },
+    {
+      "path": "../../data/data-notes/tsconfig.lib.json"
     },
     {
       "path": "../../data/data-inbox/tsconfig.lib.json"

@@ -33,6 +33,15 @@ import { VaribleSelection } from '@office-automation/workflow-engine/data/data-s
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import { useColumnState } from '@office-automation/shared/util/core-hooks';
 
+import {
+  WorkFlowEngineFeatureSharedDialogIncomingDocument,
+  WorkFlowEngineFeatureSharedDialogNote,
+  WorkFlowEngineFeatureSharedDialogOutPutDocument,
+  WorkFlowEngineFeatureSharedDialogProcessInformation,
+  WorkFlowEngineFeatureSharedDialogProcessMaker,
+  WorkFlowEngineFeatureSharedDialogSummary,
+} from '@office-automation/workflow-engine/feature/shared';
+
 export function WorkFlowEngineFeatureInbox() {
   const [operation, setOperation] = React.useState<
     | 'PROSECCMAKER'
@@ -228,38 +237,38 @@ export function WorkFlowEngineFeatureInbox() {
         </Box>
       </div>
       {operation === 'PROSECCMAKER' && (
-        <WorkflowEngineFeatureInboxModelsProcessMaker
-          dataInbox={selectedWorkflowEngineInbox.current}
+        <WorkFlowEngineFeatureSharedDialogProcessMaker
+          data={selectedWorkflowEngineInbox.current}
           onclose={() => setOperation('null')}
         />
       )}
       {operation === 'NOTE' && (
-        <WorkflowEngineFeatureInboxModelsf
-          dataInbox={selectedWorkflowEngineInbox.current}
+        <WorkFlowEngineFeatureSharedDialogNote
+          data={selectedWorkflowEngineInbox.current}
           onclose={() => setOperation('null')}
         />
       )}
       {operation === 'INCOMINGDOCUMENTS' && (
-        <WorkflowEngineFeatureInboxIncomingDocumentsModels
-          idInbox={selectedWorkflowEngineInbox.current?.app_uid}
+        <WorkFlowEngineFeatureSharedDialogIncomingDocument
+          id={selectedWorkflowEngineInbox.current?.app_uid}
           onclose={() => setOperation('null')}
         />
       )}
       {operation === 'OUTPUTDOCUMENT' && (
-        <WorkflowEngineFeatureInboxOutPutDocumentModels
-          idInbox={selectedWorkflowEngineInbox.current?.app_uid}
+        <WorkFlowEngineFeatureSharedDialogOutPutDocument
+          id={selectedWorkflowEngineInbox.current?.app_uid}
           onclose={() => setOperation('null')}
         />
       )}
       {operation === 'SUMMARY' && (
-        <WorkflowEngineFeatureInboxSummaryModels
-          inbox={selectedWorkflowEngineInbox.current}
+        <WorkFlowEngineFeatureSharedDialogSummary
+          data={selectedWorkflowEngineInbox.current}
           onclose={() => setOperation('null')}
         />
       )}
       {operation === 'PROCESSINFORMATION' && (
-        <WorkflowEngineFeatureInboxProcessInformationModels
-          inbox={selectedWorkflowEngineInbox.current}
+        <WorkFlowEngineFeatureSharedDialogProcessInformation
+          data={selectedWorkflowEngineInbox.current}
           onclose={() => setOperation('null')}
         />
       )}
