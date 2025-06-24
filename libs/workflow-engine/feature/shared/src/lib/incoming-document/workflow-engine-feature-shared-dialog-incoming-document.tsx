@@ -95,8 +95,8 @@ export function WorkflowEngineFeatureInboxIncomingDocumentsModels({
           onClose={handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
-          maxWidth={false}
           fullWidth
+          maxWidth={'md'}
         >
           <DialogTitle id="alert-dialog-title">{'اسناد ورودی'}</DialogTitle>
           <DialogContent>

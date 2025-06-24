@@ -95,6 +95,27 @@
     },
     {
       "path": "./libs/workflow-engine/feature/shared"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/drafts"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-drafts"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/Unassigned"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/unassigned"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-unassigned"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/advance-search"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-advance-search"
     }
   ]
 }

@@ -3,6 +3,15 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/workflow-engine/feature/advance-search"
+    },
+    {
+      "path": "../../libs/workflow-engine/feature/unassigned"
+    },
+    {
+      "path": "../../libs/workflow-engine/feature/drafts"
+    },
+    {
       "path": "../../libs/workflow-engine/feature/tracking"
     },
     {

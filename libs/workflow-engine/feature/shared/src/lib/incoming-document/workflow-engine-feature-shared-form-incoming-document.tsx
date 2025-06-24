@@ -35,19 +35,19 @@ export function WorkFlowEngineFeatureSharedFormIncominDocument({
       {
         field: 'app_doc_type',
         headerName: 'تنوع',
-        width: 110,
+        width: 70,
         editable: false,
       },
       {
         field: 'app_doc_version',
         headerName: 'ورژن',
-        width: 110,
+        width: 50,
         editable: false,
       },
       {
         field: 'app_doc_create_user',
         headerName: 'ایجاد شده توسط',
-        width: 110,
+        width: 150,
         editable: false,
       },
       {
@@ -55,6 +55,7 @@ export function WorkFlowEngineFeatureSharedFormIncominDocument({
         headerName: 'تاریخ ایجاد',
         width: 110,
         editable: false,
+        flex: 1,
       },
     ],
     []

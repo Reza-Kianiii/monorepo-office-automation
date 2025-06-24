@@ -16,6 +16,9 @@ import {
   trackingFiltersHorizontalSliceReducerPath,
 } from '@office-automation/workflow-engine/data/data-tracking';
 import { NotesAPi } from '@office-automation/workflow-engine/data/data-notes';
+import { dataDraftsAPI } from '@office-automation/workflow-engine/data/data-drafts';
+import { dataUnassignedAPI } from '@office-automation/workflow-engine/data/data-unassigned';
+import { dataAdvanceSearchAPI } from '@office-automation/workflow-engine/data/data-advance-search';
 
 export const store = configureStore({
   reducer: {
@@ -31,6 +34,9 @@ export const store = configureStore({
       trackingFiltersHorizontalSliceReducer,
     [dataTracking.reducerPath]: dataTracking.reducer,
     [NotesAPi.reducerPath]: NotesAPi.reducer,
+    [dataDraftsAPI.reducerPath]: dataDraftsAPI.reducer,
+    [dataUnassignedAPI.reducerPath]: dataUnassignedAPI.reducer,
+    [dataAdvanceSearchAPI.reducerPath]: dataAdvanceSearchAPI.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -43,7 +49,10 @@ export const store = configureStore({
         getPmWebAddress.middleware,
         dataSettingsProject.middleware,
         dataTracking.middleware,
-        NotesAPi.middleware
+        NotesAPi.middleware,
+        dataDraftsAPI.middleware,
+        dataUnassignedAPI.middleware,
+        dataAdvanceSearchAPI.middleware
       ),
 });
 setupListeners(store.dispatch);

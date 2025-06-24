@@ -121,19 +121,19 @@ export function WorkFlowEngineFeatureInbox() {
       field: 'app_pro_title',
       headerName: 'فرایند',
       width: 150,
-      editable: true,
+      editable: false,
     },
     {
       field: 'app_tas_title',
       headerName: 'وظیفه',
-      width: 150,
-      editable: true,
+      width: 190,
+      editable: false,
     },
     {
       field: 'usr_Info',
       headerName: 'ارسال کننده',
       width: 110,
-      editable: true,
+      editable: false,
     },
     {
       field: 'app_update_date',
@@ -146,9 +146,10 @@ export function WorkFlowEngineFeatureInbox() {
     {
       field: 'del_task_due_date',
       headerName: 'مهلت انجام کار',
-      type: 'number',
+
       width: 110,
-      editable: true,
+      editable: false,
+      flex: 1,
     },
     {
       field: 'actions',

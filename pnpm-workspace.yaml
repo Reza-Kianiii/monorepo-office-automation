@@ -9,3 +9,4 @@ packages:
   - 'libs/workflow-engine/utils/*'
   - 'libs/shared/data/*'
   - 'libs/workflow-engine/data/*'
+  - 'data-unassigned'

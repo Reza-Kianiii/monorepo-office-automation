@@ -46,6 +46,12 @@
       "@office-automation/shared/util/mui-theme": [
         "libs/shared/util/mui-theme/src/index.ts"
       ],
+      "@office-automation/workflow-engine/data/data-advance-search": [
+        "libs/workflow-engine/data/data-advance-search/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/data/data-drafts": [
+        "libs/workflow-engine/data/data-drafts/src/index.ts"
+      ],
       "@office-automation/workflow-engine/data/data-get-pm-web-address": [
         "libs/workflow-engine/data/data-get-pm-web-address/src/index.ts"
       ],
@@ -64,11 +70,20 @@
       "@office-automation/workflow-engine/data/data-tracking": [
         "libs/workflow-engine/data/data-tracking/src/index.ts"
       ],
+      "@office-automation/workflow-engine/data/data-unassigned": [
+        "libs/workflow-engine/data/data-unassigned/src/index.ts"
+      ],
       "@office-automation/workflow-engine/data/login": [
         "libs/workflow-engine/data/login/src/index.ts"
       ],
       "@office-automation/workflow-engine/data/workflow-engine-menu": [
         "libs/workflow-engine/data/workflow-engine-menu/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/feature/advance-search": [
+        "libs/workflow-engine/feature/advance-search/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/feature/drafts": [
+        "libs/workflow-engine/feature/drafts/src/index.ts"
       ],
       "@office-automation/workflow-engine/feature/inbox": [
         "libs/workflow-engine/feature/inbox/src/index.ts"
@@ -84,6 +99,9 @@
       ],
       "@office-automation/workflow-engine/feature/tracking": [
         "libs/workflow-engine/feature/tracking/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/feature/unassigned": [
+        "libs/workflow-engine/feature/unassigned/src/index.ts"
       ],
       "@office-automation/workflow-engine/feature/workflow-engine-shell": [
         "libs/workflow-engine/feature/workflow-engine-shell/src/index.ts"

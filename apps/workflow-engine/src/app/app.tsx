@@ -18,6 +18,10 @@ import { useEffect, useMemo, useState } from 'react';
 import { SharedProviders } from '@office-automation/shared/util/app-core';
 import { WorkFLowEngineFeatureSettingsComponent } from '@office-automation/workflow-engine/feature/settings';
 import { WorkFlowEngineFeatureTranking } from '@office-automation/workflow-engine/feature/tracking';
+import { WorkFlowEngineFeatureDraft } from '@office-automation/workflow-engine/feature/drafts';
+import { WorkFlowEngineFeatureUnassigned } from '@office-automation/workflow-engine/feature/unassigned';
+import { WorkFlowEngineFeatureAdvanceSearch } from '@office-automation/workflow-engine/feature/advance-search';
+
 // const rtlCache = createCache({
 //   key: 'muirtl',
 //   stylisPlugins: [prefixer, rtlPlugin],
@@ -40,6 +44,18 @@ const router = createBrowserRouter(
         {
           path: 'settings',
           Component: WorkFLowEngineFeatureSettingsComponent,
+        },
+        {
+          path: 'drafts',
+          Component: WorkFlowEngineFeatureDraft,
+        },
+        {
+          path: 'unassigned',
+          Component: WorkFlowEngineFeatureUnassigned,
+        },
+        {
+          path: 'advance_search',
+          Component: WorkFlowEngineFeatureAdvanceSearch,
         },
       ],
     },

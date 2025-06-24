@@ -23,7 +23,7 @@ export function WorkFlowEngineFeatureSharedFormOutPutDocument({
       {
         field: 'app_doc_filename',
         headerName: 'نام فایل',
-        width: 150,
+        width: 100,
         editable: false,
       },
       {
@@ -35,19 +35,19 @@ export function WorkFlowEngineFeatureSharedFormOutPutDocument({
       {
         field: 'app_doc_type',
         headerName: 'تنوع',
-        width: 110,
+        width: 80,
         editable: false,
       },
       {
         field: 'app_doc_version',
         headerName: 'ورژن',
-        width: 110,
+        width: 50,
         editable: false,
       },
       {
         field: 'app_doc_create_user',
         headerName: 'ایجاد شده توسط',
-        width: 110,
+        width: 150,
         editable: false,
       },
       {
@@ -55,6 +55,7 @@ export function WorkFlowEngineFeatureSharedFormOutPutDocument({
         headerName: 'تاریخ ایجاد',
         width: 110,
         editable: false,
+        flex: 1,
       },
     ],
     []

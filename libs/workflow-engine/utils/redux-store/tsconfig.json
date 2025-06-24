@@ -3,6 +3,15 @@
   "include": [],
   "references": [
     {
+      "path": "../../data/data-advance-search"
+    },
+    {
+      "path": "../../data/data-unassigned"
+    },
+    {
+      "path": "../../data/data-drafts"
+    },
+    {
       "path": "../../data/data-notes"
     },
     {

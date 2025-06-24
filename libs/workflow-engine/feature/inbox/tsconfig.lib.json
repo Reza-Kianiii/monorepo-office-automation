@@ -46,16 +46,7 @@
       "path": "../../../shared/ui/widget/tsconfig.lib.json"
     },
     {
-      "path": "../../data/data-get-pm-web-address/tsconfig.lib.json"
-    },
-    {
-      "path": "../../data/data-get-user-token/tsconfig.lib.json"
-    },
-    {
       "path": "../../utils/redux-store/tsconfig.lib.json"
-    },
-    {
-      "path": "../../data/data-notes/tsconfig.lib.json"
     },
     {
       "path": "../../data/data-inbox/tsconfig.lib.json"

@@ -1,0 +1,35 @@
+export interface AdvanceSearch {
+  Notes: null;
+  Variables: null;
+  app_create_date: string;
+  app_current_user: string;
+  app_del_previous_user: null;
+  app_pro_title: string;
+  app_status: string;
+  app_tas_title: string;
+  app_title: string;
+  app_uid: string;
+  app_update_date: string;
+  del_delegate_date: string;
+  del_duration: string;
+  del_finish_date: string;
+  del_finished: string;
+  del_index: string;
+  del_init_date: string;
+  del_priority: null;
+  del_queue_duration: string;
+  del_risk_date: string;
+  del_task_due_date: string;
+  del_thread_status: string;
+  financialPeriod: null;
+  previous_usr_firstname: null;
+  previous_usr_lastname: null;
+  previous_usr_username: null;
+  pro_uid: null;
+  usr_firstname: string;
+  usr_lastname: string;
+  usr_username: string;
+  usrcr_usr_firstname: string;
+  usrcr_usr_lastname: string;
+  usrcr_usr_username: string;
+}
