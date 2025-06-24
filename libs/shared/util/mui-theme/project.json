@@ -1,0 +1,9 @@
+{
+  "name": "mui-theme",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/util/mui-theme/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project mui-theme --web",
+  "targets": {}
+}

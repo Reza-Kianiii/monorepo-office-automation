@@ -1,0 +1,22 @@
+{
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "../../data/login"
+    },
+    {
+      "path": "../../data/workflow-engine-menu"
+    },
+    {
+      "path": "../../../shared/ui/drawer"
+    },
+    {
+      "path": "../../../shared/data/permission"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ],
+  "extends": "../../../../tsconfig.base.json"
+}

@@ -1,0 +1,19 @@
+{
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "../../data/data-drafts"
+    },
+    {
+      "path": "../shared"
+    },
+    {
+      "path": "../../../shared/ui/widget"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ],
+  "extends": "../../../../tsconfig.base.json"
+}

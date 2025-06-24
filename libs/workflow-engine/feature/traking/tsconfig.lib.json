@@ -1,0 +1,46 @@
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "types": [
+      "node",
+      "@nx/react/typings/cssmodule.d.ts",
+      "@nx/react/typings/image.d.ts"
+    ],
+    "rootDir": "src",
+    "jsx": "react-jsx",
+    "moduleResolution": "bundler",
+    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo"
+  },
+  "exclude": [
+    "out-tsc",
+    "dist",
+    "jest.config.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts",
+    "src/**/*.spec.tsx",
+    "src/**/*.test.tsx",
+    "src/**/*.spec.js",
+    "src/**/*.test.js",
+    "src/**/*.spec.jsx",
+    "src/**/*.test.jsx",
+    "eslint.config.js",
+    "eslint.config.cjs",
+    "eslint.config.mjs"
+  ],
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "../tracking/src/lib/workflow-engine-feature-tranking.tsx",
+    "../tracking/src/lib/workflow-engine-feature-tranking.spec.tsx",
+    "../tracking/src/lib/workflow-engine-feature-tranking-horizontal-filters.tsx",
+    "../tracking/src/lib/workflow-engine-feature-tranking-horizontal-filters.spec.tsx"
+  ],
+  "references": [
+    {
+      "path": "../tracking/tsconfig.lib.json"
+    }
+  ]
+}

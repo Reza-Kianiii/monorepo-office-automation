@@ -1,0 +1,43 @@
+{
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "../../data/data-advance-search"
+    },
+    {
+      "path": "../../data/data-unassigned"
+    },
+    {
+      "path": "../../data/data-drafts"
+    },
+    {
+      "path": "../../data/data-notes"
+    },
+    {
+      "path": "../../data/data-tracking"
+    },
+    {
+      "path": "../../data/data-settings"
+    },
+    {
+      "path": "../../data/data-get-pm-web-address"
+    },
+    {
+      "path": "../../data/data-get-user-token"
+    },
+    {
+      "path": "../../data/login"
+    },
+    {
+      "path": "../../data/data-inbox"
+    },
+    {
+      "path": "../../../shared/data/permission"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ],
+  "extends": "../../../../tsconfig.base.json"
+}

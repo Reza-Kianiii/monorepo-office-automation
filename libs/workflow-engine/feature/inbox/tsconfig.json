@@ -1,0 +1,28 @@
+{
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "../shared"
+    },
+    {
+      "path": "../../../shared/util/core-hooks"
+    },
+    {
+      "path": "../../../shared/ui/widget"
+    },
+    {
+      "path": "../../utils/redux-store"
+    },
+    {
+      "path": "../../data/data-inbox"
+    },
+    {
+      "path": "../../data/data-settings"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ],
+  "extends": "../../../../tsconfig.base.json"
+}

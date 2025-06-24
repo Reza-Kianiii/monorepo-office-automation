@@ -1,0 +1,9 @@
+{
+  "name": "traking",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/workflow-engine/feature/traking/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project traking --web",
+  "targets": {}
+}

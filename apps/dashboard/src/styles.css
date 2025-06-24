@@ -7,12 +7,11 @@
   html,
   body,
   #root {
-    @apply h-full w-full p-0 m-0 bg-[#E2E8F0] ;
+    @apply h-full w-full p-0 m-0 bg-[#E2E8F0];
   }
 
   * {
     font-family: IRANSansFaNum, serif;
-    
   }
 
   a {
@@ -25,7 +24,8 @@
   font-family: IRANSansFaNum;
   font-style: normal;
   font-weight: 900;
-  src: url('./assets/fonts/iransans-fa/eot/IRANSansWeb(FaNum)_Black.eot');
+
+  src: url('./assets/fonts/iransans-fa/eot/IRANSansWeb\(FaNum\)_Black.eot');
   src: url('./assets/fonts/iransans-fa/eot/IRANSansWeb(FaNum)_Black.eot?#iefix')
       format('embedded-opentype'),
     /* IE6-8 */

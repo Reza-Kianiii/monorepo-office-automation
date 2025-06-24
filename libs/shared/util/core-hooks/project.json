@@ -1,0 +1,9 @@
+{
+  "name": "core-hooks",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/util/core-hooks/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project core-hooks --web",
+  "targets": {}
+}

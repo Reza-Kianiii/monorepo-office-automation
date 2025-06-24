@@ -4,6 +4,9 @@ import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
 import { DashboardFeatureShell } from '@office-automation/dashboard/feature/shell';
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline } from '@mui/material';
+import { theme } from '@office-automation/shared/util/mui-theme';
 
 const rtlCache = createCache({
   key: 'muirtl',
@@ -14,12 +17,8 @@ const router = createBrowserRouter(
   [
     {
       path: '',
-      children: [
-        {
-          path: '',
-          Component: DashboardFeatureShell,
-        },
-      ],
+      element: <DashboardFeatureShell />,
+      children: [{}],
     },
   ],
   { basename: `/dashboard` }
@@ -27,9 +26,12 @@ const router = createBrowserRouter(
 
 export function App() {
   return (
-    <CacheProvider value={rtlCache}>
-      <RouterProvider router={router} />
-    </CacheProvider>
+    <ThemeProvider theme={theme}>
+      <CacheProvider value={rtlCache}>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </CacheProvider>
+    </ThemeProvider>
   );
 }
 

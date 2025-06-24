@@ -1,0 +1,69 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo",
+    "jsx": "react-jsx",
+    "lib": ["dom"],
+    "types": [
+      "node",
+      "@nx/react/typings/cssmodule.d.ts",
+      "@nx/react/typings/image.d.ts",
+      "vite/client"
+    ],
+    "rootDir": "src",
+    "moduleResolution": "bundler"
+  },
+  "exclude": [
+    "out-tsc",
+    "dist",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts",
+    "src/**/*.spec.tsx",
+    "src/**/*.test.tsx",
+    "src/**/*.spec.js",
+    "src/**/*.test.js",
+    "src/**/*.spec.jsx",
+    "src/**/*.test.jsx",
+    "vite.config.ts",
+    "vite.config.mts",
+    "vitest.config.ts",
+    "vitest.config.mts",
+    "eslint.config.js",
+    "eslint.config.cjs",
+    "eslint.config.mjs"
+  ],
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
+  "references": [
+    {
+      "path": "../../libs/workflow-engine/feature/advance-search/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/workflow-engine/feature/unassigned/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/workflow-engine/feature/drafts/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/workflow-engine/feature/tracking/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/workflow-engine/feature/settings/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/shared/util/app-core/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/workflow-engine/feature/inbox/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/workflow-engine/utils/redux-store/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/shared/util/mui-theme/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/workflow-engine/feature/workflow-engine-shell/tsconfig.lib.json"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "workflow-engine-menu",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/workflow-engine/data/workflow-engine-menu/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project workflow-engine-menu --web",
+  "targets": {}
+}

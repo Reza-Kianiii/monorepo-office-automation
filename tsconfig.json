@@ -26,6 +26,96 @@
     },
     {
       "path": "./libs/dashboard/data/menu"
+    },
+    {
+      "path": "./apps/workflow-engine-e2e"
+    },
+    {
+      "path": "./apps/workflow-engine"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/new-case"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/inbox"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/workflow-engine-shell"
+    },
+    {
+      "path": "./libs/shared/util/mui-theme"
+    },
+    {
+      "path": "./libs/workflow-engine/utils/redux-store"
+    },
+    {
+      "path": "./libs/shared/data/permission"
+    },
+    {
+      "path": "./libs/workflow-engine/data/workflow-engine-menu"
+    },
+    {
+      "path": "./libs/shared/util/app-core"
+    },
+    {
+      "path": "./libs/shared/ui/widget"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-inbox"
+    },
+    {
+      "path": "./libs/workflow-engine/data/login"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-get-user-token"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-get-pm-web-address"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/settings"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-settings"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/traking"
+    },
+    {
+      "path": "./libs/shared/util/core-hooks"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/tracking"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-tracking"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-notes"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/shared"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/drafts"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-drafts"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/Unassigned"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/unassigned"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-unassigned"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/advance-search"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-advance-search"
     }
   ]
 }

@@ -1,0 +1,22 @@
+{
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "../../data/data-notes"
+    },
+    {
+      "path": "../../data/data-inbox"
+    },
+    {
+      "path": "../../data/data-get-pm-web-address"
+    },
+    {
+      "path": "../../data/data-get-user-token"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ],
+  "extends": "../../../../tsconfig.base.json"
+}

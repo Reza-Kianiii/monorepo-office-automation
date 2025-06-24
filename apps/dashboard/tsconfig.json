@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/shared/util/mui-theme"
+    },
+    {
       "path": "../../libs/dashboard/feature/shell"
     },
     {
