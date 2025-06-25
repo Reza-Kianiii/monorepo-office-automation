@@ -11,8 +11,6 @@ export const dataInbox = createApi({
   tagTypes: ['notes'],
   baseQuery: fetchBaseQuery({
     baseUrl: 'api/',
-
-    // credentials: 'include',
   }),
 
   endpoints: (builder) => ({

@@ -21,7 +21,8 @@ import { WorkFlowEngineFeatureTranking } from '@office-automation/workflow-engin
 import { WorkFlowEngineFeatureDraft } from '@office-automation/workflow-engine/feature/drafts';
 import { WorkFlowEngineFeatureUnassigned } from '@office-automation/workflow-engine/feature/unassigned';
 import { WorkFlowEngineFeatureAdvanceSearch } from '@office-automation/workflow-engine/feature/advance-search';
-
+import { WorkFlowEngineFeaturePaused } from '@office-automation/workflow-engine/feature/paused';
+import { WorkFlowEngineFeatureSelectEngins } from '@office-automation/workflow-engine/feature/select-engins';
 // const rtlCache = createCache({
 //   key: 'muirtl',
 //   stylisPlugins: [prefixer, rtlPlugin],
@@ -56,6 +57,14 @@ const router = createBrowserRouter(
         {
           path: 'advance_search',
           Component: WorkFlowEngineFeatureAdvanceSearch,
+        },
+        {
+          path: 'paused',
+          Component: WorkFlowEngineFeaturePaused,
+        },
+        {
+          path: 'select_engins',
+          Component: WorkFlowEngineFeatureSelectEngins,
         },
       ],
     },

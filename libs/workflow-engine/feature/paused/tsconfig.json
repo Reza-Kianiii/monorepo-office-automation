@@ -3,7 +3,10 @@
   "include": [],
   "references": [
     {
-      "path": "../../data/data-advance-search"
+      "path": "../../data/data-paused"
+    },
+    {
+      "path": "../../data/data-drafts"
     },
     {
       "path": "../shared"

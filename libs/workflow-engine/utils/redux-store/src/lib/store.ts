@@ -19,7 +19,8 @@ import { NotesAPi } from '@office-automation/workflow-engine/data/data-notes';
 import { dataDraftsAPI } from '@office-automation/workflow-engine/data/data-drafts';
 import { dataUnassignedAPI } from '@office-automation/workflow-engine/data/data-unassigned';
 import { dataAdvanceSearchAPI } from '@office-automation/workflow-engine/data/data-advance-search';
-
+import { dataPausedAPI } from '@office-automation/workflow-engine/data/data-paused';
+import { dataSelectEnginsAPI } from '@office-automation/workflow-engine/data/data-select-engings';
 export const store = configureStore({
   reducer: {
     [permissonMenuApi.reducerPath]: permissonMenuApi.reducer,
@@ -37,6 +38,8 @@ export const store = configureStore({
     [dataDraftsAPI.reducerPath]: dataDraftsAPI.reducer,
     [dataUnassignedAPI.reducerPath]: dataUnassignedAPI.reducer,
     [dataAdvanceSearchAPI.reducerPath]: dataAdvanceSearchAPI.reducer,
+    [dataPausedAPI.reducerPath]: dataPausedAPI.reducer,
+    [dataSelectEnginsAPI.reducerPath]: dataSelectEnginsAPI.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -52,7 +55,9 @@ export const store = configureStore({
         NotesAPi.middleware,
         dataDraftsAPI.middleware,
         dataUnassignedAPI.middleware,
-        dataAdvanceSearchAPI.middleware
+        dataAdvanceSearchAPI.middleware,
+        dataPausedAPI.middleware,
+        dataSelectEnginsAPI.middleware
       ),
 });
 setupListeners(store.dispatch);

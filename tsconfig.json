@@ -116,6 +116,18 @@
     },
     {
       "path": "./libs/workflow-engine/data/data-advance-search"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/paused"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-paused"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/select-engins"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-select-engins"
     }
   ]
 }

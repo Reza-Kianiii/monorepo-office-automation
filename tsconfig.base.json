@@ -64,6 +64,12 @@
       "@office-automation/workflow-engine/data/data-notes": [
         "libs/workflow-engine/data/data-notes/src/index.ts"
       ],
+      "@office-automation/workflow-engine/data/data-paused": [
+        "libs/workflow-engine/data/data-paused/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/data/data-select-engings": [
+        "libs/workflow-engine/data/data-select-engins/src/index.ts"
+      ],
       "@office-automation/workflow-engine/data/data-settings": [
         "libs/workflow-engine/data/data-settings/src/index.ts"
       ],
@@ -90,6 +96,12 @@
       ],
       "@office-automation/workflow-engine/feature/new-case": [
         "libs/workflow-engine/feature/new-case/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/feature/paused": [
+        "libs/workflow-engine/feature/paused/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/feature/select-engins": [
+        "libs/workflow-engine/feature/select-engins/src/index.ts"
       ],
       "@office-automation/workflow-engine/feature/settings": [
         "libs/workflow-engine/feature/settings/src/index.ts"

@@ -259,6 +259,10 @@ importers:
 
   libs/workflow-engine/data/data-notes: {}
 
+  libs/workflow-engine/data/data-paused: {}
+
+  libs/workflow-engine/data/data-select-engins: {}
+
   libs/workflow-engine/data/data-settings: {}
 
   libs/workflow-engine/data/data-tracking: {}
@@ -276,6 +280,10 @@ importers:
   libs/workflow-engine/feature/inbox: {}
 
   libs/workflow-engine/feature/new-case: {}
+
+  libs/workflow-engine/feature/paused: {}
+
+  libs/workflow-engine/feature/select-engins: {}
 
   libs/workflow-engine/feature/settings: {}
 

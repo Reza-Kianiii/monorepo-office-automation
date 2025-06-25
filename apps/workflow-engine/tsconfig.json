@@ -3,6 +3,12 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/workflow-engine/feature/select-engins"
+    },
+    {
+      "path": "../../libs/workflow-engine/feature/paused"
+    },
+    {
       "path": "../../libs/workflow-engine/feature/advance-search"
     },
     {
