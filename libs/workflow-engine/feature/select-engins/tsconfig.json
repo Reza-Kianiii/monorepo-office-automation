@@ -3,7 +3,7 @@
   "include": [],
   "references": [
     {
-      "path": "../../data/data-select-engins"
+      "path": "../../../shared/ui/button"
     },
     {
       "path": "../../data/data-advance-search"
@@ -13,6 +13,9 @@
     },
     {
       "path": "../../../shared/ui/widget"
+    },
+    {
+      "path": "../../data/data-select-engins"
     },
     {
       "path": "./tsconfig.lib.json"

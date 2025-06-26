@@ -8,26 +8,16 @@ import {
   GridRowParams,
   GridActionsCellItem,
 } from '@mui/x-data-grid-premium';
-import ScreenShareSharpIcon from '@mui/icons-material/ScreenShareSharp';
-import EventNoteIcon from '@mui/icons-material/EventNote';
-import {
-  WorkFlowEngineFeatureSharedDialogIncomingDocument,
-  WorkFlowEngineFeatureSharedDialogNote,
-  WorkFlowEngineFeatureSharedDialogOutPutDocument,
-  WorkFlowEngineFeatureSharedDialogProcessInformation,
-  WorkFlowEngineFeatureSharedDialogProcessMaker,
-  WorkFlowEngineFeatureSharedDialogSummary,
-} from '@office-automation/workflow-engine/feature/shared';
-import { useGetAdvanceSearchQuery } from '@office-automation/workflow-engine/data/data-advance-search';
 import { useGetSelectEnginsQuery } from '@office-automation/workflow-engine/data/data-select-engings';
-
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
 import {
   WorkFlowEngineFeatureSelectEnginsCreateDialog,
   WorkFlowEngineFeatureSelectEnginsDeleteDialog,
   WorkFlowEngineFeatureSelectEnginsEditDialog,
 } from './workflow-engine-feature-select-engins-dialog';
+import { AddButton } from '@office-automation/shared/ui/button';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 export function WorkFlowEngineFeatureSelectEngins() {
   const [operation, setOperation] = React.useState<
     'DELETE' | 'CREATE' | 'EDIT' | 'NULL' | 'AUTOMATICCONFIGURATION'
@@ -39,10 +29,6 @@ export function WorkFlowEngineFeatureSelectEngins() {
 
   const { data: selectEngins, isLoading: isLoadingSelectEngins } =
     useGetSelectEnginsQuery();
-
-  if (selectEngins) {
-    console.log(JSON.parse(selectEngins), 'selectEngins');
-  }
 
   const [paginationModel, setPaginationModel] = React.useState({
     page: 0,
@@ -102,11 +88,13 @@ export function WorkFlowEngineFeatureSelectEngins() {
           //   onClick={() => setOperation('NOTE')}
           // />,
           <GridActionsCellItem
+            icon={<CreditCardIcon />}
             label="ویرایش"
             onClick={() => setOperation('EDIT')}
             showInMenu
           />,
           <GridActionsCellItem
+            icon={<DeleteIcon className="flex gap-4" />}
             label="حذف"
             onClick={() => setOperation('DELETE')}
             showInMenu
@@ -129,18 +117,10 @@ export function WorkFlowEngineFeatureSelectEngins() {
         actions={
           <>
             {
-              <Button
-                variant="contained"
-                //  startIcon={
-                //    <SvgIcon>
-                //      <AddOutlined />
-                //    </SvgIcon>
-                //  }
+              <AddButton
                 onClick={() => setOperation('CREATE')}
-                color="primary"
-              >
-                {'افزودن'}
-              </Button>
+                loading={isLoadingSelectEngins}
+              />
             }
           </>
         }

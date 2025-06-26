@@ -7,14 +7,18 @@ import {
   DialogTitle,
 } from '@mui/material';
 import { useForm, FormProvider } from 'react-hook-form';
-import WorkFlowEngineFeatureSharedFormNote from './workflow-engine-feature-shared-form-note';
 import WorkFlowEngineFeatureSelectEnginsForm from './workflow-engine-feature-select-engings-form';
 import { useCreateSelectEngineMutation } from '@office-automation/workflow-engine/data/data-select-engings';
+import { RegistryButton } from '@office-automation/shared/ui/button';
+import {
+  CreateSelectEngineApi,
+  SelectEnginsTypes,
+} from 'libs/workflow-engine/data/data-select-engins/src/lib/data-select-engins-models';
 
 export function WorkFlowEngineFeatureSelectEnginsCreateDialog({
   onclose,
 }: {
-  onclose: any;
+  onclose: () => void;
 }) {
   const [open, setOpen] = React.useState(true);
 
@@ -23,27 +27,28 @@ export function WorkFlowEngineFeatureSelectEnginsCreateDialog({
     onclose();
   };
 
-  const [createSelectEngine] = useCreateSelectEngineMutation();
+  const [createSelectEngine, { isLoading }] = useCreateSelectEngineMutation();
 
-  const methods = useForm({
+  const methods = useForm<CreateSelectEngineApi>({
     defaultValues: {
-      Name: null,
-      ServerName: null,
-      DbName: null,
-      DbUserName: null,
-      WebAddress: null,
-      LocalWebAddress: null,
-      PhisicalWebAddress: null,
-      EngineType: null,
-      Password: null,
-      ClientId: null,
-      ClientSecret: null,
+      Name: '',
+      ServerName: '',
+      DbName: '',
+      DbUserName: '',
+      WebAddress: '',
+      LocalWebAddress: '',
+      PhisicalWebAddress: '',
+      EngineType: '',
+      Password: '',
+      ClientId: '',
+      ClientSecret: '',
     },
   });
 
   const handleSubmit = (value: any) => {
-    console.log(value, 'handlesubmit');
-    createSelectEngine(value).then((value) => {});
+    createSelectEngine(value).then((value) => {
+      handleClose();
+    });
   };
 
   return (
@@ -63,12 +68,12 @@ export function WorkFlowEngineFeatureSelectEnginsCreateDialog({
           </DialogContent>
           <DialogActions>
             <>
-              <Button
+              <RegistryButton
                 variant="outlined"
                 onClick={methods.handleSubmit(handleSubmit)}
-              >
-                {'ثبت'}
-              </Button>
+                loading={isLoading}
+              />
+
               <Button variant="outlined" onClick={handleClose}>
                 {'انصراف'}
               </Button>
@@ -84,7 +89,7 @@ export function WorkFlowEngineFeatureSelectEnginsEditDialog({
   data,
   onclose,
 }: {
-  data: any;
+  data: SelectEnginsTypes;
   onclose: any;
 }) {
   const [open, setOpen] = React.useState(true);
@@ -96,7 +101,7 @@ export function WorkFlowEngineFeatureSelectEnginsEditDialog({
 
   console.log(data, 'datadata');
 
-  const methods = useForm({
+  const methods = useForm<SelectEnginsTypes>({
     defaultValues: {
       Name: data?.Name,
       ServerName: data?.serverName,
@@ -166,9 +171,7 @@ export function WorkFlowEngineFeatureSelectEnginsDeleteDialog({
         maxWidth={'md'}
       >
         <DialogTitle id="alert-dialog-title">{'موتور ها'}</DialogTitle>
-        <DialogContent>
-          {/* <WorkFlowEngineFeatureSharedFormNote /> */}
-        </DialogContent>
+        <DialogContent></DialogContent>
         <DialogActions>
           <>
             <Button variant="outlined" onClick={handleClose}>

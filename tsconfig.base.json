@@ -31,6 +31,9 @@
       "@office-automation/shared/data/permission": [
         "libs/shared/data/permission/src/index.ts"
       ],
+      "@office-automation/shared/ui/button": [
+        "libs/shared/ui/button/src/index.ts"
+      ],
       "@office-automation/shared/ui/drawer": [
         "libs/shared/ui/drawer/src/index.ts"
       ],

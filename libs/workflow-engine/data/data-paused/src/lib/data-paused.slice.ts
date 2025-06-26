@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
+//For missing data, specific types are used for the list
 export const dataPausedAPI = createApi({
   reducerPath: 'dataPausedAPI',
 

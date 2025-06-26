@@ -1,4 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {
+  CreateSelectEngineApi,
+  SelectEnginsTypes,
+} from './data-select-engins-models';
 
 export const dataSelectEnginsAPI = createApi({
   reducerPath: 'dataSelectEnginsAPI',
@@ -8,14 +12,14 @@ export const dataSelectEnginsAPI = createApi({
   }),
   tagTypes: ['selectEngins'],
   endpoints: (builder) => ({
-    getSelectEngins: builder.query<any, void>({
+    getSelectEngins: builder.query<SelectEnginsTypes[], void>({
       query: () => ({
         url: `SelectEngins/`,
         method: 'GET',
       }),
       providesTags: ['selectEngins'],
     }),
-    createSelectEngine: builder.mutation<any, any>({
+    createSelectEngine: builder.mutation<any, CreateSelectEngineApi>({
       query: (body) => ({
         url: `InsertEngine/`,
         method: 'POST',

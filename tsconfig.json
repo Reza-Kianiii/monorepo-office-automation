@@ -128,6 +128,9 @@
     },
     {
       "path": "./libs/workflow-engine/data/data-select-engins"
+    },
+    {
+      "path": "./libs/shared/ui/button"
     }
   ]
 }
