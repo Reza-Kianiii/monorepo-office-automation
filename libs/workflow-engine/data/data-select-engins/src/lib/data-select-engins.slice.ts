@@ -27,8 +27,28 @@ export const dataSelectEnginsAPI = createApi({
       }),
       invalidatesTags: ['selectEngins'],
     }),
+    updateSelectEngine: builder.mutation<any, any>({
+      query: (body) => ({
+        url: `UpdateEngine/`,
+        method: 'PATCH',
+        body,
+      }),
+      invalidatesTags: ['selectEngins'],
+    }),
+    deleteSelectEngine: builder.mutation<any, any>({
+      query: (body) => ({
+        url: `DeleteEngine`,
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['selectEngins'],
+    }),
   }),
 });
 
-export const { useGetSelectEnginsQuery, useCreateSelectEngineMutation } =
-  dataSelectEnginsAPI;
+export const {
+  useGetSelectEnginsQuery,
+  useCreateSelectEngineMutation,
+  useUpdateSelectEngineMutation,
+  useDeleteSelectEngineMutation,
+} = dataSelectEnginsAPI;

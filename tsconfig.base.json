@@ -70,6 +70,9 @@
       "@office-automation/workflow-engine/data/data-paused": [
         "libs/workflow-engine/data/data-paused/src/index.ts"
       ],
+      "@office-automation/workflow-engine/data/data-processes": [
+        "libs/workflow-engine/data/data-processes/src/index.ts"
+      ],
       "@office-automation/workflow-engine/data/data-select-engings": [
         "libs/workflow-engine/data/data-select-engins/src/index.ts"
       ],
@@ -102,6 +105,9 @@
       ],
       "@office-automation/workflow-engine/feature/paused": [
         "libs/workflow-engine/feature/paused/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/feature/processes": [
+        "libs/workflow-engine/feature/processes/src/index.ts"
       ],
       "@office-automation/workflow-engine/feature/select-engins": [
         "libs/workflow-engine/feature/select-engins/src/index.ts"

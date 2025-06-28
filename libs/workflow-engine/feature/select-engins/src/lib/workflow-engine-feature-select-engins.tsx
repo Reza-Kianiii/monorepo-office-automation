@@ -30,6 +30,10 @@ export function WorkFlowEngineFeatureSelectEngins() {
   const { data: selectEngins, isLoading: isLoadingSelectEngins } =
     useGetSelectEnginsQuery();
 
+  if (selectEngins) {
+    console.log(JSON.parse(selectEngins), 'selectengins');
+  }
+
   const [paginationModel, setPaginationModel] = React.useState({
     page: 0,
     pageSize: 5,
@@ -71,22 +75,13 @@ export function WorkFlowEngineFeatureSelectEngins() {
         headerName: 'ادرس وب موتور شبکه داخلی',
         width: 110,
         editable: false,
+        flex: 1,
       },
       {
         field: 'actions',
         type: 'actions',
-        width: 140,
+        width: 50,
         getActions: (params: GridRowParams) => [
-          // <GridActionsCellItem
-          //   icon={<ScreenShareSharpIcon />}
-          //   label="نمایش"
-          //   onClick={() => setOperation('PROSECCMAKER')}
-          // />,
-          // <GridActionsCellItem
-          //   icon={<EventNoteIcon />}
-          //   label="یادداشت ها"
-          //   onClick={() => setOperation('NOTE')}
-          // />,
           <GridActionsCellItem
             icon={<CreditCardIcon />}
             label="ویرایش"
@@ -97,11 +92,6 @@ export function WorkFlowEngineFeatureSelectEngins() {
             icon={<DeleteIcon className="flex gap-4" />}
             label="حذف"
             onClick={() => setOperation('DELETE')}
-            showInMenu
-          />,
-          <GridActionsCellItem
-            label="انجام خودکار تنظیمات"
-            onClick={() => setOperation('AUTOMATICCONFIGURATION')}
             showInMenu
           />,
         ],
@@ -172,7 +162,7 @@ export function WorkFlowEngineFeatureSelectEngins() {
       )}
       {operation === 'DELETE' && (
         <WorkFlowEngineFeatureSelectEnginsDeleteDialog
-          id={selectedWorkflowEngineSelecEngins.current?.Id}
+          data={selectedWorkflowEngineSelecEngins.current}
           onclose={() => setOperation('NULL')}
         />
       )}

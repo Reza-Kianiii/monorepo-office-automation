@@ -21,6 +21,8 @@ import { dataUnassignedAPI } from '@office-automation/workflow-engine/data/data-
 import { dataAdvanceSearchAPI } from '@office-automation/workflow-engine/data/data-advance-search';
 import { dataPausedAPI } from '@office-automation/workflow-engine/data/data-paused';
 import { dataSelectEnginsAPI } from '@office-automation/workflow-engine/data/data-select-engings';
+import { dataProcessesAPI } from '@office-automation/workflow-engine/data/data-processes';
+
 export const store = configureStore({
   reducer: {
     [permissonMenuApi.reducerPath]: permissonMenuApi.reducer,
@@ -40,6 +42,7 @@ export const store = configureStore({
     [dataAdvanceSearchAPI.reducerPath]: dataAdvanceSearchAPI.reducer,
     [dataPausedAPI.reducerPath]: dataPausedAPI.reducer,
     [dataSelectEnginsAPI.reducerPath]: dataSelectEnginsAPI.reducer,
+    [dataProcessesAPI.reducerPath]: dataProcessesAPI.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -57,7 +60,8 @@ export const store = configureStore({
         dataUnassignedAPI.middleware,
         dataAdvanceSearchAPI.middleware,
         dataPausedAPI.middleware,
-        dataSelectEnginsAPI.middleware
+        dataSelectEnginsAPI.middleware,
+        dataProcessesAPI.middleware
       ),
 });
 setupListeners(store.dispatch);

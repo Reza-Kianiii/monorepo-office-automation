@@ -79,9 +79,6 @@
       "path": "./libs/workflow-engine/data/data-settings"
     },
     {
-      "path": "./libs/workflow-engine/feature/traking"
-    },
-    {
       "path": "./libs/shared/util/core-hooks"
     },
     {
@@ -131,6 +128,12 @@
     },
     {
       "path": "./libs/shared/ui/button"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/Processes"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-processes"
     }
   ]
 }

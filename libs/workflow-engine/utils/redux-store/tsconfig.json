@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../data/data-processes"
+    },
+    {
       "path": "../../data/data-select-engins"
     },
     {

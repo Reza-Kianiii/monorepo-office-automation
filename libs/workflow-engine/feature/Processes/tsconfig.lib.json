@@ -28,19 +28,19 @@
     "eslint.config.cjs",
     "eslint.config.mjs"
   ],
-  "include": [
-    "src/**/*.js",
-    "src/**/*.jsx",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "../tracking/src/lib/workflow-engine-feature-tranking.tsx",
-    "../tracking/src/lib/workflow-engine-feature-tranking.spec.tsx",
-    "../tracking/src/lib/workflow-engine-feature-tranking-horizontal-filters.tsx",
-    "../tracking/src/lib/workflow-engine-feature-tranking-horizontal-filters.spec.tsx"
-  ],
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
-      "path": "../tracking/tsconfig.lib.json"
+      "path": "../../data/data-processes/tsconfig.lib.json"
+    },
+    {
+      "path": "../../../shared/ui/button/tsconfig.lib.json"
+    },
+    {
+      "path": "../../data/data-select-engins/tsconfig.lib.json"
+    },
+    {
+      "path": "../../../shared/ui/widget/tsconfig.lib.json"
     }
   ]
 }

@@ -1,12 +1,5 @@
-import {
-  Button,
-  ButtonProps,
-  SvgIcon,
-  Tooltip,
-  IconButton,
-} from '@mui/material';
+import { Button, ButtonProps, SvgIcon } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
 
 export function AddButton(props: ButtonProps) {
   return (

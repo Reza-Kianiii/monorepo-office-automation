@@ -8,7 +8,11 @@ import {
 } from '@mui/material';
 import { useForm, FormProvider } from 'react-hook-form';
 import WorkFlowEngineFeatureSelectEnginsForm from './workflow-engine-feature-select-engings-form';
-import { useCreateSelectEngineMutation } from '@office-automation/workflow-engine/data/data-select-engings';
+import {
+  useCreateSelectEngineMutation,
+  useDeleteSelectEngineMutation,
+  useUpdateSelectEngineMutation,
+} from '@office-automation/workflow-engine/data/data-select-engings';
 import { RegistryButton } from '@office-automation/shared/ui/button';
 import {
   CreateSelectEngineApi,
@@ -99,16 +103,17 @@ export function WorkFlowEngineFeatureSelectEnginsEditDialog({
     onclose();
   };
 
-  console.log(data, 'datadata');
+  const [updateSelectEngine, { isLoading }] = useUpdateSelectEngineMutation();
 
   const methods = useForm<SelectEnginsTypes>({
     defaultValues: {
+      Id: data?.Id,
       Name: data?.Name,
       ServerName: data?.serverName,
       DbName: data?.DbName,
       DbUserName: data?.DbserName,
       WebAddress: data?.WebAddress,
-      LocalWebAddress: data?.localWebAddress,
+      LocalWebAddress: data?.LocalWebAddress,
       PhisicalWebAddress: data?.PhisicalWebAddress,
       EngineType: data.EngineType,
       Password: data?.Password,
@@ -116,6 +121,12 @@ export function WorkFlowEngineFeatureSelectEnginsEditDialog({
       ClientSecret: data?.ClientSecret,
     },
   });
+
+  const handleSubmit = (value: SelectEnginsTypes) => {
+    updateSelectEngine(value).then((value) => {
+      handleClose();
+    });
+  };
 
   return (
     <React.Fragment>
@@ -134,6 +145,11 @@ export function WorkFlowEngineFeatureSelectEnginsEditDialog({
           </DialogContent>
           <DialogActions>
             <>
+              <RegistryButton
+                variant="outlined"
+                onClick={methods.handleSubmit(handleSubmit)}
+                loading={isLoading}
+              />
               <Button variant="outlined" onClick={handleClose}>
                 {'انصراف'}
               </Button>
@@ -146,41 +162,56 @@ export function WorkFlowEngineFeatureSelectEnginsEditDialog({
 }
 
 export function WorkFlowEngineFeatureSelectEnginsDeleteDialog({
-  id,
+  data,
   onclose,
 }: {
-  id: number;
+  data: any;
   onclose: any;
 }) {
   const [open, setOpen] = React.useState(true);
+
+  const [deleteSelectEngine, { isLoading: isLoadingSelectEngins }] =
+    useDeleteSelectEngineMutation();
 
   const handleClose = () => {
     setOpen(false);
     onclose();
   };
 
+  const handleSubmit = () => {
+    deleteSelectEngine({ Id: data?.Id }).then((value) => {
+      handleClose();
+    });
+  };
+
   return (
     <React.Fragment>
-      {/* <FormProvider {...methods}> */}
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         fullWidth
-        maxWidth={'md'}
+        maxWidth={'sm'}
       >
         <DialogTitle id="alert-dialog-title">{'موتور ها'}</DialogTitle>
-        <DialogContent></DialogContent>
+        <DialogContent>
+          <h5>آیا از حذف ایتم {data?.Name} اطمینان دارید؟</h5>
+        </DialogContent>
         <DialogActions>
           <>
+            <RegistryButton
+              variant="contained"
+              onClick={handleSubmit}
+              loading={isLoadingSelectEngins}
+              color="error"
+            />
             <Button variant="outlined" onClick={handleClose}>
               {'انصراف'}
             </Button>
           </>
         </DialogActions>
       </Dialog>
-      {/* </FormProvider> */}
     </React.Fragment>
   );
 }
