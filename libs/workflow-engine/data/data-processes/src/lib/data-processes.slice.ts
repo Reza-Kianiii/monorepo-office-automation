@@ -29,6 +29,14 @@ export const dataProcessesAPI = createApi({
       }),
       invalidatesTags: ['project'],
     }),
+    deleteProject: builder.mutation<any, any>({
+      query: (body) => ({
+        url: `DeleteProject/`,
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['project'],
+    }),
   }),
 });
 
@@ -36,4 +44,5 @@ export const {
   useGetProcessesQuery,
   useGetCategoryQuery,
   useCreateProjectMutation,
+  useDeleteProjectMutation,
 } = dataProcessesAPI;

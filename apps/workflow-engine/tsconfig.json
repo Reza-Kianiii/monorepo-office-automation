@@ -3,6 +3,12 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/workflow-engine/feature/reports"
+    },
+    {
+      "path": "../../libs/workflow-engine/feature/user-sync"
+    },
+    {
       "path": "../../libs/workflow-engine/feature/select-engins"
     },
     {

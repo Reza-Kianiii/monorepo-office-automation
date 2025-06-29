@@ -17,7 +17,10 @@ import {
   CreateSelectEngineApi,
   SelectEnginsTypes,
 } from 'libs/workflow-engine/data/data-select-engins/src/lib/data-select-engins-models';
-import { WorkFlowEngineFeatureProcessesForm } from './workflow-engine-feature-processes-form';
+import {
+  WorkFlowEngineFeatureFormProcesses,
+  WorkFlowEngineFeatureProcessesForm,
+} from './workflow-engine-feature-processes-form';
 // import * as React from 'react';
 // import Dialog from '@mui/material/Dialog';
 import List from '@mui/material/List';
@@ -28,9 +31,15 @@ import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
-import { useGetUserTokenQuery } from '@office-automation/workflow-engine/data/data-get-user-token';
+import {
+  getUserToken,
+  useGetUserTokenQuery,
+} from '@office-automation/workflow-engine/data/data-get-user-token';
 import { useGetPmWebAddressQuery } from '@office-automation/workflow-engine/data/data-get-pm-web-address';
-import { useCreateProjectMutation } from '@office-automation/workflow-engine/data/data-processes';
+import {
+  useCreateProjectMutation,
+  useDeleteProjectMutation,
+} from '@office-automation/workflow-engine/data/data-processes';
 
 // import WorkFlowEngineFeatureSharedFormProcessMaker from './workflow-engine-feature-shared-form-process-maker';
 
@@ -119,31 +128,42 @@ export function WorkFlowEngineFeatureProcessesDialog({
     onclose();
   };
 
+  console.log(data, 'datakkkkkkkkk');
+
   const { data: userToken } = useGetUserTokenQuery();
 
   const { data: dataGetPmWebAddress } = useGetPmWebAddressQuery();
+
+  console.log(dataGetPmWebAddress, 'datagetpmwebaddress');
+
+  // console.log(dataGetPmWebAddress, 'dataGetPmWebAddress');
 
   var protocol = window.location.protocol;
   var Automationurl = window.location.hostname;
   var Automationport = window.location.port;
 
+  // console.log(Automationurl, Automationport, 'uiuiqwerqwerqwfsdfgsdfgsdf');
+
   const url = React.useMemo(() => {
     return (
       dataGetPmWebAddress +
-      'sysworkflow/fa/noavaran/login/login?userToken=' +
-      userToken +
-      '&engineCode=&WebOfficeURL=' +
-      protocol +
-      '//' +
-      '172.16.193.155' +
-      ':' +
-      '8080' +
-      '&Workspace=sysworkflow&deputy=0&lang=fa&show=1&appUid=' +
-      data.app_uid +
-      '&delIndex=' +
-      data.del_index +
-      '&action=' +
-      data.app_status
+      `sysworkflow/fa/noavaran/login/login?userToken=` +
+      getUserToken +
+      `&process=1&engineCode=` +
+      `` +
+      `&WebOfficeURL=` +
+      (protocol + `//` + `172.16.193.155` + ':' + `4200`) +
+      `&Workspace=` +
+      'sysworkflow' +
+      '&deputy=0' +
+      '&lang=fa' +
+      `&appUid=` +
+      `` +
+      `&delIndex=` +
+      `&action=` +
+      '' +
+      `&proUid=` +
+      data?.prj_uid
     );
   }, [userToken, dataGetPmWebAddress]);
 
@@ -176,79 +196,64 @@ export function WorkFlowEngineFeatureProcessesDialog({
           </Toolbar>
         </AppBar>
         <List className="h-full">
-          {/* <WorkFlowEngineFeatureSharedFormProcessMaker url={url} /> */}
+          <WorkFlowEngineFeatureFormProcesses url={url} />
         </List>
       </Dialog>
     </React.Fragment>
   );
 }
 
-// export function WorkFlowEngineFeatureSelectEnginsCreateDialog({
-//   onclose,
-// }: {
-//   onclose: () => void;
-// }) {
-//   const [open, setOpen] = React.useState(true);
+export function WorkFlowEngineFeatureProcessesDeleteDialog({
+  data,
+  onclose,
+}: {
+  data: any;
+  onclose: any;
+}) {
+  const [open, setOpen] = React.useState(true);
 
-//   const handleClose = () => {
-//     setOpen(false);
-//     onclose();
-//   };
+  const [deleteProject, { isLoading: isLoadingProject }] =
+    useDeleteProjectMutation();
 
-//   const [createSelectEngine, { isLoading }] = useCreateSelectEngineMutation();
+  const handleClose = () => {
+    setOpen(false);
+    onclose();
+  };
 
-//   const methods = useForm<CreateSelectEngineApi>({
-//     defaultValues: {
-//       Name: '',
-//       ServerName: '',
-//       DbName: '',
-//       DbUserName: '',
-//       WebAddress: '',
-//       LocalWebAddress: '',
-//       PhisicalWebAddress: '',
-//       EngineType: '',
-//       Password: '',
-//       ClientId: '',
-//       ClientSecret: '',
-//     },
-//   });
+  const handleSubmit = () => {
+    deleteProject({ prj_uid: data?.prj_uid }).then((value) => {
+      handleClose();
+    });
+  };
 
-//   const handleSubmit = (value: any) => {
-//     createSelectEngine(value).then((value) => {
-//       handleClose();
-//     });
-//   };
-
-//   return (
-//     <React.Fragment>
-//       <FormProvider {...methods}>
-//         <Dialog
-//           open={open}
-//           onClose={handleClose}
-//           aria-labelledby="alert-dialog-title"
-//           aria-describedby="alert-dialog-description"
-//           fullWidth
-//           maxWidth={'md'}
-//         >
-//           <DialogTitle id="alert-dialog-title">{'موتور ها'}</DialogTitle>
-//           <DialogContent>
-//             <WorkFlowEngineFeatureSelectEnginsForm />
-//           </DialogContent>
-//           <DialogActions>
-//             <>
-//               <RegistryButton
-//                 variant="outlined"
-//                 onClick={methods.handleSubmit(handleSubmit)}
-//                 loading={isLoading}
-//               />
-
-//               <Button variant="outlined" onClick={handleClose}>
-//                 {'انصراف'}
-//               </Button>
-//             </>
-//           </DialogActions>
-//         </Dialog>
-//       </FormProvider>
-//     </React.Fragment>
-//   );
-// }
+  return (
+    <React.Fragment>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        fullWidth
+        maxWidth={'sm'}
+      >
+        <DialogTitle id="alert-dialog-title">{'موتور ها'}</DialogTitle>
+        <DialogContent>
+          <h5>آیا از حذف ایتم {data?.Name} اطمینان دارید؟</h5>
+        </DialogContent>
+        <DialogActions>
+          <>
+            <RegistryButton
+              variant="contained"
+              onClick={handleSubmit}
+              loading={isLoadingProject}
+              color="error"
+            />
+            <Button variant="outlined" onClick={handleClose}>
+              {'انصراف'}
+            </Button>
+          </>
+        </DialogActions>
+      </Dialog>
+    </React.Fragment>
+  );
+}

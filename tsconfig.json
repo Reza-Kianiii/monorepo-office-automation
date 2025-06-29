@@ -134,6 +134,18 @@
     },
     {
       "path": "./libs/workflow-engine/data/data-processes"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/user-sync"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-user-sync"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-reports"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/reports"
     }
   ]
 }

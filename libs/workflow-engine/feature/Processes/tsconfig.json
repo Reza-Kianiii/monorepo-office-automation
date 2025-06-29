@@ -3,7 +3,13 @@
   "include": [],
   "references": [
     {
-      "path": "../../data/data-processes"
+      "path": "../../../shared/ui/widget"
+    },
+    {
+      "path": "../../data/data-get-pm-web-address"
+    },
+    {
+      "path": "../../data/data-get-user-token"
     },
     {
       "path": "../../../shared/ui/button"
@@ -12,7 +18,7 @@
       "path": "../../data/data-select-engins"
     },
     {
-      "path": "../../../shared/ui/widget"
+      "path": "../../data/data-processes"
     },
     {
       "path": "./tsconfig.lib.json"

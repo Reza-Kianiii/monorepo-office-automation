@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const getUserToken = createApi({
   reducerPath: 'getUserToken',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'api/ProcessMaker/',
+    baseUrl: 'api/PMAuth/',
 
     // credentials: 'include',
   }),

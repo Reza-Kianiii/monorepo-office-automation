@@ -85,6 +85,12 @@
       "@office-automation/workflow-engine/data/data-unassigned": [
         "libs/workflow-engine/data/data-unassigned/src/index.ts"
       ],
+      "@office-automation/workflow-engine/data/data-user-sync": [
+        "libs/workflow-engine/data/data-user-sync/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/data/data_reports": [
+        "libs/workflow-engine/data/data-reports/src/index.ts"
+      ],
       "@office-automation/workflow-engine/data/login": [
         "libs/workflow-engine/data/login/src/index.ts"
       ],
@@ -109,6 +115,9 @@
       "@office-automation/workflow-engine/feature/processes": [
         "libs/workflow-engine/feature/processes/src/index.ts"
       ],
+      "@office-automation/workflow-engine/feature/reports": [
+        "libs/workflow-engine/feature/reports/src/index.ts"
+      ],
       "@office-automation/workflow-engine/feature/select-engins": [
         "libs/workflow-engine/feature/select-engins/src/index.ts"
       ],
@@ -123,6 +132,9 @@
       ],
       "@office-automation/workflow-engine/feature/unassigned": [
         "libs/workflow-engine/feature/unassigned/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/feature/user-sync": [
+        "libs/workflow-engine/feature/user-sync/src/index.ts"
       ],
       "@office-automation/workflow-engine/feature/workflow-engine-shell": [
         "libs/workflow-engine/feature/workflow-engine-shell/src/index.ts"
