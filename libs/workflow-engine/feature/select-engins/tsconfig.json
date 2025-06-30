@@ -1,0 +1,19 @@
+{
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "../../../shared/ui/widget"
+    },
+    {
+      "path": "../../../shared/ui/button"
+    },
+    {
+      "path": "../../data/data-select-engins"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ],
+  "extends": "../../../../tsconfig.base.json"
+}

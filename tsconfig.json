@@ -79,9 +79,6 @@
       "path": "./libs/workflow-engine/data/data-settings"
     },
     {
-      "path": "./libs/workflow-engine/feature/traking"
-    },
-    {
       "path": "./libs/shared/util/core-hooks"
     },
     {
@@ -116,6 +113,39 @@
     },
     {
       "path": "./libs/workflow-engine/data/data-advance-search"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/paused"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-paused"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/select-engins"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-select-engins"
+    },
+    {
+      "path": "./libs/shared/ui/button"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/Processes"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-processes"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/user-sync"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-user-sync"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-reports"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/reports"
     }
   ]
 }

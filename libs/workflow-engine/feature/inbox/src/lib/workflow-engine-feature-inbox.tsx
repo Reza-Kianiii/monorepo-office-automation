@@ -1,8 +1,5 @@
 import Box from '@mui/material/Box';
-
 import React, { useEffect, useRef } from 'react';
-// import { GridRowParams } from '@mui/x-data-grid';
-// import { GridActionsCellItem, GridRowParams } from '@mui/x-data-grid-pro';
 import { SharedUiWidgetHeader } from '@office-automation/shared/ui/widget';
 import {
   DataGridPremium,
@@ -11,25 +8,15 @@ import {
   GridRowParams,
   GridActionsCellItem,
 } from '@mui/x-data-grid-premium';
-
 import {
   toggleButton,
   usePostGetDataInboxMutation,
 } from '@office-automation/workflow-engine/data/data-inbox';
 import ScreenShareSharpIcon from '@mui/icons-material/ScreenShareSharp';
-import WorkflowEngineFeatureInboxModels, {
-  WorkflowEngineFeatureInboxIncomingDocumentsModels,
-  WorkflowEngineFeatureInboxModelsf,
-  WorkflowEngineFeatureInboxModelsProcessMaker,
-  WorkflowEngineFeatureInboxOutPutDocumentModels,
-  WorkflowEngineFeatureInboxProcessInformationModels,
-  WorkflowEngineFeatureInboxSummaryModels,
-} from './workflow-engine-feature-inbox-models';
 import WorkFlowEngineFeatureInboxHorizontalFilter from './workflow-engine-feature-inbox-horizontal-filters';
 import { store } from '@office-automation/workflow-engine/utils/redux-store';
 import { useSelector } from 'react-redux';
 import { VaribleSelection } from '@office-automation/workflow-engine/data/data-settings';
-// import WorkflowEngineFeatureInboxModelsf from './workflow-engine-feature-inbox-models';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import { useColumnState } from '@office-automation/shared/util/core-hooks';
 
@@ -67,7 +54,6 @@ export function WorkFlowEngineFeatureInbox() {
   const [postGetDataInbox, { isLoading }] = usePostGetDataInboxMutation();
 
   const selectedFilters = useSelector((state) => state?.inboxFiltersHorizontal);
-  console.log(selectedFilters, 'selectedfilteruuuuiui');
 
   const rows = useRef<any[]>([]);
 

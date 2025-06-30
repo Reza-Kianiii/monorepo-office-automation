@@ -1,0 +1,9 @@
+{
+  "name": "@office-automation/select-engins",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/workflow-engine/feature/select-engins/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project @office-automation/select-engins --web",
+  "targets": {}
+}

@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { AnyMxRecord } from 'dns';
 import { AdvanceSearch } from './data-advance-search.models';
 
 export const dataAdvanceSearchAPI = createApi({

@@ -1,0 +1,28 @@
+{
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "../../../shared/ui/widget"
+    },
+    {
+      "path": "../../data/data-get-pm-web-address"
+    },
+    {
+      "path": "../../data/data-get-user-token"
+    },
+    {
+      "path": "../../../shared/ui/button"
+    },
+    {
+      "path": "../../data/data-select-engins"
+    },
+    {
+      "path": "../../data/data-processes"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ],
+  "extends": "../../../../tsconfig.base.json"
+}

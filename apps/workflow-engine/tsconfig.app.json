@@ -36,6 +36,18 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
+      "path": "../../libs/workflow-engine/feature/reports/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/workflow-engine/feature/user-sync/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/workflow-engine/feature/select-engins/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/workflow-engine/feature/paused/tsconfig.lib.json"
+    },
+    {
       "path": "../../libs/workflow-engine/feature/advance-search/tsconfig.lib.json"
     },
     {

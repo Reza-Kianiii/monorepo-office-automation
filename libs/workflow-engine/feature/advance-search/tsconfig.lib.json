@@ -34,9 +34,6 @@
       "path": "../../data/data-advance-search/tsconfig.lib.json"
     },
     {
-      "path": "../../data/data-drafts/tsconfig.lib.json"
-    },
-    {
       "path": "../shared/tsconfig.lib.json"
     },
     {

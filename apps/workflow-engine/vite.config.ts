@@ -30,6 +30,7 @@ export default defineConfig(() => ({
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
+  base: './',
   build: {
     outDir: './dist',
     emptyOutDir: true,

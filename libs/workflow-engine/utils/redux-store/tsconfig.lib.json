@@ -31,6 +31,21 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
+      "path": "../../data/data-reports/tsconfig.lib.json"
+    },
+    {
+      "path": "../../data/data-user-sync/tsconfig.lib.json"
+    },
+    {
+      "path": "../../data/data-processes/tsconfig.lib.json"
+    },
+    {
+      "path": "../../data/data-select-engins/tsconfig.lib.json"
+    },
+    {
+      "path": "../../data/data-paused/tsconfig.lib.json"
+    },
+    {
       "path": "../../data/data-advance-search/tsconfig.lib.json"
     },
     {
