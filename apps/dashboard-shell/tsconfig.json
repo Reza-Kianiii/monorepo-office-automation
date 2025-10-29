@@ -3,7 +3,16 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/dashboard-shell/utils/redux-store"
+    },
+    {
+      "path": "../../libs/shared/util/mui-theme"
+    },
+    {
       "path": "../../libs/dashboard-shell/feature/home"
+    },
+    {
+      "path": "../../libs/shared/util/app-core"
     },
     {
       "path": "./tsconfig.app.json"

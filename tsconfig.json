@@ -146,6 +146,9 @@
     },
     {
       "path": "./libs/workflow-engine/feature/reports"
+    },
+    {
+      "path": "./libs/dashboard-shell/utils/redux-store"
     }
   ]
 }

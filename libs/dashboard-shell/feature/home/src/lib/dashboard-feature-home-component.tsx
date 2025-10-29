@@ -10,34 +10,23 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import DashboardFeatureCardsComponent from './dashboard-feature-cards-component';
 import { PieChart } from '@mui/x-charts/PieChart';
 import { desktopOS, valueFormatter } from './webusagestatechart';
 import { BarChart } from '@mui/x-charts/BarChart';
 import Card from '@mui/material/Card';
-import { Gauge, gaugeClasses } from '@mui/x-charts/Gauge';
 import { LineChart } from '@mui/x-charts/LineChart';
+import DashboardFeatureCardsComponent from './dashboard-feature-cards-component';
 import MailIcon from '@mui/icons-material/Mail';
 import PersonIcon from '@mui/icons-material/Person';
-import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
-import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import DashboardFeatureGridComponent from './dashboard-feature-grid-component';
 import AppBar from '@mui/material/AppBar';
 import Drawer from '@mui/material/Drawer';
+import { UserProfileMenu } from './components/UserProfileMenu';
+import { NotificationMenu } from './components/NotificationMenu';
 
 const drawerWidth = 240;
 
-const settings = {
-  width: 200,
-  height: 200,
-  value: 60,
-};
+// removed unused DashboardFeatureCardsComponent import and settings helper
 
 const sample = [1, 10, 30, 50, 70, 90, 100];
 
@@ -49,6 +38,12 @@ export function DashboardFeatureHome() {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+
+  // State for mobile drawer
+
+  // Any future state management can be added here
+
+  // Any future state management can be added here
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -72,8 +67,8 @@ export function DashboardFeatureHome() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component="nav">
-        <Toolbar>
-          <IconButton
+        <Toolbar className="flex justify-between">
+          {/* <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
@@ -81,21 +76,64 @@ export function DashboardFeatureHome() {
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
-          </IconButton>
-          {/* <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            MUI
-          </Typography> */}
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          </IconButton> */}
+
+          <NotificationMenu
+            notifications={[
+              {
+                id: '1',
+                title: 'درخواست مرخصی جدید',
+                message: 'علی محمدی درخواست مرخصی ثبت کرده است',
+                time: '۵ دقیقه پیش',
+                isRead: false,
+                type: 'info',
+              },
+              {
+                id: '2',
+                title: 'تایید درخواست',
+                message: 'درخواست شماره ۱۲۳ تایید شد',
+                time: '۱ ساعت پیش',
+                isRead: true,
+                type: 'success',
+              },
+              {
+                id: '3',
+                title: 'هشدار سیستم',
+                message: 'لطفا گزارش هفتگی خود را ثبت کنید',
+                time: '۲ ساعت پیش',
+                isRead: false,
+                type: 'warning',
+              },
+            ]}
+            onNotificationClick={(id) => {
+              console.log('Notification clicked:', id);
+            }}
+            onMarkAllRead={() => {
+              console.log('Mark all as read');
+            }}
+            onClearAll={() => {
+              console.log('Clear all notifications');
+            }}
+          />
+
+          <UserProfileMenu
+            onLogout={() => {
+              // Handle logout
+              console.log('Logout clicked');
+            }}
+            onProfileClick={() => {
+              // Handle profile click
+              console.log('Profile clicked');
+            }}
+          />
+
+          {/* <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {/* {navItems.map((item) => (
               <Button key={item} sx={{ color: '#fff' }}>
                 {item}
               </Button>
             ))} */}
-          </Box>
+          {/* </Box> */}
         </Toolbar>
       </AppBar>
       <nav>
