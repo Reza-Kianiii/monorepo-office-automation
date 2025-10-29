@@ -234,6 +234,8 @@ importers:
 
   libs/dashboard-shell/feature/home: {}
 
+  libs/dashboard-shell/utils/redux-store: {}
+
   libs/dashboard/data/menu: {}
 
   libs/dashboard/feature/shell: {}

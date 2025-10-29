@@ -10,3 +10,5 @@ packages:
   - 'libs/shared/data/*'
   - 'libs/workflow-engine/data/*'
   - 'data-unassigned'
+  - 'libs/dashboard-shell/*'
+  - 'libs/dashboard-shell/utils/*'

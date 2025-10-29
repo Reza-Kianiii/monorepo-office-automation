@@ -22,6 +22,9 @@
       "@office-automation/dashboard-shell/feature/home": [
         "libs/dashboard-shell/feature/home/src/index.ts"
       ],
+      "@office-automation/dashboard-shell/utils/redux-store": [
+        "libs/dashboard-shell/utils/redux-store/src/index.ts"
+      ],
       "@office-automation/dashboard/data/menu": [
         "libs/dashboard/data/menu/src/index.ts"
       ],

@@ -32,7 +32,16 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
+      "path": "../../libs/dashboard-shell/utils/redux-store/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/shared/util/mui-theme/tsconfig.lib.json"
+    },
+    {
       "path": "../../libs/dashboard-shell/feature/home/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/shared/util/app-core/tsconfig.lib.json"
     }
   ]
 }

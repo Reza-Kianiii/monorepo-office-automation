@@ -7,10 +7,7 @@ import rtlPlugin from 'stylis-plugin-rtl';
 import { WorkflowEngineFeatureWorkflowEngineShell } from '@office-automation/workflow-engine/feature/workflow-engine-shell';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
-import {
-  createSharedTheme,
-  theme,
-} from '@office-automation/shared/util/mui-theme';
+import { createSharedTheme } from '@office-automation/shared/util/mui-theme';
 import { Provider } from 'react-redux';
 import { store } from '@office-automation/workflow-engine/utils/redux-store';
 import { WorkFlowEngineFeatureInbox } from '@office-automation/workflow-engine/feature/inbox';
