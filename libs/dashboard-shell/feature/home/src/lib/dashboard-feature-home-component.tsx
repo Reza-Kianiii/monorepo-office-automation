@@ -15,23 +15,14 @@ import {
   IconButton,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
-import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlined';
-import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
-import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
-import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
-import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import { color, motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { LineChart } from '@mui/x-charts/LineChart';
 import { PieChart } from '@mui/x-charts/PieChart';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 import { UserProfileMenu } from './components/UserProfileMenu';
 import { NotificationMenu } from './components/NotificationMenu';
-import AssignmentIcon from '@mui/icons-material/Assignment';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import PersonOffIcon from '@mui/icons-material/PersonOff';
@@ -39,18 +30,21 @@ import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { desktopOS, valueFormatter } from './components/webUsageState';
+import { valueFormatter } from './components/webUsageState';
 import DashboardFeatureChartComponent from './dashboard-feature-chart-component';
+import { OutlinedCard } from './dashboard-feature-cards-component';
 
 const drawerWidth = 240;
 const navItems = ['خانه', 'پرسنل', 'مرخصی‌ها', 'گزارشات', 'مدیریت'];
 
 const COLORS = {
-  background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)',
+  background: '#bfdbfe',
   card: 'rgba(255,255,255,0.06)',
   text: '#F8FAFC',
+  // primary: '#38BDF8',
   primary: '#38BDF8',
-  border: 'rgba(255,255,255,0.15)',
+  // border: 'rgba(255,255,255,0.15)',
+  border: 'black',
   glow: '#38BDF850',
 };
 
@@ -67,29 +61,82 @@ export function DashboardFeatureHome() {
 
   const cards = [
     {
-      title: 'کارتابل من',
-      value: 12,
-      icon: <AssignmentTurnedInOutlinedIcon />,
+      title: 'کل نامه ها',
+      value: 15,
+      icon: (
+        <div className="flex justify-center items-center w-[50px] h-[40px]  rounded-lg bg-gray-500">
+          <PauseCircleIcon sx={{ color: 'white' }} />
+        </div>
+      ),
     },
-    { title: 'پیش نویس های من', value: 4, icon: <DraftsIcon /> },
-    { title: 'پیگیری', value: 34, icon: <TrackChangesIcon /> },
+    {
+      title: 'نامه های خوانده نشده',
+      value: 7,
+      icon: (
+        <div className="flex justify-center items-center w-[50px] h-[40px]  rounded-lg bg-green-500">
+          <ManageSearchIcon sx={{ color: 'white' }} />
+        </div>
+      ),
+    },
+    {
+      title: 'نامه های ارسال شده',
+      value: 5,
+      icon: (
+        <div className="flex justify-center items-center w-[50px] h-[40px]  rounded-lg bg-blue-500">
+          <AccountTreeIcon sx={{ color: 'white' }} />
+        </div>
+      ),
+    },
+    {
+      title: 'نامه های در درست اقدام',
+      value: 9,
+      icon: (
+        <div className="flex justify-center items-center w-[50px] h-[40px]  rounded-lg bg-yellow-500">
+          <SettingsIcon sx={{ color: 'white' }} />
+        </div>
+      ),
+    },
+
+    {
+      title: 'در دست اقدام',
+      value: 12,
+      icon: (
+        <div className="flex justify-center items-center w-[50px] h-[40px]  rounded-lg bg-red-500">
+          <AssignmentTurnedInOutlinedIcon
+            sx={{ color: 'white' }}
+            // className={'bg-red-500'}
+          />
+        </div>
+      ),
+    },
+
+    {
+      title: 'پیگیری',
+      value: 34,
+      icon: (
+        <div className="flex justify-center items-center w-[50px] h-[40px]  rounded-lg bg-orange-500">
+          <TrackChangesIcon sx={{ color: 'white' }} />
+        </div>
+      ),
+    },
     {
       title: 'اختصاص نیافته ها',
       value: 3,
-      icon: <PersonOffIcon />,
+      icon: (
+        <div className="flex justify-center items-center w-[50px] h-[40px]  rounded-lg bg-gray-500">
+          <PersonOffIcon sx={{ color: 'white' }} />
+        </div>
+      ),
     },
     {
       title: 'متوقف شده ها',
-      value: 15,
-      icon: <PauseCircleIcon />,
+      value: 4,
+      icon: (
+        <div className="flex justify-center items-center w-[50px] h-[40px]  rounded-lg bg-amber-500">
+          <DraftsIcon sx={{ color: 'white' }} />
+        </div>
+      ),
     },
-    { title: 'جستوجوی پیشرفته', value: 7, icon: <ManageSearchIcon /> },
-    {
-      title: 'فرایند ها',
-      value: 5,
-      icon: <AccountTreeIcon />,
-    },
-    { title: 'موتورها', value: 9, icon: <SettingsIcon /> },
   ];
 
   return (
@@ -116,15 +163,15 @@ export function DashboardFeatureHome() {
               color: { value: ['#38BDF8', '#60A5FA', '#3B82F6'] },
               links: {
                 color: '#38BDF8',
-                distance: 130,
+                distance: 200,
                 enable: true,
-                opacity: 0.2,
-                width: 1.2,
+                opacity: 3,
+                width: 3,
               },
               move: { enable: true, speed: 0.4 },
               number: { value: 60, density: { enable: true, area: 900 } },
               opacity: { value: 0.4 },
-              size: { value: { min: 1, max: 3 } },
+              size: { value: { min: 1, max: 10 } },
             },
             detectRetina: true,
           }}
@@ -159,10 +206,11 @@ export function DashboardFeatureHome() {
             <MenuIcon />
           </IconButton>
           <Typography
-            variant="h6"
-            sx={{ fontWeight: 700, color: COLORS.primary }}
+            variant="subtitle1"
+            sx={{ fontWeight: 700, color: 'black' }}
           >
-            داشبورد اتوماسیون اداری
+            کاربر گرامی کاربر ارشد به سیستم اتوماسیون اداری و مدیرت فرایند
+            الکترومیزان اندیشه خوش آمدید
           </Typography>
           <Box className="flex gap-3 items-center">
             <NotificationMenu
@@ -219,11 +267,12 @@ export function DashboardFeatureHome() {
       </Drawer>
 
       {/* محتوای اصلی */}
-      <Box component="main" className="flex-1 flex flex-col relative p-4 z-10">
+      <Box component="main" className="flex-1 flex flex-col relative px-20 ">
         <Toolbar />
-        <Box className="flex flex-col gap-6 p-6">
+        <Box className="flex flex-col gap-6 p-6 ">
           {/* کارت‌ها */}
-          <Box className="flex flex-wrap justify-center gap-6 mt-4">
+          {/* <Box className="flex flex-wrap justify-center gap-6 mt-4"> */}
+          <Box className="grid grid-cols-1   sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
             {cards.map((item, i) => (
               <motion.div
                 key={i}
@@ -232,16 +281,13 @@ export function DashboardFeatureHome() {
                 transition={{ duration: 0.3 + i * 0.05 }}
               >
                 <Card
-                  className="flex flex-col items-center justify-center p-6"
+                  className="flex items-center justify-between p-6"
                   sx={{
                     borderRadius: '16px',
-                    width: 230,
-                    height: 130,
-                    // background: COLORS.card,
-                    background: 'transparent',
-                    border: `1.5px solid ${COLORS.border}`,
+                    width: '100%',
+                    height: 80,
+                    background: 'white',
                     boxShadow: '0 8px 20px rgba(0,0,0,0.3)',
-                    backdropFilter: 'blur(12px)',
                     transition: 'all 0.35s ease',
                     '&:hover': {
                       transform: 'translateY(-6px)',
@@ -251,19 +297,11 @@ export function DashboardFeatureHome() {
                     },
                   }}
                 >
-                  <Box className="text-3xl mb-2" sx={{ color: COLORS.primary }}>
+                  <div className="flex items-center gap-3">
                     {item.icon}
-                  </Box>
-                  <Typography
-                    variant="subtitle1"
-                    sx={{ fontWeight: 600, color: '#E2E8F0' }}
-                  >
-                    {item.title}
-                  </Typography>
-                  <Typography
-                    variant="h6"
-                    sx={{ fontWeight: 700, color: COLORS.primary }}
-                  >
+                    <Typography variant="subtitle2">{item.title}</Typography>
+                  </div>
+                  <Typography variant="h6" sx={{ fontWeight: 700 }}>
                     {item.value}
                   </Typography>
                 </Card>
@@ -271,20 +309,28 @@ export function DashboardFeatureHome() {
             ))}
           </Box>
 
+          <Box className="flex justify-center align-center gap-10 mx-12 ">
+            <OutlinedCard />
+            <OutlinedCard />
+            <OutlinedCard />
+          </Box>
+
           {/* چارت‌ها */}
-          <Box className="flex flex-wrap justify-center gap-8 mt-10">
+          <Box className="grid grid-cols-2 gap-8 ">
+            {/* <div className="h-[40px] bg-yellow-500 "> reza</div>
+            <div className="h-[40px] bg-blue-500  ">ali</div> */}
             <Card
               sx={{
                 borderRadius: '20px',
-                bgcolor: COLORS.card,
-                border: `1px solid ${COLORS.border}`,
+                bgcolor: 'white',
+                // border: `1px solid ${COLORS.border}`,
                 // width: 460,
                 height: 320,
                 backdropFilter: 'blur(10px)',
               }}
               className="p-6"
             >
-              <Typography variant="h6" sx={{ mb: 2, color: '#E2E8F0' }}>
+              <Typography variant="h6" sx={{ mb: 2 }}>
                 امار کاربران من
               </Typography>
               <DashboardFeatureChartComponent />
@@ -293,15 +339,15 @@ export function DashboardFeatureHome() {
             <Card
               sx={{
                 borderRadius: '20px',
-                bgcolor: COLORS.card,
-                border: `1px solid ${COLORS.border}`,
+                bgcolor: 'white',
+                // border: `1px solid ${COLORS.border}`,
                 // width: 380,
                 height: 320,
                 backdropFilter: 'blur(10px)',
               }}
               className="p-6"
             >
-              <Typography variant="h6" sx={{ mb: 2, color: '#E2E8F0' }}>
+              <Typography variant="h6" sx={{ mb: 2 }}>
                 نوع درخواست‌ها
               </Typography>
               <PieChart
@@ -324,18 +370,18 @@ export function DashboardFeatureHome() {
                     valueFormatter,
                   },
                 ]}
-                sx={{
-                  // 👇 این بخش *قطعاً* متن Legend رو سفید می‌کنه
-                  '& .MuiChartsLegend-root': {
-                    color: '#fff !important',
-                  },
-                  // 👇 برای اطمینان، رنگ نقاط دایره کنار متن هم سفید نشه
-                  '& .MuiChartsLegend-mark': {
-                    stroke: '#fff',
-                  },
-                }}
+                // sx={{
+                //   // 👇 این بخش *قطعاً* متن Legend رو سفید می‌کنه
+                //   '& .MuiChartsLegend-root': {
+                //     color: '#fff !important',
+                //   },
+                //   // 👇 برای اطمینان، رنگ نقاط دایره کنار متن هم سفید نشه
+                //   '& .MuiChartsLegend-mark': {
+                //     stroke: '#fff',
+                //   },
+                // }}
                 height={200}
-                width={200}
+                width={300}
               />
             </Card>
           </Box>

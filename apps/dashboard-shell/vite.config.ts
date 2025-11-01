@@ -8,7 +8,8 @@ export default defineConfig(() => ({
   cacheDir: '../../node_modules/.vite/apps/dashboard-shell',
   server: {
     port: 4200,
-    host: 'localhost',
+    // host: 'localhost',
+    host: '0.0.0.0',
   },
   preview: {
     port: 4300,

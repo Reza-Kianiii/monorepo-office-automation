@@ -37,13 +37,13 @@ export function DashboardFeatureChartComponent() {
         { ...seriesE, stack: 'total' },
         { ...seriesF, stack: 'total' },
       ]}
-      sx={{
-        // محور‌ها
-        '& .MuiChartsAxis-root text': { fill: '#fff !important' },
-        // 👇 Legend بالا (Series A/B/C)
-        '& .MuiChartsLegend-root text': { fill: '#fff !important' },
-        '& .MuiChartsLegend-horizontal': { color: '#fff !important' },
-      }}
+      // sx={{
+      //   // محور‌ها
+      //   '& .MuiChartsAxis-root text': { fill: '#fff !important' },
+      //   // 👇 Legend بالا (Series A/B/C)
+      //   '& .MuiChartsLegend-root text': { fill: '#fff !important' },
+      //   '& .MuiChartsLegend-horizontal': { color: '#fff !important' },
+      // }}
     />
   );
 }

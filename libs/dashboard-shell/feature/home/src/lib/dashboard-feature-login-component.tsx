@@ -46,7 +46,7 @@ const drawerWidth = 240;
 const navItems = ['خانه', 'پرسنل', 'مرخصی‌ها', 'گزارشات', 'مدیریت'];
 
 const COLORS = {
-  background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)',
+  background: '#bfdbfe',
   card: 'rgba(255,255,255,0.06)',
   text: '#F8FAFC',
   primary: '#38BDF8',
@@ -85,18 +85,40 @@ export function DashboardFeatureLoginComponent() {
           options={{
             background: { color: { value: 'transparent' } },
             fpsLimit: 60,
+            interactivity: {
+              events: {
+                onClick: {
+                  enable: true,
+                  mode: 'push',
+                },
+                onHover: {
+                  enable: true,
+                  mode: 'repulse',
+                },
+                resize: true,
+              },
+              modes: {
+                push: {
+                  quantity: 4,
+                },
+                repulse: {
+                  distance: 200,
+                  duration: 0.4,
+                },
+              },
+            },
             particles: {
               color: { value: ['#38BDF8', '#60A5FA', '#3B82F6'] },
               links: {
                 color: '#38BDF8',
-                distance: 130,
+                distance: 300,
                 enable: true,
-                opacity: 0.2,
-                width: 1.2,
+                opacity: 1,
+                width: 4,
               },
               move: { enable: true, speed: 0.4 },
-              number: { value: 60, density: { enable: true, area: 900 } },
-              opacity: { value: 0.4 },
+              number: { value: 80, density: { enable: true, area: 900 } },
+              opacity: { value: 2 },
               size: { value: { min: 1, max: 3 } },
             },
             detectRetina: true,
