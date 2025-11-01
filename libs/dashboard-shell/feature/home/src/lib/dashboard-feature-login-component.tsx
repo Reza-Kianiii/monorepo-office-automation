@@ -74,6 +74,8 @@ export function DashboardFeatureLoginComponent() {
         color: COLORS.text,
         position: 'relative',
         overflow: 'hidden',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <CssBaseline />
@@ -84,7 +86,7 @@ export function DashboardFeatureLoginComponent() {
           id="tsparticles"
           options={{
             background: { color: { value: 'transparent' } },
-            fpsLimit: 60,
+            fpsLimit: 50,
             interactivity: {
               events: {
                 onClick: {
@@ -99,7 +101,7 @@ export function DashboardFeatureLoginComponent() {
               },
               modes: {
                 push: {
-                  quantity: 4,
+                  quantity: 1,
                 },
                 repulse: {
                   distance: 200,
@@ -114,12 +116,12 @@ export function DashboardFeatureLoginComponent() {
                 distance: 300,
                 enable: true,
                 opacity: 1,
-                width: 4,
+                width: 2,
               },
-              move: { enable: true, speed: 0.4 },
+              move: { enable: true, speed: 1 },
               number: { value: 80, density: { enable: true, area: 900 } },
               opacity: { value: 2 },
-              size: { value: { min: 1, max: 3 } },
+              size: { value: { min: 1, max: 5 } },
             },
             detectRetina: true,
           }}
@@ -131,6 +133,10 @@ export function DashboardFeatureLoginComponent() {
           }}
         />
       )}
+      <Box className="w-[90vw] h-[90vh] bg-red-500 flex p-4">
+        <div className="w-1/2 bg-blue-500 h-full"></div>
+        <div className="w-1/2 bg-green-500 h-full"></div>
+      </Box>
     </Box>
   );
 }
