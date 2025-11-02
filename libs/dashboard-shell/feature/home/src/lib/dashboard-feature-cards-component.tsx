@@ -63,28 +63,28 @@ const bull = (
 const card = (
   <React.Fragment>
     <CardContent>
-      <Typography
+      {/* <Typography
         className="flex justify-center"
         gutterBottom
         sx={{ color: 'text.secondary', fontSize: 14 }}
       >
         سمت های کاربر
-      </Typography>
+      </Typography> */}
       <Typography variant="h5" component="div">
         {/* be{bull}nev{bull}o{bull}lent */}
       </Typography>
       <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>
-        adjective
+        سمت های کاربر
       </Typography>
       <Typography variant="body2">
-        well meaning and kindly.
+        کارشناس نرم افزار
         <br />
-        {'"a benevolent smile"'}
+        سرپرست سخت افزار
       </Typography>
     </CardContent>
-    <CardActions>
+    {/* <CardActions>
       <Button size="small">Learn More</Button>
-    </CardActions>
+    </CardActions> */}
   </React.Fragment>
 );
 

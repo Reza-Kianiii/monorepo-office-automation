@@ -6,6 +6,7 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 export default defineConfig(() => ({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/dashboard-shell',
+  base: '/',
   server: {
     port: 4200,
     // host: 'localhost',
@@ -20,8 +21,16 @@ export default defineConfig(() => ({
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
+  // build: {
+  //   outDir: './dist',
+  //   emptyOutDir: true,
+  //   reportCompressedSize: true,
+  //   commonjsOptions: {
+  //     transformMixedEsModules: true,
+  //   },
+  // },
   build: {
-    outDir: './dist',
+    outDir: '../../dist/apps/dashboard-shell',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {

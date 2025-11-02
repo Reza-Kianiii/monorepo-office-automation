@@ -1,46 +1,18 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
+import { loadSlim } from '@tsparticles/slim';
 import {
   Box,
   CssBaseline,
-  Card,
-  Toolbar,
-  Typography,
-  AppBar,
-  Divider,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
+  TextField,
   IconButton,
+  InputAdornment,
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
-import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
-import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlined';
-import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
-import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
-import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
-import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
-import { color, motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import { LineChart } from '@mui/x-charts/LineChart';
-import { PieChart } from '@mui/x-charts/PieChart';
-import Particles, { initParticlesEngine } from '@tsparticles/react';
-import { loadSlim } from '@tsparticles/slim';
-import { UserProfileMenu } from './components/UserProfileMenu';
-import { NotificationMenu } from './components/NotificationMenu';
-import AssignmentIcon from '@mui/icons-material/Assignment';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import TrackChangesIcon from '@mui/icons-material/TrackChanges';
-import PersonOffIcon from '@mui/icons-material/PersonOff';
-import PauseCircleIcon from '@mui/icons-material/PauseCircle';
-import ManageSearchIcon from '@mui/icons-material/ManageSearch';
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import SettingsIcon from '@mui/icons-material/Settings';
-import { desktopOS, valueFormatter } from './components/webUsageState';
-import DashboardFeatureChartComponent from './dashboard-feature-chart-component';
+import { Visibility, VisibilityOff } from '@mui/icons-material'; // 👈 آیکون‌های چشم از MUI
+import DashboardFeatureUserAndPassComponent from './dashboard-feature-userAndPass-component';
+import { CardMedia } from '@mui/material';
+// import logo from './../../../../../../apps/dashboard-shell/src/assets/images/carlos-muza-hpjSkU2UYSU-unsplash.jpg';
 
 const drawerWidth = 240;
 const navItems = ['خانه', 'پرسنل', 'مرخصی‌ها', 'گزارشات', 'مدیریت'];
@@ -58,6 +30,10 @@ export function DashboardFeatureLoginComponent() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [init, setInit] = useState(false);
   const handleDrawerToggle = () => setMobileOpen((prev) => !prev);
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => setShowPassword(!showPassword);
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -85,7 +61,9 @@ export function DashboardFeatureLoginComponent() {
         <Particles
           id="tsparticles"
           options={{
-            background: { color: { value: 'transparent' } },
+            // background: {
+            //   color: { value: COLORS.background }, // 👈 این خط باعث میشه background رنگی باشه نه شفاف
+            // },
             fpsLimit: 50,
             interactivity: {
               events: {
@@ -129,13 +107,45 @@ export function DashboardFeatureLoginComponent() {
             position: 'absolute',
             width: '100%',
             height: '100%',
-            zIndex: 0,
+            zIndex: -1, // 👈 خیلی مهم
           }}
         />
       )}
-      <Box className="w-[90vw] h-[90vh] bg-red-500 flex p-4">
-        <div className="w-1/2 bg-blue-500 h-full"></div>
-        <div className="w-1/2 bg-green-500 h-full"></div>
+      <Box
+        className="w-[60vw] h-[60vh] flex p-4 rounded-2xl shadow-xl backdrop-blur-md"
+        sx={{
+          backgroundColor: 'rgba(255, 255, 255, 0.15)',
+          border: '1px solid rgba(255, 255, 255, 0.25)',
+        }}
+      >
+        {/* بخش سمت چپ */}
+        <Box className="w-1/2 h-full rounded-xl flex flex-col justify-center items-center gap-4 bg-white">
+          <DashboardFeatureUserAndPassComponent />
+        </Box>
+
+        <Box
+          className="w-1/2 h-full rounded-xl"
+          sx={{
+            backgroundColor: 'rgba(34, 197, 94, 0.2)',
+            backdropFilter: 'blur(10px)',
+          }}
+        >
+          <CardMedia
+            component="img"
+            // image={'/kelly-sikkema-lFtttcsx5Vk-unsplash.jpg'}
+            // image="/eden-constantino-OXmym9cuaEY-unsplash.jpg"
+            image="/carlos-muza-hpjSkU2UYSU-unsplash.jpg"
+            alt="لوگوی سیستم"
+            // className="h-full w-full"
+            sx={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'fill',
+              objectPosition: 'center',
+              borderRadius: 2,
+            }}
+          />
+        </Box>
       </Box>
     </Box>
   );
