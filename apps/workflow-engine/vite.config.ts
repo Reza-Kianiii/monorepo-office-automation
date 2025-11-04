@@ -12,7 +12,7 @@ export default defineConfig(() => ({
     proxy: {
       '/api': {
         // target: 'http://172.16.192.214:8010/',
-        target: 'http://172.16.193.155:8080/',
+        target: 'http://172.16.193.155:8090/',
         // target: 'http://172.16.192.214:8010/',
         changeOrigin: true,
         secure: false,
@@ -30,9 +30,9 @@ export default defineConfig(() => ({
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
-  base: './',
+  base: '/workflow-engine',
   build: {
-    outDir: './dist',
+    outDir: '../../dist/apps/workflow-engine',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {

@@ -313,7 +313,7 @@ export function DashboardFeatureHome() {
             ))}
           </Box>
 
-          <Box className="flex justify-center align-center gap-10 mx-12 ">
+          <Box className="flex justify-center align-center gap-10  ">
             <OutlinedCard />
             <OutlinedCardProcessMaker />
             <OutlinedCardAutomation />

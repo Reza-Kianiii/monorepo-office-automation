@@ -27,6 +27,7 @@ import {
   useNavigate,
   useParams,
 } from 'react-router-dom';
+import { title } from 'process';
 
 const drawerWidth = 240;
 
@@ -123,7 +124,7 @@ export function SharedUiDrawer({ menu }: { menu?: any }) {
       <CssBaseline />
       <AppBarComponent open={open} handleDrawerOpen={handleDrawerOpen} />
       <DrawerComponent
-        menu={menu}
+        menu={[]}
         open={open}
         handleDrawerClose={handleDrawerClose}
       />
@@ -162,9 +163,6 @@ export const AppBarComponent = React.memo(function AppBarComponent({
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap component="div">
-          Mini variant drawer
-        </Typography>
       </Toolbar>
     </AppBar>
   );
@@ -181,6 +179,8 @@ export const DrawerComponent = React.memo(function DrawerComponent({
 }) {
   const theme = useTheme();
 
+  const navigate = useNavigate();
+
   return (
     <Drawer variant="permanent" open={open}>
       <DrawerHeader>
@@ -194,8 +194,19 @@ export const DrawerComponent = React.memo(function DrawerComponent({
       </DrawerHeader>
       <Divider />
       <List>
-        {menu?.map((text, index) => (
-          <ListItem key={text?.title} disablePadding sx={{ display: 'block' }}>
+        {[
+          { title: 'کارتابل', route: 'inbox', id: 1 },
+          { title: 'پیگیری', route: 'tracking', id: 2 },
+          { title: 'تنظیمات', route: 'settings', id: 3 },
+          { title: 'پیش نویس', route: 'drafts', id: 4 },
+          { title: 'جست و جوی پیشرفته', route: 'advance_search', id: 5 },
+          { title: 'متوقف شده', route: 'paused', id: 6 },
+          { title: 'موتور ها', route: 'select_engins', id: 7 },
+          { title: 'فرایند ها', route: 'processes', id: 8 },
+          { title: 'هم سازان سازی کاربران', route: 'user_sync', id: 9 },
+          { title: 'گزارش ها', route: 'reports', id: 10 },
+        ]?.map((text, index) => (
+          <ListItem key={text?.id} disablePadding sx={{ display: 'block' }}>
             <ListItemButton
               sx={[
                 {
@@ -239,6 +250,9 @@ export const DrawerComponent = React.memo(function DrawerComponent({
                         opacity: 0,
                       },
                 ]}
+                onClick={() => {
+                  navigate(`${text?.route}`);
+                }}
               />
             </ListItemButton>
           </ListItem>

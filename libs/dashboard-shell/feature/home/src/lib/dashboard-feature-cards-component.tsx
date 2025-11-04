@@ -5,6 +5,10 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import EmailIcon from '@mui/icons-material/Email';
+
+import GroupsIcon from '@mui/icons-material/Groups';
+import { useNavigate } from 'react-router-dom';
+
 export function DashboardFeatureCardsComponent({ icon }: { icon: any }) {
   return (
     <Card
@@ -65,7 +69,7 @@ const card = (
   <React.Fragment>
     <CardContent>
       <p style={{ textAlign: 'center' }}>
-        <AccountTreeIcon
+        <GroupsIcon
           sx={{
             color: 'text.secondary',
             mr: 1,
@@ -87,7 +91,7 @@ const card = (
 
 export function OutlinedCard() {
   return (
-    <Box sx={{ minWidth: 275 }}>
+    <Box sx={{ width: '100%' }}>
       <Card
         variant="outlined"
         style={{
@@ -116,23 +120,23 @@ const cardProssMaker = (
         />
       </p>
       <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>
-        ماژول پروسس میکر
-      </Typography>
-      <Typography variant="body2">
-        کارشناس نرم افزار
-        <br />
-        سرپرست سخت افزار
+        مدیرت فرایند ها
       </Typography>
     </CardContent>
   </React.Fragment>
 );
 
 export function OutlinedCardProcessMaker() {
+  const navigate = useNavigate();
   return (
-    <Box sx={{ minWidth: 275 }}>
+    <Box
+      sx={{ width: '100%' }}
+      onClick={() => (window.location.href = '/workflow-engine/')}
+    >
       <Card
         variant="outlined"
         style={{
+          height: '100%',
           borderRadius: '30px',
           boxShadow:
             '0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.08), 0 15px 40px rgba(0, 0, 0, 0.05)',
@@ -158,12 +162,7 @@ const cardAutomation = (
         />
       </p>
       <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>
-        ماژول اتوماسیون
-      </Typography>
-      <Typography variant="body2">
-        کارشناس نرم افزار
-        <br />
-        سرپرست سخت افزار
+        اتوماسیون
       </Typography>
     </CardContent>
   </React.Fragment>
@@ -171,10 +170,14 @@ const cardAutomation = (
 
 export function OutlinedCardAutomation() {
   return (
-    <Box sx={{ minWidth: 275 }}>
+    <Box
+      sx={{ width: '100%' }}
+      onClick={() => (window.location.href = '/workflow-engine/inbox')}
+    >
       <Card
         variant="outlined"
         style={{
+          height: '100%',
           borderRadius: '30px',
           boxShadow:
             '0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.08), 0 15px 40px rgba(0, 0, 0, 0.05)',
