@@ -134,7 +134,7 @@ export function DashboardFeatureLoginComponent() {
             component="img"
             // image={'/kelly-sikkema-lFtttcsx5Vk-unsplash.jpg'}
             // image="/eden-constantino-OXmym9cuaEY-unsplash.jpg"
-            image="/carlos-muza-hpjSkU2UYSU-unsplash.jpg"
+            image="/dashboard-shell/carlos-muza-hpjSkU2UYSU-unsplash.jpg"
             alt="لوگوی سیستم"
             // className="h-full w-full"
             sx={{

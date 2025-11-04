@@ -29,7 +29,7 @@ export function DashboardFeatureUserAndPassComponent() {
       <div className="mb-6">
         <CardMedia
           component="img"
-          image="/Companylogo.jpg"
+          image="/dashboard-shell/Companylogo.jpg"
           alt="لوگوی سیستم"
           // className="h-full w-full"
           className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
