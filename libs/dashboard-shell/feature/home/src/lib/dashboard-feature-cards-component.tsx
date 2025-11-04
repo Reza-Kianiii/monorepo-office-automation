@@ -1,9 +1,10 @@
-import { Card, Box, Typography } from '@mui/material';
+import { Card, Box, Typography, CardMedia } from '@mui/material';
 import * as React from 'react';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import EmailIcon from '@mui/icons-material/Email';
 export function DashboardFeatureCardsComponent({ icon }: { icon: any }) {
   return (
     <Card
@@ -63,16 +64,15 @@ const bull = (
 const card = (
   <React.Fragment>
     <CardContent>
-      {/* <Typography
-        className="flex justify-center"
-        gutterBottom
-        sx={{ color: 'text.secondary', fontSize: 14 }}
-      >
-        سمت های کاربر
-      </Typography> */}
-      <Typography variant="h5" component="div">
-        {/* be{bull}nev{bull}o{bull}lent */}
-      </Typography>
+      <p style={{ textAlign: 'center' }}>
+        <AccountTreeIcon
+          sx={{
+            color: 'text.secondary',
+            mr: 1,
+            fontSize: '50px',
+          }}
+        />
+      </p>
       <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>
         سمت های کاربر
       </Typography>
@@ -82,16 +82,107 @@ const card = (
         سرپرست سخت افزار
       </Typography>
     </CardContent>
-    {/* <CardActions>
-      <Button size="small">Learn More</Button>
-    </CardActions> */}
   </React.Fragment>
 );
 
 export function OutlinedCard() {
   return (
-    <Box sx={{ minWidth: 275 }} className="bg-red-500">
-      <Card variant="outlined">{card}</Card>
+    <Box sx={{ minWidth: 275 }}>
+      <Card
+        variant="outlined"
+        style={{
+          borderRadius: '30px',
+          boxShadow:
+            '0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.08), 0 15px 40px rgba(0, 0, 0, 0.05)',
+          transition: 'all 0.3s ease-in-out',
+        }}
+      >
+        {card}
+      </Card>
+    </Box>
+  );
+}
+
+const cardProssMaker = (
+  <React.Fragment>
+    <CardContent>
+      <p style={{ textAlign: 'center' }}>
+        <AccountTreeIcon
+          sx={{
+            color: 'text.secondary',
+            mr: 1,
+            fontSize: '50px',
+          }}
+        />
+      </p>
+      <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>
+        ماژول پروسس میکر
+      </Typography>
+      <Typography variant="body2">
+        کارشناس نرم افزار
+        <br />
+        سرپرست سخت افزار
+      </Typography>
+    </CardContent>
+  </React.Fragment>
+);
+
+export function OutlinedCardProcessMaker() {
+  return (
+    <Box sx={{ minWidth: 275 }}>
+      <Card
+        variant="outlined"
+        style={{
+          borderRadius: '30px',
+          boxShadow:
+            '0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.08), 0 15px 40px rgba(0, 0, 0, 0.05)',
+          transition: 'all 0.3s ease-in-out',
+        }}
+      >
+        {cardProssMaker}
+      </Card>
+    </Box>
+  );
+}
+
+const cardAutomation = (
+  <React.Fragment>
+    <CardContent>
+      <p style={{ textAlign: 'center' }}>
+        <EmailIcon
+          sx={{
+            color: 'text.secondary',
+            mr: 1,
+            fontSize: '50px',
+          }}
+        />
+      </p>
+      <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>
+        ماژول اتوماسیون
+      </Typography>
+      <Typography variant="body2">
+        کارشناس نرم افزار
+        <br />
+        سرپرست سخت افزار
+      </Typography>
+    </CardContent>
+  </React.Fragment>
+);
+
+export function OutlinedCardAutomation() {
+  return (
+    <Box sx={{ minWidth: 275 }}>
+      <Card
+        variant="outlined"
+        style={{
+          borderRadius: '30px',
+          boxShadow:
+            '0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.08), 0 15px 40px rgba(0, 0, 0, 0.05)',
+          transition: 'all 0.3s ease-in-out',
+        }}
+      >
+        {cardAutomation}
+      </Card>
     </Box>
   );
 }

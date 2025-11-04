@@ -32,7 +32,11 @@ import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { valueFormatter } from './components/webUsageState';
 import DashboardFeatureChartComponent from './dashboard-feature-chart-component';
-import { OutlinedCard } from './dashboard-feature-cards-component';
+import {
+  OutlinedCard,
+  OutlinedCardAutomation,
+  OutlinedCardProcessMaker,
+} from './dashboard-feature-cards-component';
 
 const drawerWidth = 240;
 const navItems = ['خانه', 'پرسنل', 'مرخصی‌ها', 'گزارشات', 'مدیریت'];
@@ -311,8 +315,8 @@ export function DashboardFeatureHome() {
 
           <Box className="flex justify-center align-center gap-10 mx-12 ">
             <OutlinedCard />
-            <OutlinedCard />
-            <OutlinedCard />
+            <OutlinedCardProcessMaker />
+            <OutlinedCardAutomation />
           </Box>
 
           {/* چارت‌ها */}
