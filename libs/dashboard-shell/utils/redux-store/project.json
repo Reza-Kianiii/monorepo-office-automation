@@ -10,11 +10,12 @@
       "outputs": ["{options.outputFile}"]
     },
     "build": {
-      "executor": "@nx/vite:build",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/libs/dashboard-shell/utils/redux-store"
+        "outputPath": "dist/libs/dashboard-shell/utils/redux-store",
+        "main": "libs/dashboard-shell/utils/redux-store/src/index.ts",
+        "tsConfig": "libs/dashboard-shell/utils/redux-store/tsconfig.lib.json"
       }
     },
     "test": {

@@ -1,7 +1,9 @@
 import { Card, Box, Typography } from '@mui/material';
-import MailIcon from '@mui/icons-material/Mail';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import PersonIcon from '@mui/icons-material/Person';
+import * as React from 'react';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+
 export function DashboardFeatureCardsComponent({ icon }: { icon: any }) {
   return (
     <Card
@@ -32,21 +34,11 @@ export function DashboardFeatureCardsComponent({ icon }: { icon: any }) {
             height: '56px',
             justifyContent: 'center',
             alignItems: 'center',
-
-            // backgroundColor: '#ff725e',
-            // width: 40,
-            // height: 40,
-            // borderRadius: 2,
-            // display: 'flex',
-            // alignItems: 'center',
-            // justifyContent: 'center',
-            // mb: 1,
           }}
         >
           {icon}
         </Box>
         <div>
-          {/* عنوان و مقدار */}
           <Typography variant="body2" fontWeight={600} color="text.secondary">
             Messages
           </Typography>
@@ -55,53 +47,51 @@ export function DashboardFeatureCardsComponent({ icon }: { icon: any }) {
           </Typography>
         </div>
       </div>
-      {/* درصد رشد */}
-      {/* <Box
-        sx={{
-          position: 'absolute',
-          top: 12,
-          right: 12,
-          display: 'flex',
-          alignItems: 'center',
-          gap: 0.5,
-          color: 'red',
-          fontSize: 14,
-        }}
-      >
-        <TrendingUpIcon sx={{ fontSize: 16 }} />
-        +3.6%
-      </Box> */}
-
-      {/* گراف ساده به صورت SVG یا image یا خط سفارشی */}
     </Card>
   );
 }
 
-export default DashboardFeatureCardsComponent;
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+  >
+    •
+  </Box>
+);
 
-// <Box
-//   sx={{
-//     position: 'absolute',
-//     bottom: 12,
-//     right: 12,
-//     width: 80,
-//     height: 40,
-//   }}
-// >
-//   {/* می‌تونی از chart واقعی هم استفاده کنی مثلاً با chart.js یا recharts */}
-//   <svg
-//     viewBox="0 0 100 40"
-//     preserveAspectRatio="none"
-//     width="100%"
-//     height="100%"
-//   >
-//     <polyline
-//       fill="none"
-//       stroke="#990000"
-//       strokeWidth="3"
-//       points="0,30 20,20 40,25 60,15 80,22 100,10"
-//     />
-//   </svg>
-{
-  /* </Box> */
+const card = (
+  <React.Fragment>
+    <CardContent>
+      {/* <Typography
+        className="flex justify-center"
+        gutterBottom
+        sx={{ color: 'text.secondary', fontSize: 14 }}
+      >
+        سمت های کاربر
+      </Typography> */}
+      <Typography variant="h5" component="div">
+        {/* be{bull}nev{bull}o{bull}lent */}
+      </Typography>
+      <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>
+        سمت های کاربر
+      </Typography>
+      <Typography variant="body2">
+        کارشناس نرم افزار
+        <br />
+        سرپرست سخت افزار
+      </Typography>
+    </CardContent>
+    {/* <CardActions>
+      <Button size="small">Learn More</Button>
+    </CardActions> */}
+  </React.Fragment>
+);
+
+export function OutlinedCard() {
+  return (
+    <Box sx={{ minWidth: 275 }} className="bg-red-500">
+      <Card variant="outlined">{card}</Card>
+    </Box>
+  );
 }
