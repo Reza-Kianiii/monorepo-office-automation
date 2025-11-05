@@ -149,7 +149,7 @@ export function WorkFlowEngineFeatureAdvanceSearch() {
       <div className="flex flex-1 flex-col h-full">
         <Box className="mt-2 flex-[1_1_0] overflow-auto">
           <DataGridPremium
-            rows={advanceSearch ? JSON.parse(advanceSearch) : []}
+            rows={advanceSearch ?? []}
             columns={columns}
             getRowId={(rows) => rows.app_title}
             showToolbar
