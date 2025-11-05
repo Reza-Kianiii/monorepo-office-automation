@@ -37,9 +37,6 @@
       "path": "../../data/data-tracking/tsconfig.lib.json"
     },
     {
-      "path": "../../utils/redux-store/tsconfig.lib.json"
-    },
-    {
       "path": "../../../shared/ui/widget/tsconfig.lib.json"
     },
     {

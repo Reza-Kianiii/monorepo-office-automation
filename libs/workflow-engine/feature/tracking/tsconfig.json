@@ -9,9 +9,6 @@
       "path": "../../data/data-tracking"
     },
     {
-      "path": "../../utils/redux-store"
-    },
-    {
       "path": "../../../shared/ui/widget"
     },
     {

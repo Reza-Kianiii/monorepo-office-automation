@@ -44,6 +44,7 @@ export function WorkFlowEngineFeatureSharedDialogProcessMaker({
   var Automationport = window.location.port;
 
   const url = React.useMemo(() => {
+    if (!userToken || !dataGetPmWebAddress) return null;
     return (
       dataGetPmWebAddress +
       'sysworkflow/fa/noavaran/login/login?userToken=' +
@@ -51,9 +52,9 @@ export function WorkFlowEngineFeatureSharedDialogProcessMaker({
       '&engineCode=&WebOfficeURL=' +
       protocol +
       '//' +
-      '172.16.193.155' +
+      'localhost' +
       ':' +
-      '8080' +
+      '9090' +
       '&Workspace=sysworkflow&deputy=0&lang=fa&show=1&appUid=' +
       data.app_uid +
       '&delIndex=' +

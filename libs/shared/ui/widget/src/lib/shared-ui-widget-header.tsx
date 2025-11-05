@@ -13,7 +13,7 @@ export function SharedUiWidgetHeader({
   actions,
 }: {
   title: string;
-  actions: any;
+  actions?: any;
 }) {
   return (
     <Paper className="mt-2 mb-2 h-[100px] flex flex-col justify-between p-2 shadow">

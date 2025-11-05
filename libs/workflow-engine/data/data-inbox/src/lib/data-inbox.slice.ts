@@ -14,16 +14,10 @@ export const dataInbox = createApi({
   }),
 
   endpoints: (builder) => ({
-    postGetDataInbox: builder.mutation<
-      any,
-      {
-        payload: any;
-      }
-    >({
-      query: ({ payload }) => ({
+    getDataInbox: builder.query<any, void>({
+      query: () => ({
         url: `PMCase/GetTodoAsync/`,
-        method: 'POST',
-        body: payload,
+        method: 'Get',
       }),
     }),
     GetUploadDocument: builder.query<
@@ -68,7 +62,7 @@ export const dataInbox = createApi({
 });
 
 export const {
-  usePostGetDataInboxMutation,
+  useGetDataInboxQuery,
   useGetBindVaribleSelectionsQuery,
   useGetUploadDocumentQuery,
   useGetOutPutDocumentQuery,

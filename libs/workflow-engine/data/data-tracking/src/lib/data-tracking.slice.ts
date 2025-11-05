@@ -1,10 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { v4 as uuidv4 } from 'uuid';
-import {
-  CaseNoteTypes,
-  IncomingDocumentsTypes,
-  OutPutDocumentTypes,
-} from './data-inbox.models';
 
 export const dataTracking = createApi({
   reducerPath: 'dataTracking',
@@ -14,15 +8,13 @@ export const dataTracking = createApi({
   }),
 
   endpoints: (builder) => ({
-    postParticipatedAsync: builder.mutation<any, any>({
-      query: ({ payload }) => ({
+    getParticipatedAsync: builder.query<any, void>({
+      query: () => ({
         url: `PMCase/GetParticipatedAsync/`,
-        // url: `/ PMCase/GetParticipatedAsync`,
-        method: 'POST',
-        body: payload,
+        method: 'GET',
       }),
     }),
   }),
 });
 
-export const { usePostParticipatedAsyncMutation } = dataTracking;
+export const { useGetParticipatedAsyncQuery } = dataTracking;

@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { SharedUiWidgetHeader } from '@office-automation/shared/ui/widget';
 import {
   DataGridPremium,
@@ -8,18 +8,10 @@ import {
   GridRowParams,
   GridActionsCellItem,
 } from '@mui/x-data-grid-premium';
-import {
-  toggleButton,
-  usePostGetDataInboxMutation,
-} from '@office-automation/workflow-engine/data/data-inbox';
+import { useGetDataInboxQuery } from '@office-automation/workflow-engine/data/data-inbox';
 import ScreenShareSharpIcon from '@mui/icons-material/ScreenShareSharp';
-import WorkFlowEngineFeatureInboxHorizontalFilter from './workflow-engine-feature-inbox-horizontal-filters';
-import { store } from '@office-automation/workflow-engine/utils/redux-store';
-import { useSelector } from 'react-redux';
-import { VaribleSelection } from '@office-automation/workflow-engine/data/data-settings';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import { useColumnState } from '@office-automation/shared/util/core-hooks';
-
 import {
   WorkFlowEngineFeatureSharedDialogIncomingDocument,
   WorkFlowEngineFeatureSharedDialogNote,
@@ -48,57 +40,25 @@ export function WorkFlowEngineFeatureInbox() {
     [keyId: string]: string[];
   };
 
-  const selectedVaribleItemWorkFlow = useRef<ProcessVarsMap>({});
-  const dicitionaryOfListItemsWorkFlowEngine = useRef({});
+  const selectedVariableItemWorkFlow = useRef<ProcessVarsMap>({});
+  const dictionaryOfListItemsWorkFlowEngine = useRef({});
 
-  const [postGetDataInbox, { isLoading }] = usePostGetDataInboxMutation();
-
-  const selectedFilters = useSelector((state) => state?.inboxFiltersHorizontal);
+  const {
+    data: inbox,
+    isLoading: inboxIsLoading,
+    isFetching: inboxIsFetching,
+  } = useGetDataInboxQuery();
 
   const rows = useRef<any[]>([]);
-
-  useEffect(() => {
-    postGetDataInbox({
-      payload: selectedFilters,
-    }).then((value) => {
-      rows.current = JSON.parse(value?.data);
-    });
-  }, [selectedFilters]);
 
   const [paginationModel, setPaginationModel] = React.useState({
     page: 0,
     pageSize: 5,
   });
 
-  const handleClick = (item: VaribleSelection) => {
-    const { ProcessUid, VariableName } = item;
-
-    const currentVars = selectedVaribleItemWorkFlow.current[ProcessUid] || [];
-
-    if (!selectedVaribleItemWorkFlow.current[ProcessUid]) {
-      selectedVaribleItemWorkFlow.current[ProcessUid] = [VariableName];
-    } else {
-      if (!currentVars.includes(VariableName)) {
-        selectedVaribleItemWorkFlow.current[ProcessUid] = [
-          ...currentVars,
-          VariableName,
-        ];
-      } else {
-        const filtered = currentVars.filter((v) => v !== VariableName);
-        if (filtered.length === 0) {
-          delete selectedVaribleItemWorkFlow.current[ProcessUid];
-        } else {
-          selectedVaribleItemWorkFlow.current[ProcessUid] = filtered;
-        }
-      }
-    }
-
-    store.dispatch(toggleButton(selectedVaribleItemWorkFlow.current));
-  };
-
   const { newColumns } = useColumnState({
     row: rows.current,
-    listDictionaryWorkFlow: dicitionaryOfListItemsWorkFlowEngine.current,
+    listDictionaryWorkFlow: dictionaryOfListItemsWorkFlowEngine.current,
   });
 
   const columns: GridColDef[] = [
@@ -185,44 +145,37 @@ export function WorkFlowEngineFeatureInbox() {
     <div className=" flex flex-1 flex-col  h-full ">
       <SharedUiWidgetHeader title={'کارتابل'} />
 
-      <div className="flex flex-1 flex-col h-full">
-        <WorkFlowEngineFeatureInboxHorizontalFilter
-          listDictionaryItemsWorkFlowEngine={
-            dicitionaryOfListItemsWorkFlowEngine
-          }
-          handleClick={handleClick}
-        />
-        <Box className="mt-2 flex-[1_1_0] overflow-auto">
-          <DataGridPremium
-            rows={rows.current}
-            columns={columns}
-            getRowId={(rows) => rows.app_title}
-            showToolbar
-            pagination
-            autoPageSize
-            paginationModel={paginationModel}
-            onPaginationModelChange={setPaginationModel}
-            paginationMode="client"
-            apiRef={gridApiRef}
-            // loading={true}
-            slotProps={{
-              row: {
-                onFocus: (event: any) => {
-                  const rowId = event.currentTarget.getAttribute('data-id');
-                  const row = gridApiRef.current?.getRow(rowId ?? 0);
-                  selectedWorkflowEngineInbox.current = row;
-                },
+      <Box className="mt-2 flex-[1_1_0] overflow-auto">
+        <DataGridPremium
+          rows={inbox ?? []}
+          columns={columns}
+          getRowId={(rows) => rows.app_title}
+          showToolbar
+          pagination
+          autoPageSize
+          paginationModel={paginationModel}
+          onPaginationModelChange={setPaginationModel}
+          paginationMode="client"
+          apiRef={gridApiRef}
+          loading={inboxIsLoading}
+          slotProps={{
+            row: {
+              onFocus: (event: any) => {
+                const rowId = event.currentTarget.getAttribute('data-id');
+                const row = gridApiRef.current?.getRow(rowId ?? 0);
+                selectedWorkflowEngineInbox.current = row;
               },
-            }}
-            checkboxSelection
-            disableRowSelectionOnClick
-            initialState={{
-              pinnedColumns: { left: ['actions'] },
-            }}
-            // initialState={initialState}
-          />
-        </Box>
-      </div>
+            },
+          }}
+          checkboxSelection
+          disableRowSelectionOnClick
+          initialState={{
+            pinnedColumns: { left: ['actions'] },
+          }}
+          // initialState={initialState}
+        />
+      </Box>
+
       {operation === 'PROSECCMAKER' && (
         <WorkFlowEngineFeatureSharedDialogProcessMaker
           data={selectedWorkflowEngineInbox.current}

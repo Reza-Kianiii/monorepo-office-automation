@@ -11,13 +11,13 @@ export function useColumnState({
   const [newColumns, setNewColumns] = useState<GridColDef[]>([]);
 
   useEffect(() => {
-    if (row[0]?.Variables && Object.keys(row[0]?.Variables).length) {
-      const newCols: GridColDef[] = Object.keys(row[0]?.Variables).map(
+    if (row[0]?.ReportFields && Object.keys(row[0]?.ReportFields).length) {
+      const newCols: GridColDef[] = Object.keys(row[0]?.ReportFields).map(
         (item) => {
           return {
             field: `${item}`,
             headerName: listDictionaryWorkFlow[item]?.VariableLable,
-            valueGetter: (value, row) => row?.Variables[item],
+            valueGetter: (value, row) => row?.ReportFields[item],
           };
         }
       );
@@ -25,7 +25,7 @@ export function useColumnState({
     } else {
       setNewColumns([]);
     }
-  }, [row[0]?.Variables ? Object.keys(row[0]?.Variables)?.length : 0]);
+  }, [row[0]?.ReportFields ? Object.keys(row[0]?.ReportFields)?.length : 0]);
 
   return {
     newColumns,
