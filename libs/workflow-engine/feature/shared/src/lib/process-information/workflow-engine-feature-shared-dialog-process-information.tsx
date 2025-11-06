@@ -9,6 +9,17 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useGetUserTokenQuery } from '@office-automation/workflow-engine/data/data-get-user-token';
 import { useGetPmWebAddressQuery } from '@office-automation/workflow-engine/data/data-get-pm-web-address';
 import { useGetCasesVaribleQuery } from '@office-automation/workflow-engine/data/data-inbox';
+import { TransitionProps } from '@mui/material/transitions';
+import { Slide } from '@mui/material';
+
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement<unknown>;
+  },
+  ref: React.Ref<unknown>
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export function WorkFlowEngineFeatureSharedDialogProcessInformation({
   data,

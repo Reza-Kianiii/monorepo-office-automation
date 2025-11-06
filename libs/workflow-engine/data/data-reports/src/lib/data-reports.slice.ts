@@ -14,7 +14,22 @@ export const dataReportsAPI = createApi({
         method: 'GET',
       }),
     }),
+    getProjectReportTables: builder.query<
+      any,
+      {
+        projectId: string;
+      }
+    >({
+      query: ({ ...params }) => ({
+        url: 'GetProjectReportTables/',
+        method: 'GET',
+        params,
+      }),
+    }),
   }),
 });
 
-export const { useGetTreeGetReportsTablsQuery } = dataReportsAPI;
+export const {
+  useGetTreeGetReportsTablsQuery,
+  useGetProjectReportTablesQuery,
+} = dataReportsAPI;

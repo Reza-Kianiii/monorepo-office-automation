@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../data/data-reports"
+    },
+    {
       "path": "../../../shared/ui/widget"
     },
     {
