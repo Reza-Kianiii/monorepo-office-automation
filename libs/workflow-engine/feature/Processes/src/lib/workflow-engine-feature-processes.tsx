@@ -109,7 +109,7 @@ export function WorkFlowEngineFeatureProcesses() {
       <div className="flex flex-1 flex-col h-full">
         <Box className="mt-2 flex-[1_1_0] overflow-auto">
           <DataGridPremium
-            rows={dataProcesses ? JSON.parse(dataProcesses) : []}
+            rows={dataProcesses ?? []}
             columns={columns}
             // getRowId={(rows) => rows.app_title}
             getRowId={(rows) => rows?.prj_uid}
