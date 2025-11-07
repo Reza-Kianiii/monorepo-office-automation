@@ -213,7 +213,7 @@ export function DashboardFeatureHome() {
             variant="subtitle1"
             sx={{ fontWeight: 700, color: 'black' }}
           >
-            کاربر گرامی کاربر ارشد به سیستم اتوماسیون اداری و مدیرت فرایند
+            کاربر گرامی کاربر ارشد به سیستم اتوماسیون اداری و مدیریت فرایند
             الکترومیزان اندیشه خوش آمدید
           </Typography>
           <Box className="flex gap-3 items-center">
@@ -335,7 +335,7 @@ export function DashboardFeatureHome() {
               className="p-6"
             >
               <Typography variant="h6" sx={{ mb: 2 }}>
-                امار کاربران من
+                امار نامه های من
               </Typography>
               <DashboardFeatureChartComponent />
             </Card>
@@ -359,12 +359,11 @@ export function DashboardFeatureHome() {
                   {
                     data: [
                       { id: 0, value: 45, label: 'کارتابل' },
-                      { id: 1, value: 30, label: 'پیش نویس های من' },
+                      { id: 1, value: 30, label: 'پیش نویس ها' },
                       { id: 2, value: 15, label: 'پیگیری' },
                       { id: 3, value: 10, label: 'اختصاص نیافته ها' },
                       { id: 3, value: 10, label: 'متوقف  شده ها' },
                     ],
-
                     highlightScope: { fade: 'global', highlight: 'item' },
                     faded: {
                       innerRadius: 30,

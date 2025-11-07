@@ -130,8 +130,8 @@ export function OutlinedCardProcessMaker() {
   const navigate = useNavigate();
   return (
     <Box
-      sx={{ width: '100%' }}
-      onClick={() => (window.location.href = '/workflow-engine/')}
+      sx={{ width: '100%', cursor: 'pointer' }}
+      onClick={() => (window.location.href = '/workflow-engine/inbox')}
     >
       <Card
         variant="outlined"
@@ -171,7 +171,7 @@ const cardAutomation = (
 export function OutlinedCardAutomation() {
   return (
     <Box
-      sx={{ width: '100%' }}
+      sx={{ width: '100%', cursor: 'pointer' }}
       onClick={() => (window.location.href = '/workflow-engine/inbox')}
     >
       <Card

@@ -2,19 +2,19 @@ import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 const seriesA = {
   data: [2, 3, 1, 4, 5],
-  label: 'جاری',
+  label: 'در دست اقدام',
 };
 const seriesB = {
   data: [3, 1, 4, 2, 1],
-  label: 'در درست اقدام',
+  label: 'انجام شده',
 };
 const seriesC = {
   data: [3, 2, 4, 5, 1],
-  label: 'لغو شده',
+  label: 'برگشت شده',
 };
 const seriesD = {
   data: [3, 2, 4, 5, 1],
-  label: 'همه کار ها',
+  label: 'خواننده شده',
 };
 const seriesE = {
   data: [3, 2, 4, 5, 1],
@@ -23,6 +23,10 @@ const seriesE = {
 const seriesF = {
   data: [3, 2, 4, 5, 1],
   label: 'کارتابل مشترک',
+};
+const seriesG = {
+  data: [3, 2, 4, 5, 1],
+  label: 'پیش نویس ها',
 };
 export function DashboardFeatureChartComponent() {
   return (
@@ -36,6 +40,7 @@ export function DashboardFeatureChartComponent() {
         { ...seriesD, stack: 'total' },
         { ...seriesE, stack: 'total' },
         { ...seriesF, stack: 'total' },
+        { ...seriesG, stack: 'total' },
       ]}
       // sx={{
       //   // محور‌ها

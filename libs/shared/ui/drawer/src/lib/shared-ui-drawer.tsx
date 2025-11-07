@@ -114,7 +114,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export function SharedUiDrawer({ menu }: { menu?: any }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = React.useCallback(() => setOpen(true), [open]);
 
