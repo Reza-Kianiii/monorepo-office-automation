@@ -16,7 +16,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["development"],
+    "customConditions": ["@office-automation/source"],
     "baseUrl": ".",
     "paths": {
       "@office-automation/dashboard-shell/feature/home": [
