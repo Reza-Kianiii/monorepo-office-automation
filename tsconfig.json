@@ -149,6 +149,12 @@
     },
     {
       "path": "./libs/dashboard-shell/utils/redux-store"
+    },
+    {
+      "path": "./libs/workflow-engine/feature/new-work"
+    },
+    {
+      "path": "./libs/workflow-engine/data/data-new-case"
     }
   ]
 }

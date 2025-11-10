@@ -24,7 +24,7 @@ import { dataSelectEnginsAPI } from '@office-automation/workflow-engine/data/dat
 import { dataProcessesAPI } from '@office-automation/workflow-engine/data/data-processes';
 import { dataUserSyncAPI } from '@office-automation/workflow-engine/data/data-user-sync';
 import { dataReportsAPI } from '@office-automation/workflow-engine/data/data_reports';
-
+import { newCaseApi } from '@office-automation/workflow-engine/data/data-new-case';
 export const store = configureStore({
   reducer: {
     [permissonMenuApi.reducerPath]: permissonMenuApi.reducer,
@@ -47,6 +47,7 @@ export const store = configureStore({
     [dataProcessesAPI.reducerPath]: dataProcessesAPI.reducer,
     [dataUserSyncAPI.reducerPath]: dataUserSyncAPI.reducer,
     [dataReportsAPI.reducerPath]: dataReportsAPI.reducer,
+    [newCaseApi.reducerPath]: newCaseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -67,7 +68,8 @@ export const store = configureStore({
         dataSelectEnginsAPI.middleware,
         dataProcessesAPI.middleware,
         dataUserSyncAPI.middleware,
-        dataReportsAPI.middleware
+        dataReportsAPI.middleware,
+        newCaseApi.middleware
       ),
 });
 setupListeners(store.dispatch);

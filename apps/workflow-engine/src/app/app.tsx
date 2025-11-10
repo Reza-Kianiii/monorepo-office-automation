@@ -1,14 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { CacheProvider } from '@emotion/react';
-import createCache from '@emotion/cache';
-import { prefixer } from 'stylis';
-import rtlPlugin from 'stylis-plugin-rtl';
-
 import { WorkflowEngineFeatureWorkflowEngineShell } from '@office-automation/workflow-engine/feature/workflow-engine-shell';
-import { ThemeProvider } from '@mui/material/styles';
-import { CssBaseline } from '@mui/material';
 import { createSharedTheme } from '@office-automation/shared/util/mui-theme';
-import { Provider } from 'react-redux';
 import { store } from '@office-automation/workflow-engine/utils/redux-store';
 import { WorkFlowEngineFeatureInbox } from '@office-automation/workflow-engine/feature/inbox';
 import { useEffect, useMemo, useState } from 'react';
@@ -23,6 +15,7 @@ import { WorkFlowEngineFeatureSelectEngins } from '@office-automation/workflow-e
 import { WorkFlowEngineFeatureProcesses } from '@office-automation/workflow-engine/feature/processes';
 import { WorkflowEngineFeatureUserSync } from '@office-automation/workflow-engine/feature/user-sync';
 import { WorkFlowEngineFeatureReports } from '@office-automation/workflow-engine/feature/reports';
+import { WorkflowEngineFeatureNewWorkComponent } from '@office-automation/workflow-engine/feature/new-work';
 // const rtlCache = createCache({
 //   key: 'muirtl',
 //   stylisPlugins: [prefixer, rtlPlugin],
@@ -77,6 +70,10 @@ const router = createBrowserRouter(
         {
           path: 'reports',
           Component: WorkFlowEngineFeatureReports,
+        },
+        {
+          path: 'new-work',
+          Component: WorkflowEngineFeatureNewWorkComponent,
         },
       ],
     },

@@ -7,7 +7,7 @@ import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
 import { styled, alpha } from '@mui/material/styles';
 import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
 import { TreeItem, treeItemClasses } from '@mui/x-tree-view/TreeItem';
-
+import { usePostNewCaseMutation } from '@office-automation/workflow-engine/data/data-new-case';
 const CustomTreeItem = styled(TreeItem)(({ theme }) => ({
   [`& .${treeItemClasses.content}`]: {
     padding: theme.spacing(0.5, 1),
@@ -25,32 +25,28 @@ const CustomTreeItem = styled(TreeItem)(({ theme }) => ({
   },
 }));
 
-function ExpandIcon(props: React.PropsWithoutRef<typeof AddBoxRoundedIcon>) {
-  return <AddBoxRoundedIcon {...props} sx={{ opacity: 0.8 }} />;
-}
-
-function CollapseIcon(
-  props: React.PropsWithoutRef<typeof IndeterminateCheckBoxRoundedIcon>
-) {
-  return <IndeterminateCheckBoxRoundedIcon {...props} sx={{ opacity: 0.8 }} />;
-}
-
-function EndIcon(
-  props: React.PropsWithoutRef<typeof DisabledByDefaultRoundedIcon>
-) {
-  return <DisabledByDefaultRoundedIcon {...props} sx={{ opacity: 0.3 }} />;
-}
+const handleClick = (value) => {
+  console.log(value, 'valuevaluevalue');
+};
 
 const renderTreeItems = (nodes: any[]) => {
   return nodes?.map((node) => (
-    <CustomTreeItem key={node.Id} itemId={node.Id} label={node.Title}>
+    <CustomTreeItem
+      onClick={() => handleClick(node)}
+      key={node.Id}
+      itemId={node.Id}
+      label={node.Title}
+    >
       {node.children?.length > 0 && renderTreeItems(node.children)}
     </CustomTreeItem>
   ));
 };
 
-export function WorkFlowEngineFeatureReports() {
+export function WorkflowEngineFeatureNewWorkComponent() {
   const { data } = useGetTreeGetReportsTablsQuery();
+
+  const [postNewCase] = usePostNewCaseMutation();
+
   const [treeData, setTreeData] = useState<any[]>([]);
 
   const buildTree = (
@@ -83,6 +79,7 @@ export function WorkFlowEngineFeatureReports() {
     if (data) {
       const parsedData = JSON.parse(data);
       const tree = buildTree(parsedData);
+      console.log(tree, 'treee');
       setTreeData(tree);
     }
   }, [data]);
@@ -98,4 +95,4 @@ export function WorkFlowEngineFeatureReports() {
   );
 }
 
-export default WorkFlowEngineFeatureReports;
+export default WorkflowEngineFeatureNewWorkComponent;

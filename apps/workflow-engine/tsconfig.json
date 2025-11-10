@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/workflow-engine/feature/new-work"
+    },
+    {
       "path": "../../libs/workflow-engine/feature/reports"
     },
     {

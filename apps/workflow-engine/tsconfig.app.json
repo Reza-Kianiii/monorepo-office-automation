@@ -36,6 +36,9 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
+      "path": "../../libs/workflow-engine/feature/new-work/tsconfig.lib.json"
+    },
+    {
       "path": "../../libs/workflow-engine/feature/reports/tsconfig.lib.json"
     },
     {

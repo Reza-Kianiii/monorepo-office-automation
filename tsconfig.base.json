@@ -55,6 +55,7 @@
       "@office-automation/workflow-engine/data/data-advance-search": [
         "libs/workflow-engine/data/data-advance-search/src/index.ts"
       ],
+      
       "@office-automation/workflow-engine/data/data-drafts": [
         "libs/workflow-engine/data/data-drafts/src/index.ts"
       ],
@@ -72,6 +73,9 @@
       ],
       "@office-automation/workflow-engine/data/data-paused": [
         "libs/workflow-engine/data/data-paused/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/data/data-new-case": [
+        "libs/workflow-engine/data/data-new-case/src/index.ts"
       ],
       "@office-automation/workflow-engine/data/data-processes": [
         "libs/workflow-engine/data/data-processes/src/index.ts"
@@ -111,6 +115,9 @@
       ],
       "@office-automation/workflow-engine/feature/new-case": [
         "libs/workflow-engine/feature/new-case/src/index.ts"
+      ],
+      "@office-automation/workflow-engine/feature/new-work": [
+        "libs/workflow-engine/feature/new-work/src/index.ts"
       ],
       "@office-automation/workflow-engine/feature/paused": [
         "libs/workflow-engine/feature/paused/src/index.ts"
